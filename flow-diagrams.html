@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>消息推送中心 — 业务流程图</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#f4f7fb;
+  --surface:#ffffff;
+  --surface-2:#f8fafd;
+  --surface-3:#eef2f8;
+  --border:#d8e0ec;
+  --border-light:#c0cddf;
+  --accent:#2563eb;
+  --accent-hover:#3b82f6;
+  --accent-dim:rgba(37,99,235,.08);
+  --success:#16a34a;
+  --success-dim:rgba(22,163,74,.08);
+  --warning:#d97706;
+  --warning-dim:rgba(217,119,6,.08);
+  --danger:#dc2626;
+  --danger-dim:rgba(220,38,38,.08);
+  --purple:#7c3aed;
+  --purple-dim:rgba(124,58,237,.08);
+  --text:#1e293b;
+  --text-secondary:#475569;
+  --text-muted:#64748b;
+  --radius:8px;
+  --radius-lg:12px;
+}
+html{font-size:14px;scroll-behavior:smooth}
+body{
+  font-family:'Noto Sans SC','Manrope',system-ui,sans-serif;
+  background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;
+}
+h1,h2,h3,h4,h5,h6{font-family:'Manrope','Noto Sans SC',sans-serif;font-weight:700;letter-spacing:-.02em}
+
+/* ======== PAGE LAYOUT ======== */
+.page-header{
+  background:var(--surface);
+  border-bottom:1px solid var(--border);
+  padding:20px 40px;
+  display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;z-index:50;
+  backdrop-filter:blur(12px);box-shadow:0 1px 3px rgba(0,0,0,.06);
+}
+.page-header h1{font-size:18px;display:flex;align-items:center;gap:10px}
+.page-header .logo-icon{
+  width:32px;height:32px;border-radius:8px;
+  background:linear-gradient(135deg,var(--accent),#8b5cf6);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:13px;color:#fff;
+}
+.page-header nav{display:flex;gap:6px}
+.page-header nav a{
+  padding:6px 14px;border-radius:6px;font-size:12.5px;font-weight:600;
+  color:var(--text-muted);text-decoration:none;transition:all .15s;
+}
+.page-header nav a:hover{color:var(--text);background:rgba(0,0,0,.04)}
+.page-header nav a.active{color:var(--accent);background:var(--accent-dim)}
+
+.content{max-width:1100px;margin:0 auto;padding:40px 40px 80px}
+
+/* ======== FLOW SECTION ======== */
+.flow-section{margin-bottom:60px}
+.flow-section-header{
+  display:flex;align-items:flex-start;gap:16px;margin-bottom:28px;
+}
+.flow-number{
+  width:44px;height:44px;border-radius:12px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;font-weight:800;font-family:'Manrope',sans-serif;
+}
+.flow-number.cyan{background:var(--accent-dim);color:var(--accent)}
+.flow-number.green{background:var(--success-dim);color:var(--success)}
+.flow-number.amber{background:var(--warning-dim);color:var(--warning)}
+.flow-number.purple{background:var(--purple-dim);color:var(--purple)}
+.flow-number.red{background:var(--danger-dim);color:var(--danger)}
+.flow-section-info h2{font-size:20px;font-weight:800;margin-bottom:4px}
+.flow-section-info p{font-size:13.5px;color:var(--text-muted);line-height:1.6}
+
+/* ======== FLOW CHART STYLES ======== */
+.flow-chart{
+  position:relative;
+  padding:20px 0;
+}
+.flow-col{
+  display:flex;flex-direction:column;align-items:center;
+  gap:0;
+}
+
+/* Flow nodes */
+.node{
+  background:var(--surface-2);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:14px 20px;
+  text-align:center;
+  position:relative;
+  max-width:420px;
+  width:100%;
+  transition:all .2s;
+}
+.node:hover{border-color:var(--accent);box-shadow:0 2px 12px rgba(37,99,235,.10)}
+.node .node-title{font-size:13.5px;font-weight:700;color:var(--text)}
+.node .node-desc{font-size:12px;color:var(--text-muted);margin-top:4px;line-height:1.5}
+
+.node.start{
+  background:linear-gradient(135deg,rgba(37,99,235,.08),rgba(124,58,237,.06));
+  border-color:rgba(37,99,235,.25);
+}
+.node.start .node-title{color:var(--accent)}
+
+.node.decision{
+  background:var(--warning-dim);
+  border-color:rgba(217,119,6,.25);
+  border-radius:2px;
+  transform:rotate(0deg);
+  position:relative;
+}
+.node.decision::before{
+  content:'';position:absolute;inset:-6px;
+  border:2px solid rgba(217,119,6,.15);border-radius:4px;
+  pointer-events:none;
+}
+.node.decision .node-title{color:var(--warning)}
+
+.node.end{
+  background:var(--success-dim);
+  border-color:rgba(22,163,74,.25);
+}
+.node.end .node-title{color:var(--success)}
+
+.node.action{
+  border-left:3px solid var(--accent);
+}
+
+.node.error{
+  border-left:3px solid var(--danger);
+}
+.node.error .node-title{color:var(--danger)}
+
+/* Arrows */
+.arrow-down{
+  display:flex;flex-direction:column;align-items:center;
+  padding:4px 0;
+}
+.arrow-down .line{
+  width:2px;height:24px;
+  background:var(--border-light);
+}
+.arrow-down .head{
+  width:0;height:0;
+  border-left:5px solid transparent;
+  border-right:5px solid transparent;
+  border-top:6px solid var(--border-light);
+}
+
+/* Branch arrows */
+.branch-row{
+  display:flex;align-items:flex-start;gap:16px;
+  justify-content:center;
+  width:100%;
+}
+.branch{
+  display:flex;flex-direction:column;align-items:center;
+  flex:1;max-width:280px;
+  position:relative;
+}
+.branch-label{
+  font-size:11px;font-weight:700;
+  padding:3px 10px;border-radius:10px;
+  margin-bottom:8px;
+  white-space:nowrap;
+}
+.branch-label.yes{background:var(--success-dim);color:var(--success)}
+.branch-label.no{background:var(--danger-dim);color:var(--danger)}
+.branch-label.or{background:var(--purple-dim);color:var(--purple)}
+
+/* Parallel branches */
+.parallel{
+  display:flex;gap:12px;width:100%;
+  justify-content:center;
+}
+.parallel .branch-col{
+  flex:1;max-width:220px;
+  display:flex;flex-direction:column;align-items:center;
+}
+.parallel .branch-col .node{max-width:100%}
+.parallel-label{
+  font-size:11px;font-weight:600;color:var(--text-muted);
+  padding:2px 8px;background:var(--surface-3);border-radius:4px;
+  margin-bottom:8px;
+}
+
+/* Steps list */
+.steps{
+  background:var(--surface-2);border:1px solid var(--border);
+  border-radius:var(--radius-lg);padding:20px;
+  max-width:420px;width:100%;
+}
+.step-item{
+  display:flex;gap:12px;padding:8px 0;
+  border-bottom:1px solid var(--border);
+}
+.step-item:last-child{border-bottom:none}
+.step-num{
+  width:22px;height:22px;border-radius:50%;flex-shrink:0;
+  background:var(--accent-dim);color:var(--accent);
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:700;
+}
+.step-text{font-size:12.5px;color:var(--text-secondary)}
+
+/* Horizontal divider */
+.h-divider{
+  width:100%;max-width:420px;
+  border:none;border-top:1px dashed var(--border);
+  margin:8px 0;
+}
+
+/* Merge point */
+.merge-line{
+  width:60%;max-width:260px;
+  height:2px;
+  background:var(--border-light);
+  margin:0 auto;
+  position:relative;
+}
+.merge-line::before,.merge-line::after{
+  content:'';position:absolute;top:-4px;
+  width:10px;height:10px;border-radius:50%;
+  background:var(--border-light);
+}
+.merge-line::before{left:-5px}
+.merge-line::after{right:-5px}
+
+/* Connector for side flows */
+.side-connector{
+  display:flex;align-items:center;gap:8px;
+  width:100%;max-width:420px;
+}
+.side-connector .horiz-line{
+  flex:1;height:2px;background:var(--border-light);
+}
+.side-connector .label{
+  font-size:11px;color:var(--text-muted);white-space:nowrap;
+}
+
+/* ======== NAV PILLS ======== */
+.toc{
+  display:flex;gap:8px;flex-wrap:wrap;
+  margin-bottom:40px;padding:20px;
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+}
+.toc a{
+  padding:6px 14px;border-radius:6px;font-size:12.5px;
+  font-weight:600;color:var(--text-muted);text-decoration:none;
+  transition:all .15s;border:1px solid transparent;
+}
+.toc a:hover{color:var(--text);border-color:var(--border)}
+.toc a .toc-num{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:20px;height:20px;border-radius:50%;
+  font-size:10px;margin-right:6px;
+}
+.toc a:nth-child(1) .toc-num{background:var(--accent-dim);color:var(--accent)}
+.toc a:nth-child(2) .toc-num{background:var(--success-dim);color:var(--success)}
+.toc a:nth-child(3) .toc-num{background:var(--warning-dim);color:var(--warning)}
+.toc a:nth-child(4) .toc-num{background:var(--purple-dim);color:var(--purple)}
+.toc a:nth-child(5) .toc-num{background:var(--danger-dim);color:var(--danger)}
+
+/* ======== SYSTEM ARCHITECTURE ======== */
+.arch-box{
+  background:var(--surface-2);border:1px solid var(--border);
+  border-radius:var(--radius-lg);padding:20px;
+  text-align:center;font-size:13px;font-weight:600;
+  color:var(--text);
+}
+.arch-box.highlight{
+  background:var(--accent-dim);border-color:rgba(37,99,235,.25);
+  color:var(--accent);
+}
+.arch-box small{display:block;font-weight:400;font-size:11px;color:var(--text-muted);margin-top:2px}
+.arch-arrow{
+  text-align:center;padding:8px 0;
+  font-size:20px;color:var(--border-light);
+}
+
+@media(max-width:768px){
+  .content{padding:20px 16px 60px}
+  .page-header{padding:16px 20px}
+  .page-header nav{display:none}
+  .parallel{flex-direction:column;align-items:center}
+  .branch-row{flex-direction:column;align-items:center}
+}
+</style>
+</head>
+<body>
+
+<header class="page-header">
+  <h1>
+    <div class="logo-icon">PC</div>
+    消息推送中心 · 业务流程图
+  </h1>
+  <nav>
+    <a href="#flow1" class="active">消息推送主流程</a>
+    <a href="#flow2">按钮交互回调</a>
+    <a href="#flow3">免登录跳转</a>
+    <a href="#flow4">租户接入渠道</a>
+    <a href="#flow5">用户匹配</a>
+  </nav>
+</header>
+
+<div class="content">
+
+  <!-- TOC -->
+  <div class="toc">
+    <a href="#flow1"><span class="toc-num">1</span>消息推送主流程</a>
+    <a href="#flow2"><span class="toc-num">2</span>按钮交互回调流程</a>
+    <a href="#flow3"><span class="toc-num">3</span>消息链接跳转免登录流程</a>
+    <a href="#flow4"><span class="toc-num">4</span>租户接入渠道流程</a>
+    <a href="#flow5"><span class="toc-num">5</span>用户匹配流程</a>
+  </div>
+
+  <!-- ====== 系统架构概览 ====== -->
+  <div class="flow-section">
+    <div class="flow-section-header">
+      <div class="flow-number cyan">◈</div>
+      <div class="flow-section-info">
+        <h2>系统架构概览</h2>
+        <p>消息推送中心作为消息体系的路由与投递层，连接业务系统与多个外部渠道</p>
+      </div>
+    </div>
+
+    <div style="max-width:700px;margin:0 auto">
+      <div class="arch-box">业务系统层（审批 / 申报 / 风控 / 任务 ...）<small>调用消息发送API</small></div>
+      <div class="arch-arrow">↓</div>
+      <div class="arch-box highlight">
+        消息推送中心（路由与投递层）
+        <small>消息模板引擎 · 渠道路由引擎 · 用户匹配引擎 · 渠道适配器 · 跳转认证管理 · 回调分发器</small>
+      </div>
+      <div class="arch-arrow">↓</div>
+      <div style="display:flex;gap:12px">
+        <div class="arch-box" style="flex:1">平台消息中心<small>内部渠道</small></div>
+        <div class="arch-box" style="flex:1;border-color:rgba(37,99,235,.2)">钉钉<small>适配器</small></div>
+        <div class="arch-box" style="flex:1;border-color:rgba(124,58,237,.2)">飞书<small>适配器</small></div>
+        <div class="arch-box" style="flex:1;border-color:rgba(22,163,74,.2)">企业微信<small>适配器</small></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 流程一：消息推送主流程 ====== -->
+  <div class="flow-section" id="flow1">
+    <div class="flow-section-header">
+      <div class="flow-number cyan">01</div>
+      <div class="flow-section-info">
+        <h2>消息推送主流程</h2>
+        <p>从业务事件触发到消息在各渠道投递完成的完整流程。展示推送中心如何统一调度消息到内部和外部渠道。</p>
+      </div>
+    </div>
+
+    <div class="flow-col">
+      <div class="node start">
+        <div class="node-title">业务事件触发</div>
+        <div class="node-desc">审批提交、申报到期、异常告警、任务分配等</div>
+      </div>
+      <div class="arrow-down"><div class="line"></div><div class="head"></div></div>
+
+      <div class="node action">
+        <div class="node-title">业务系统调用推送中心消息发送API</div>
+        <div class="node-desc">参数：模板编码、接收目标用户、业务变量、业务键(bizId)</div>
+      </div>
+      <div class="arrow-down"><div class="line"></div><div class="head"></div></div>
+
+      <div class="node">
+        <div class="node-title">推送中心处理</div>
+        <div class="steps">
+          <div class="step-item"><div class="step-num">1</div><div class="step-text">加载消息模板，替换变量，生成消息内容</div></div>
+          <div class="step-item"><div class="step-num">2</div><div class="step-text">查询接收目标用户的渠道匹配关系</div></div>
+          <div class="step-item"><div class="step-num">3</div><div class="step-text">查询租户启用的推送渠道</div></div>
+          <div class="step-item"><div class="step-num">4</div><div class="step-text">取交集，确定实际推送渠道列表</div></div>
+        </div>
+      </div>
+      <div class="arrow-down"><div class="line"></div><div class="head"></div></div>
+
+      <div class="node decision">
+        <div class="node-title">交集是否为空？</div>
+        <div class="node-desc">用户未匹配任何启用渠道</div>
+      </div>
+      <div class="arrow-down"><div class="line" style="height:8px"></div></div>
+
+      <div class="branch-row">
+        <div class="branch">
+          <div class="branch-label no">是 — 交集为空</div>
+          <div class="node end" style="max-width:260px">
+            <div class="node-title">仅保留在内部消息中心</div>
+          </div>
+        </div>
+        <div class="branch">
+          <div class="branch-label yes">否 — 交集不为空</div>
+          <div class="arrow-down"><div class="line"></div><div class="head"></div></div>
+          <div class="node" style="max-width:100%">
+            <div class="node-title">逐渠道投递</div>
+          </div>
+          <div class="arrow-down"><div class="line"></div><div class="head"></div></div>
+          <div class="parallel">
+            <div class="branch-col">
+              <div class="parallel-label">内部渠道</div>
+              <div class="node" style="max-width:100%;font-size:12px;padding:10px 12px">
+                <div class="node-title" style="font-size:12px">写入消息记录</div>
+              </div>
+            </div>
+            <div class="branch-col">
+              <div class="parallel-label">钉钉</div>
+              <div class="node" style="max-width:100%;font-size:12px;padding:10px 12px">
+                <div class="node-title" style="font-size:12px">ActionCard → 调用API</div>
+              </div>
+            </div>
+            <div class="branch-col">
+              <div class="parallel-label">飞书</div>
+              <div class="node" style="max-width:100%;font-size:12px;padding:10px 12px">
+                <div class="node-title" style="font-size:12px">Interactive Card → 调用API</div>
+              </div>
+            </div>
+            <div class="branch-col">
+              <div class="parallel-label">企微</div>
+              <div class="node" style="max-width:100%;font-size:12px;padding:10px 12px">
+                <div class="node-title" style="font-size:12px">Template Card → 调用API</div>
+              </div>
+            </div>
+          </div>
+          <div class="arrow-down"><div class="line"></div><div class="head"></div></div>
+          <div class="node end">
+            <div class="node-title">记录推送日志，更新各渠道推送状态</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 流程二：按钮交互回调流程 ====== -->
+  <div class="flow-section" id="flow2">
+    <div class="flow-section-header">
+      <div class="flow-number green">02</div>
+      <div class="flow-section-info">
+        <h2>按钮交互回调流程</h2>
+        <p>用户在外部渠道点击消息卡片上的按钮后，推送中心接收回调、验证、路由到业务处理器并返回操作回执的完整流程。</p>
+      </div>
+    </div>
+
+    <div class="flow-col">
+      <div class="node start">
+        <div class="node-title">用户在钉钉/飞书/企微中看到带按钮的消息卡片</div>
+      </div>
+      <div class="arrow-down"><div class="line"></div><div class="head"></div></div>
+
+      <div class="node action">
+        <div class="node-title">用户点击按钮（如"同意"）</div>
+      </div>
+      <div class="arrow-down"><div class="line"></div><div class="head"></div></div>
+
+      <div class="node">
+        <div class="node-title">渠道平台向推送中心回调地址发起HTTP请求</div>
+        <div class="node-desc">URL: /webhook/callback/{channelType}/{tenantId}</div>
+      </div>
+      <div class="arrow-down"><div class="line"></div><div class="head"></div></div>
+
+      <div class="node">
+        <div class="node-title">推送中心处理回调</div>
+        <div class="steps">
+          <div class="step-item"><div class="step-num">1</div><div class="step-text"><strong>验证回调签名</strong> — 确认来源合法，防伪造</div></div>
+          <div class="step-item"><div class="step-num">2</div><div class="step-text"><strong>适配器解析回调内容</strong> — 提取统一事件对象：callbackKey、actionId、业务数据、操作人标识</div></div>
+          <div class="step-item"><div class="step-num">3</div><div class="step-text"><strong>路由分发</strong> — 根据 callbackKey 路由到对应的业务回调处理器</div></div>
+        </div>
+      </div>
+      <div class="arrow-down"><div class="line"></div><div class="head"></div></div>
+
+      <div class="node">
+        <div class="node-title">业务回调处理器处理</div>
+        <div class="steps">
+          <div class="step-item"><div class="step-num">1</div><div class="step-text">权限校验：验证操作人是否有权执行该操作</div></div>
+          <div class="step-item"><div class="step-num">2</div><div class="step-text">幂等校验：同一操作不可重复执行</div></div>
+          <div class="step-item"><div class="step-num">3</div><div class="step-text">执行业务逻辑（如将审批状态改为"已通过"）</div></div>
+          <div class="step-item"><div class="step-num">4</div><div class="step-text">返回处理结果</div></div>
+        </div>
+      </div>
+      <div class="arrow-down"><div class="line"></div><div class="head"></div></div>
+
+      <div class="node decision">
+        <div class="node-title">处理是否成功？</div>
+      </div>
+
+      <div class="branch-row">
+        <div class="branch">
+          <div class="branch-label yes">成功</div>
+          <div class="node end" style="max-width:280px">
+            <div class="node-title">发送操作回执消息到对应渠道</div>
+            <div class="node-desc">如：在钉钉发送"您已同意该审批"的通知</div>
+          </div>
+        </div>
+        <div class="branch">
+          <div class="branch-label no">失败</div>
+          <div class="node error" style="max-width:280px">
+            <div class="node-title">返回错误提示</div>
+            <div class="node-desc">如"该操作暂不可用"或"您无权执行此操作"</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 流程三：免登录跳转流程 ====== -->
+  <div class="flow-section" id="flow3">
+    <div class="flow-section-header">
+      <div class="flow-number amber">03</div>
+      <div class="flow-section-info">
+        <h2>消息链接跳转免登录流程</h2>
+        <p>用户在外部渠道点击消息卡片的跳转链接后，系统自动完成OAuth认证并跳转至目标业务页面，无需手动登录。</p>
+      </div>
+    </div>
+
+    <div class="flow-col">
+      <div class="node start">
+        <div class="node-title">用户在钉钉/飞书/企微中点击消息卡片的跳转链接</div>
+      </div>
+      <div class="arrow-down"><div class="line"></div><div class="head"></div></div>
+
+      <div class="node action">
+        <div class="node-title">跳转至统一入口</div>
+        <div class="node-desc">/bridge/entry?target=目标页路径&source=渠道标识</div>
+      </div>
+      <div class="arrow-down"><div class="line"></div><div class="head"></div></div>
+
+      <div class="node decision">
+        <div class="node-title">是否已有有效会话？</div>
+        <div class="node-desc">会话有效期8小时，有效期内自动续期</div>
+      </div>
+
+      <div class="branch-row" style="margin-bottom:8px">
+        <div class="branch">
+          <div class="branch-label yes">有有效会话</div>
+          <div class="node end" style="max-width:240px">
+            <div class="node-title">直接跳转目标页面</div>
+          </div>
+        </div>
+        <div class="branch">
+          <div class="branch-label no">没有会话</div>
+          <div class="arrow-down"><div class="line"></div><div class="head"></div></div>
+          <div class="node" style="max-width:100%">
+            <div class="node-title">根据 source 识别来源渠道，走对应OAuth认证</div>
+          </div>
+          <div class="arrow-down"><div class="line"></div><div class="head"></div></div>
+          <div class="parallel">
+            <div class="branch-col">
+              <div class="parallel-label">钉钉</div>
+              <div class="node" style="max-width:100%;padding:8px 12px;font-size:12px">
+                <div class="node-title" style="font-size:12px">钉钉OAuth</div>
+                <div class="node-desc">获取钉钉userId</div>
+              </div>
+            </div>
+            <div class="branch-col">
+              <div class="parallel-label">飞书</div>
+              <div class="node" style="max-width:100%;padding:8px 12px;font-size:12px">
+                <div class="node-title" style="font-size:12px">飞书OAuth</div>
+                <div class="node-desc">获取飞书open_id</div>
+              </div>
+            </div>
+            <div class="branch-col">
+              <div class="parallel-label">企微</div>
+              <div class="node" style="max-width:100%;padding:8px 12px;font-size:12px">
+                <div class="node-title" style="font-size:12px">企微OAuth</div>
+                <div class="node-desc">获取企微userId</div>
+              </div>
+            </div>
+          </div>
+          <div class="arrow-down"><div class="line"></div><div class="head"></div></div>
+          <div class="node" style="max-width:100%">
+            <div class="node-title">根据渠道userId匹配平台用户</div>
+          </div>
+          <div class="arrow-down"><div class="line" style="height:8px"></div></div>
+          <div class="node decision">
+            <div class="node-title">匹配是否成功？</div>
+          </div>
+          <div class="branch-row">
+            <div class="branch">
+              <div class="branch-label yes">匹配成功</div>
+              <div class="node end" style="max-width:240px">
+                <div class="node-title">创建/续期登录会话</div>
+                <div class="node-desc">→ 跳转目标页面，无需手动登录</div>
+              </div>
+            </div>
+            <div class="branch">
+              <div class="branch-label no">匹配失败</div>
+              <div class="node error" style="max-width:260px">
+                <div class="node-title">提示"请联系管理员绑定账号"</div>
+                <div class="node-desc">展示绑定引导页</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 流程四：租户接入渠道流程 ====== -->
+  <div class="flow-section" id="flow4">
+    <div class="flow-section-header">
+      <div class="flow-number purple">04</div>
+      <div class="flow-section-info">
+        <h2>租户接入渠道流程</h2>
+        <p>从租户申请接入外部渠道到渠道正式生效的完整流程，涉及租户管理员与平台运营人员的协作。</p>
+      </div>
+    </div>
+
+    <div class="flow-col">
+      <div class="node start">
+        <div class="node-title">租户管理员在管理平台看到"消息推送"功能入口</div>
+      </div>
+      <div class="arrow-down"><div class="line"></div><div class="head"></div></div>
+
+      <div class="node action">
+        <div class="node-title">查看可接入渠道列表，选择需要接入的渠道</div>
+      </div>
+      <div class="arrow-down"><div class="line"></div><div class="head"></div></div>
+
+      <div class="node action">
+        <div class="node-title">提交接入申请</div>
+      </div>
+      <div class="arrow-down"><div class="line"></div><div class="head"></div></div>
+
+      <div class="node" style="border-left:3px solid var(--purple)">
+        <div class="node-title">平台运营人员在运营平台处理</div>
+        <div class="steps">
+          <div class="step-item"><div class="step-num" style="background:var(--purple-dim);color:var(--purple)">1</div><div class="step-text">在钉钉/飞书/企微开放平台创建应用</div></div>
+          <div class="step-item"><div class="step-num" style="background:var(--purple-dim);color:var(--purple)">2</div><div class="step-text">配置凭证信息（AppKey、AppSecret、AgentId等）</div></div>
+          <div class="step-item"><div class="step-num" style="background:var(--purple-dim);color:var(--purple)">3</div><div class="step-text">配置回调地址</div></div>
+          <div class="step-item"><div class="step-num" style="background:var(--purple-dim);color:var(--purple)">4</div><div class="step-text">配置OAuth认证参数</div></div>
+          <div class="step-item"><div class="step-num" style="background:var(--purple-dim);color:var(--purple)">5</div><div class="step-text">发送测试消息验证连通性</div></div>
+        </div>
+      </div>
+      <div class="arrow-down"><div class="line"></div><div class="head"></div></div>
+
+      <div class="node" style="border-left:3px solid var(--success)">
+        <div class="node-title">渠道状态变为"已接入"</div>
+      </div>
+      <div class="arrow-down"><div class="line"></div><div class="head"></div></div>
+
+      <div class="node action">
+        <div class="node-title">租户管理员在管理平台看到渠道变为"可启用"</div>
+      </div>
+      <div class="arrow-down"><div class="line"></div><div class="head"></div></div>
+
+      <div class="node action">
+        <div class="node-title">启用渠道，配置用户匹配方式</div>
+        <div class="node-desc">引导用户完成渠道账号匹配</div>
+      </div>
+      <div class="arrow-down"><div class="line"></div><div class="head"></div></div>
+
+      <div class="node end">
+        <div class="node-title">渠道推送正式生效</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 流程五：用户匹配流程 ====== -->
+  <div class="flow-section" id="flow5">
+    <div class="flow-section-header">
+      <div class="flow-number red">05</div>
+      <div class="flow-section-info">
+        <h2>用户匹配流程</h2>
+        <p>将平台用户与外部渠道用户建立映射关系的四种方式。包括自动匹配（主方式）和三种兜底方案。</p>
+      </div>
+    </div>
+
+    <!-- 方式一 -->
+    <h3 style="font-size:15px;margin-bottom:16px;display:flex;align-items:center;gap:8px">
+      <span style="color:var(--accent)">●</span> 方式一：系统自动匹配（主方式）
+    </h3>
+    <div class="flow-col" style="margin-bottom:40px">
+      <div class="node start">
+        <div class="node-title">租户管理员在管理平台配置匹配字段（如"手机号"）</div>
+      </div>
+      <div class="arrow-down"><div class="line"></div><div class="head"></div></div>
+
+      <div class="node">
+        <div class="node-title">系统执行批量匹配</div>
+        <div class="node-desc">遍历平台所有用户</div>
+      </div>
+      <div class="arrow-down"><div class="line"></div><div class="head"></div></div>
+
+      <div class="node">
+        <div class="node-title">对每个用户执行匹配</div>
+        <div class="steps">
+          <div class="step-item"><div class="step-num">1</div><div class="step-text">取平台用户手机号</div></div>
+          <div class="step-item"><div class="step-num">2</div><div class="step-text">调用渠道API（通讯录接口）查询该手机号对应的渠道用户</div></div>
+          <div class="step-item"><div class="step-num">3</div><div class="step-text">找到 → 建立映射关系</div></div>
+          <div class="step-item"><div class="step-num">4</div><div class="step-text">未找到 → 记录匹配失败原因</div></div>
+        </div>
+      </div>
+      <div class="arrow-down"><div class="line"></div><div class="head"></div></div>
+
+      <div class="node end">
+        <div class="node-title">更新匹配状态看板</div>
+      </div>
+    </div>
+
+    <!-- 方式二 -->
+    <h3 style="font-size:15px;margin-bottom:16px;display:flex;align-items:center;gap:8px">
+      <span style="color:var(--success)">●</span> 方式二：管理员手动指定（兜底，处理匹配失败的用户）
+    </h3>
+    <div class="flow-col" style="margin-bottom:40px">
+      <div class="node start">
+        <div class="node-title">管理员查看匹配失败的用户列表</div>
+      </div>
+      <div class="arrow-down"><div class="line"></div><div class="head"></div></div>
+
+      <div class="node action">
+        <div class="node-title">为指定用户输入渠道UserId</div>
+      </div>
+      <div class="arrow-down"><div class="line"></div><div class="head"></div></div>
+
+      <div class="node end">
+        <div class="node-title">系统验证有效性，建立映射关系</div>
+      </div>
+    </div>
+
+    <!-- 方式三 -->
+    <h3 style="font-size:15px;margin-bottom:16px;display:flex;align-items:center;gap:8px">
+      <span style="color:var(--warning)">●</span> 方式三：员工自助绑定（兜底，适合规模化）
+    </h3>
+    <div class="flow-col" style="margin-bottom:40px">
+      <div class="node start">
+        <div class="node-title">管理员生成绑定链接/二维码</div>
+      </div>
+      <div class="arrow-down"><div class="line"></div><div class="head"></div></div>
+
+      <div class="node action">
+        <div class="node-title">发给未匹配的员工</div>
+        <div class="node-desc">通过内部群、邮件等方式分发</div>
+      </div>
+      <div class="arrow-down"><div class="line"></div><div class="head"></div></div>
+
+      <div class="node action">
+        <div class="node-title">员工在钉钉/飞书/企微中打开链接</div>
+      </div>
+      <div class="arrow-down"><div class="line"></div><div class="head"></div></div>
+
+      <div class="node">
+        <div class="node-title">OAuth自动获取用户身份</div>
+      </div>
+      <div class="arrow-down"><div class="line"></div><div class="head"></div></div>
+
+      <div class="node action">
+        <div class="node-title">确认绑定</div>
+        <div class="node-desc">展示确认页："确认将您的平台账号（张三）与钉钉账号绑定？"</div>
+      </div>
+      <div class="arrow-down"><div class="line"></div><div class="head"></div></div>
+
+      <div class="node end">
+        <div class="node-title">系统建立映射关系 → 绑定成功</div>
+      </div>
+    </div>
+
+    <!-- 方式四 -->
+    <h3 style="font-size:15px;margin-bottom:16px;display:flex;align-items:center;gap:8px">
+      <span style="color:var(--purple)">●</span> 方式四：批量导入（初始化）
+    </h3>
+    <div class="flow-col" style="margin-bottom:40px">
+      <div class="node start">
+        <div class="node-title">管理员下载Excel模板</div>
+        <div class="node-desc">模板列：系统用户ID | 系统用户姓名 | 渠道类型 | 渠道用户ID</div>
+      </div>
+      <div class="arrow-down"><div class="line"></div><div class="head"></div></div>
+
+      <div class="node action">
+        <div class="node-title">填写映射关系并上传</div>
+      </div>
+      <div class="arrow-down"><div class="line"></div><div class="head"></div></div>
+
+      <div class="node">
+        <div class="node-title">系统校验</div>
+        <div class="steps">
+          <div class="step-item"><div class="step-num">1</div><div class="step-text">用户ID是否存在</div></div>
+          <div class="step-item"><div class="step-num">2</div><div class="step-text">渠道UserId是否有效</div></div>
+          <div class="step-item"><div class="step-num">3</div><div class="step-text">是否存在重复映射</div></div>
+        </div>
+      </div>
+      <div class="arrow-down"><div class="line"></div><div class="head"></div></div>
+
+      <div class="node">
+        <div class="node-title">展示校验结果</div>
+        <div class="node-desc">预览导入数据，标红校验失败的行及原因</div>
+      </div>
+      <div class="arrow-down"><div class="line"></div><div class="head"></div></div>
+
+      <div class="node action">
+        <div class="node-title">用户确认导入</div>
+      </div>
+      <div class="arrow-down"><div class="line"></div><div class="head"></div></div>
+
+      <div class="node end">
+        <div class="node-title">批量建立映射关系</div>
+        <div class="node-desc">展示导入结果：成功X条，失败X条</div>
+      </div>
+    </div>
+
+    <!-- 匹配时机汇总 -->
+    <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;max-width:560px">
+      <h3 style="font-size:15px;margin-bottom:16px">匹配触发时机汇总</h3>
+      <table style="width:100%;border-collapse:collapse;font-size:13px">
+        <thead>
+          <tr>
+            <th style="background:var(--surface-3);color:var(--text-muted);padding:10px 14px;text-align:left;font-size:11.5px;font-weight:600;border-bottom:1px solid var(--border)">触发时机</th>
+            <th style="background:var(--surface-3);color:var(--text-muted);padding:10px 14px;text-align:left;font-size:11.5px;font-weight:600;border-bottom:1px solid var(--border)">说明</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td style="padding:10px 14px;border-bottom:1px solid var(--border);color:var(--text)">租户首次配置匹配字段时</td><td style="padding:10px 14px;border-bottom:1px solid var(--border);color:var(--text-secondary)">系统批量匹配所有用户</td></tr>
+          <tr><td style="padding:10px 14px;border-bottom:1px solid var(--border);color:var(--text)">管理员手动刷新</td><td style="padding:10px 14px;border-bottom:1px solid var(--border);color:var(--text-secondary)">新员工入职等场景，点击"刷新匹配"</td></tr>
+          <tr><td style="padding:10px 14px;border-bottom:1px solid var(--border);color:var(--text)">用户信息变更时</td><td style="padding:10px 14px;border-bottom:1px solid var(--border);color:var(--text-secondary)">平台用户手机号/工号修改后，自动触发重新匹配</td></tr>
+          <tr><td style="padding:10px 14px;color:var(--text)">推送时实时兜底</td><td style="padding:10px 14px;color:var(--text-secondary)">发送消息时发现用户无映射，实时查询渠道做匹配</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div><!-- end content -->
+
+<script>
+// Smooth scroll + active nav highlight
+const navLinks = document.querySelectorAll('.page-header nav a');
+const sections = document.querySelectorAll('.flow-section[id]');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(section => {
+    const top = section.offsetTop - 100;
+    if (window.scrollY >= top) current = section.id;
+  });
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+  });
+});
+</script>
+
+</body>
+</html>

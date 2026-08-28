@@ -197,7 +197,7 @@
           <div class="filter-field" style="grid-column: span 3;"><label for="en-id">证件号码</label><input class="ivu-input" id="en-id" type="text" placeholder="请输入证件号码" /></div>
           <div class="filter-field" style="grid-column: span 2;"><label for="en-type">任职受雇类型</label><select class="ivu-input ivu-select" id="en-type"><option value="">全部</option><option>雇员</option><option>保险营销员</option><option>证券经纪人</option><option>其他</option><option>实习学生（全日制学历教育）</option><option>平台内从业人员</option></select></div>
           <div class="filter-field" style="grid-column: span 2;"><label for="en-phone">电话号码</label><input class="ivu-input" id="en-phone" type="text" placeholder="请输入手机号" /></div>
-          <div class="filter-field" style="grid-column: span 2;"><label for="en-bbzt">报送状态</label><select class="ivu-input ivu-select" id="en-bbzt"><option value="">全部</option><option value="1">待报送</option><option value="2">代报中</option><option value="3">代报失败</option><option value="4">代报成功</option><option value="5">校验未通过未报送</option></select></div><div class="filter-field" style="grid-column: span 2;"><label for="en-yzzt">验证状态</label><select class="ivu-input ivu-select" id="en-yzzt"><option value="">全部</option><option value="0">验证中/暂不验证</option><option value="1">验证通过</option><option value="2">验证不通过</option><option value="4">待验证</option><option value="5">校验未通过未验证</option></select></div><div class="filter-actions"><button class="btn primary" id="en-search">查询</button><button class="btn" id="en-reset">重置</button></div>
+          <div class="filter-field" style="grid-column: span 2;"><label for="en-bbzt">报送状态</label><select class="ivu-input ivu-select" id="en-bbzt"><option value="">全部</option><option value="1">待报送</option><option value="2">报送中</option><option value="3">报送失败</option><option value="4">报送成功</option><option value="5">校验未通过未报送</option></select></div><div class="filter-field" style="grid-column: span 2;"><label for="en-yzzt">验证状态</label><select class="ivu-input ivu-select" id="en-yzzt"><option value="">全部</option><option value="0">验证中/暂不验证</option><option value="1">验证通过</option><option value="2">验证不通过</option><option value="4">待验证</option><option value="5">校验未通过未验证</option></select></div><div class="filter-actions"><button class="btn primary" id="en-search">查询</button><button class="btn" id="en-reset">重置</button></div>
         </div></div>
 
         <div class="table-card">
@@ -215,11 +215,11 @@
           <div class="filter-field" style="grid-column: span 3;"><label for="enr-company">公司名称</label><select class="ivu-input ivu-select" id="enr-company"><option value="">全部</option></select></div>
           <div class="filter-field" style="grid-column: span 3;"><label for="enr-djxhid">登记序号</label><input class="ivu-input" id="enr-djxhid" type="text" placeholder="请输入登记序号" /></div>
           <div class="filter-field" style="grid-column: span 3;"><label for="enr-deptName">部门名称</label><input class="ivu-input" id="enr-deptName" type="text" placeholder="请输入部门名称" /></div>
-          <div class="filter-field" style="grid-column: span 2;"><label for="enr-bbzt">报送状态</label><select class="ivu-input ivu-select" id="enr-bbzt"><option value="">全部</option><option value="1">待报送</option><option value="2">代报中</option><option value="3">代报失败</option><option value="4">代报成功</option><option value="5">校验未通过未报送</option></select></div>
+          <div class="filter-field" style="grid-column: span 2;"><label for="enr-bbzt">报送状态</label><select class="ivu-input ivu-select" id="enr-bbzt"><option value="">全部</option><option value="1">待报送</option><option value="2">报送中</option><option value="3">报送失败</option><option value="4">报送成功</option><option value="5">校验未通过未报送</option></select></div>
           <div class="filter-actions"><button class="btn primary" id="enr-search">查询</button><button class="btn" id="enr-reset">重置</button></div>
         </div></div>
         <div class="table-card">
-          <div class="table-top"><div class="table-top-left"></div><div class="table-top-right"><button class="btn primary" data-role="enr-batch-submit">批量报送</button><button class="btn">同步报送结果</button></div></div>
+          <div class="table-top"><div class="table-top-left"></div><div class="table-top-right"><button class="btn" id="enr-update-verify">更新校验状态</button><button class="btn primary" data-role="enr-batch-submit">批量报送</button><button class="btn">同步报送结果</button></div></div>
           <table><thead><tr><th>选择</th><th>企业名称</th><th>企业税号</th><th>登记序号</th><th>部门编号</th><th>部门名称</th><th>人员个数</th><th>报送状态</th><th>操作</th></tr></thead><tbody id="enr-body"></tbody></table>
           <div class="pagination"><div id="enr-page-info">共 0 条，第 1/1 页</div><div class="pager" id="enr-pager"></div></div>
         </div>
@@ -233,7 +233,7 @@
           <div class="filter-field" style="grid-column: span 3;"><label for="es-ts">特殊情形</label><select class="ivu-input ivu-select" id="es-ts"><option value="">全部</option><option value="0">0 - 居民身份证号码不符合一般赋码规则</option><option value="1">1 - 已从税务机关取得纳税人识别号的人员</option></select></div>
           <div class="filter-field" style="grid-column: span 3;"><label for="es-id">证件号码/纳税人识别号</label><input class="ivu-input" id="es-id" type="text" placeholder="请输入号码" /></div>
           <div class="filter-field" style="grid-column: span 2;"><label for="es-type">任职受雇类型</label><select class="ivu-input ivu-select" id="es-type"><option value="">全部</option><option>雇员</option><option>保险营销员</option><option>证券经纪人</option><option>其他</option><option>实习学生（全日制学历教育）</option><option>平台内从业人员</option></select></div>
-          <div class="filter-field" style="grid-column: span 2;"><label for="es-bbzt">报送状态</label><select class="ivu-input ivu-select" id="es-bbzt"><option value="">全部</option><option value="1">待报送</option><option value="2">代报中</option><option value="3">代报失败</option><option value="4">代报成功</option><option value="5">校验未通过未报送</option></select></div><div class="filter-field" style="grid-column: span 2;"><label for="es-yzzt">验证状态</label><select class="ivu-input ivu-select" id="es-yzzt"><option value="">全部</option><option value="0">验证中/暂不验证</option><option value="1">验证通过</option><option value="2">验证不通过</option><option value="4">待验证</option><option value="5">校验未通过未验证</option></select></div><div class="filter-actions"><button class="btn primary" id="es-search">查询</button><button class="btn" id="es-reset">重置</button></div>
+          <div class="filter-field" style="grid-column: span 2;"><label for="es-bbzt">报送状态</label><select class="ivu-input ivu-select" id="es-bbzt"><option value="">全部</option><option value="1">待报送</option><option value="2">报送中</option><option value="3">报送失败</option><option value="4">报送成功</option><option value="5">校验未通过未报送</option></select></div><div class="filter-field" style="grid-column: span 2;"><label for="es-yzzt">验证状态</label><select class="ivu-input ivu-select" id="es-yzzt"><option value="">全部</option><option value="0">验证中/暂不验证</option><option value="1">验证通过</option><option value="2">验证不通过</option><option value="4">待验证</option><option value="5">校验未通过未验证</option></select></div><div class="filter-actions"><button class="btn primary" id="es-search">查询</button><button class="btn" id="es-reset">重置</button></div>
         </div></div>
 
         <div class="table-card">
@@ -251,7 +251,7 @@
           <div class="filter-field" style="grid-column: span 3;"><label for="esr-company">公司名称</label><select class="ivu-input ivu-select" id="esr-company"><option value="">全部</option></select></div>
           <div class="filter-field" style="grid-column: span 3;"><label for="esr-djxhid">登记序号</label><input class="ivu-input" id="esr-djxhid" type="text" placeholder="请输入登记序号" /></div>
           <div class="filter-field" style="grid-column: span 3;"><label for="esr-deptName">部门名称</label><input class="ivu-input" id="esr-deptName" type="text" placeholder="请输入部门名称" /></div>
-          <div class="filter-field" style="grid-column: span 2;"><label for="esr-bbzt">报送状态</label><select class="ivu-input ivu-select" id="esr-bbzt"><option value="">全部</option><option value="1">待报送</option><option value="2">代报中</option><option value="3">代报失败</option><option value="4">代报成功</option><option value="5">校验未通过未报送</option></select></div>
+          <div class="filter-field" style="grid-column: span 2;"><label for="esr-bbzt">报送状态</label><select class="ivu-input ivu-select" id="esr-bbzt"><option value="">全部</option><option value="1">待报送</option><option value="2">报送中</option><option value="3">报送失败</option><option value="4">报送成功</option><option value="5">校验未通过未报送</option></select></div>
           <div class="filter-actions"><button class="btn primary" id="esr-search">查询</button><button class="btn" id="esr-reset">重置</button></div>
         </div></div>
         <div class="table-card">
@@ -512,19 +512,20 @@
 
   <div class="modal-mask" id="en-add-modal-mask"><div class="modal modal-wide"><div class="modal-header"><div class="modal-title">新增普通员工</div><div class="modal-close" id="en-add-modal-close">✕</div></div><div class="modal-body">
     <div style="background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:10px 14px;margin-bottom:12px;font-size:13px;color:#9a3412;">⚠ 如果报送成功后，修改员工信息，需要重新报送，报送时目前需要按照公司维度统一报送一次。</div>
-    <div style="font-size:12px;color:var(--color-muted);margin-bottom:8px;">以下按接口字段全量平铺，必填字段标 *，条件必填按规则动态控制。</div>
 
-    <div style="font-weight:600;margin:8px 0 6px;">企业信息</div>
+    <div style="font-weight:600;margin:8px 0 6px;">企业与个人信息</div>
     <div class="form-stack">
       <div class="form-row required"><label>企业名称*</label><select class="ivu-input ivu-select" id="enf-qymc"><option value="">请选择企业</option></select></div>
       <div class="form-row required"><label>企业税号</label><input class="ivu-input" id="enf-nsrsbh" type="text" placeholder="选择企业后自动带出" readonly /></div>
       <div class="form-row required"><label>登记序号*</label><select class="ivu-input ivu-select" id="enf-djxhid"><option value="">请选择登记序号</option></select></div>
       <div class="form-row required" id="enf-dept-box" style="display:none;"><label>部门名称*</label><select class="ivu-input ivu-select" id="enf-deptName"><option value="">请选择部门</option></select></div>
-    </div>
-
-    <div style="font-weight:600;margin:8px 0 6px;">基础身份信息</div>
-    <div class="form-stack">
       <div class="form-row required"><label>姓名*</label><input class="ivu-input" id="enf-xm" type="text" placeholder="请输入姓名" /></div>
+      <div class="form-row"><label>中文名</label><input class="ivu-input" id="enf-xmzw" type="text" placeholder="请输入中文名" /></div>
+      <div class="form-row required"><label>性别*</label><select class="ivu-input ivu-select" id="enf-xb"><option value="">请选择</option><option>男</option><option>女</option></select></div>
+      <div class="form-row required"><label>出生日期*</label><input class="ivu-input" id="enf-csny" type="date" /></div>
+      <div class="form-row required"><label>国籍*</label><input class="ivu-input" id="enf-gj" type="text" placeholder="请输入国籍" /></div>
+      <div class="form-row"><label>学历</label><select class="ivu-input ivu-select" id="enf-xl"><option value="">请选择</option><option>大学本科以下</option><option>大学本科</option><option>研究生</option></select></div>
+      <div class="form-row required"><label>人员地区*</label><select class="ivu-input ivu-select" id="enf-rydq"><option value="">请选择</option><option>境内</option><option>境外</option></select></div>
       <div class="form-row required"><label>证件类型*</label><select class="ivu-input ivu-select" id="enf-zzlx">
         <option value="">请选择</option>
         <optgroup label="境内人员" id="enf-zzlx-jn">
@@ -561,11 +562,6 @@
         <option>中华人民共和国外国人工作许可证（C类）</option>
       </select></div>
       <div class="form-row"><label>其他证件号码</label><input class="ivu-input" id="enf-qtzzhm" type="text" placeholder="填写其他证件类型时必填" /></div>
-      <div class="form-row"><label>中文名</label><input class="ivu-input" id="enf-xmzw" type="text" placeholder="请输入中文名" /></div>
-      <div class="form-row required"><label>性别*</label><select class="ivu-input ivu-select" id="enf-xb"><option value="">请选择</option><option>男</option><option>女</option></select></div>
-      <div class="form-row required"><label>出生日期*</label><input class="ivu-input" id="enf-csny" type="date" /></div>
-      <div class="form-row required"><label>国籍*</label><input class="ivu-input" id="enf-gj" type="text" placeholder="请输入国籍" /></div>
-      <div class="form-row required"><label>人员地区*</label><select class="ivu-input ivu-select" id="enf-rydq"><option value="">请选择</option><option>境内</option><option>境外</option></select></div>
       <div class="form-row" id="enf-csd-box" style="display:none;"><label>出生地（境外必填）</label><input class="ivu-input" id="enf-csd" type="text" placeholder="出生地国家（地区）" /></div>
       <div class="form-row" id="enf-sssx-box" style="display:none;"><label>涉税事由（境外必填）</label><input class="ivu-input" id="enf-sssx" type="text" placeholder="多个时用逗号分割" /></div>
       <div class="form-row" id="enf-scrjsj-box" style="display:none;"><label>首次入境时间（境外且雇员必填）</label><input class="ivu-input" id="enf-scrjsj" type="date" /></div>
@@ -573,29 +569,30 @@
       <div class="form-row"><label>备注</label><input class="ivu-input" id="enf-bz" type="text" placeholder="请输入备注" /></div>
     </div>
 
-    <div style="font-weight:600;margin:14px 0 6px;">任职与申报信息</div>
+    <div style="font-weight:600;margin:14px 0 6px;">任职受雇信息</div>
     <div class="form-stack">
       <div class="form-row required"><label>任职受雇类型*</label><select class="ivu-input ivu-select" id="enf-sfgy"><option value="">请选择</option><option>雇员</option><option>保险营销员</option><option>证券经纪人</option><option>其他</option><option>实习学生（全日制学历教育）</option><option>平台内从业人员</option></select></div>
-      <div class="form-row" id="enf-qtqksm-box"><label>其他情况说明（其他时必填）</label><input class="ivu-input" id="enf-qtqksm" type="text" placeholder="扣缴申报利息股息红利所得/偶然所得/申报其他所得" /></div>
       <div class="form-row" id="enf-rzndjyqk-box"><label>入职年度就业情形</label><select class="ivu-input ivu-select" id="enf-rzndjyqk"><option value="">无</option><option>当年首次入职学生</option><option>当年首次入职其他人员</option></select></div>
+      <div class="form-row" id="enf-qtqksm-box"><label>其他情况说明（其他时必填）</label><input class="ivu-input" id="enf-qtqksm" type="text" placeholder="扣缴申报利息股息红利所得/偶然所得/申报其他所得" /></div>
       <div class="form-row required"><label>受雇日期*</label><input class="ivu-input" id="enf-rzsgrq" type="date" /></div>
       <div class="form-row"><label>离职日期</label><input class="ivu-input" id="enf-lzrq" type="date" /></div>
       <div class="form-row"><label>是否离职后补发工资</label><select class="ivu-input ivu-select" id="enf-sflzhbfgz"><option value="">请选择</option><option>是</option><option>否</option></select></div>
       <div class="form-row" id="enf-bfskssq-box" style="display:none;"><label>离职后补发工资的月份</label><input class="ivu-input" id="enf-bfskssq" type="month" /></div>
       <div class="form-row"><label>工号</label><input class="ivu-input" id="enf-gh" type="text" placeholder="请输入工号" /></div>
       <div class="form-row required"><label>手机号码*</label><input class="ivu-input" id="enf-lxdh" type="text" placeholder="11位手机号" /></div>
-      <div class="form-row"><label>人员报送策略</label><select class="ivu-input ivu-select" id="enf-rybscl"><option value="">请选择</option><option>是</option><option>否</option></select></div>
-      <div class="form-row"><label>是否扣除减除费用</label><select class="ivu-input ivu-select" id="enf-sfzdw"><option value="">默认是</option><option>是</option><option>否</option></select></div>
+      <div class="form-row"><label>邮箱</label><input class="ivu-input" id="enf-dzyx" type="email" placeholder="请输入邮箱" /></div>
     </div>
 
-    <div style="font-weight:600;margin:14px 0 6px;">特殊身份与补贴信息</div>
+    <div style="font-weight:600;margin:14px 0 6px;">税收与投资信息</div>
     <div class="form-stack">
+      <div class="form-row"><label>是否扣除减除费用</label><select class="ivu-input ivu-select" id="enf-sfzdw"><option value="">默认是</option><option>是</option><option>否</option></select></div>
       <div class="form-row"><label>是否残疾</label><select class="ivu-input ivu-select" id="enf-sfcj"><option value="">否</option><option>是</option><option>否</option></select></div>
       <div class="form-row" id="enf-cjzjlx-box" style="display:none;"><label>残疾证件类型</label><select class="ivu-input ivu-select" id="enf-cjzjlx"><option value="">请选择</option><option>残疾证</option><option>残疾军人证</option><option>伤残人民警察证</option><option>残疾消防救援人员证</option><option>伤残预备役人员、伤残民兵民工证</option><option>因公伤残人员证</option></select></div>
       <div class="form-row" id="enf-cjzh-box" style="display:none;"><label>残疾证号</label><input class="ivu-input" id="enf-cjzh" type="text" placeholder="请输入残疾证号" /></div>
       <div class="form-row"><label>是否烈属</label><select class="ivu-input ivu-select" id="enf-sfls"><option value="">否</option><option>是</option><option>否</option></select></div>
       <div class="form-row"><label>烈属证号</label><input class="ivu-input" id="enf-lszh" type="text" placeholder="请输入烈属证号" /></div>
       <div class="form-row"><label>是否孤老</label><select class="ivu-input ivu-select" id="enf-sfgl"><option value="">否</option><option>是</option><option>否</option></select></div>
+      <div class="form-row"><label>职务</label><select class="ivu-input ivu-select" id="enf-zw"><option value="">请选择</option><option value="1">1 高层</option><option value="3">3 普通</option></select></div>
       <div class="form-row"><label>是否高级专家</label><select class="ivu-input ivu-select" id="enf-sfgjzj"><option value="">请选择</option><option>享受国家发放的政府特殊津贴的专家、学者</option><option>中国科学院、中国工程院院士</option><option>否</option></select></div>
       <div class="form-row"><label>个人投资总额</label><input class="ivu-input" id="enf-grgbze" type="number" min="0" placeholder="大于0时填写" /></div>
       <div class="form-row"><label>个人投资比例</label><input class="ivu-input" id="enf-grgbbl" type="number" min="0" max="100" step="0.01" placeholder="0~100，不包含0" /></div>
@@ -603,9 +600,6 @@
 
     <div style="font-weight:600;margin:14px 0 6px;">银行与联系信息</div>
     <div class="form-stack">
-      <div class="form-row"><label>邮箱</label><input class="ivu-input" id="enf-dzyx" type="email" placeholder="请输入邮箱" /></div>
-      <div class="form-row"><label>学历</label><select class="ivu-input ivu-select" id="enf-xl"><option value="">请选择</option><option>大学本科以下</option><option>大学本科</option><option>研究生</option></select></div>
-      <div class="form-row"><label>职务</label><select class="ivu-input ivu-select" id="enf-zw"><option value="">请选择</option><option value="1">1 高层</option><option value="3">3 普通</option></select></div>
       <div class="form-row"><label>开户银行</label><select class="ivu-input ivu-select" id="enf-khyh">
         <option value="">请选择</option>
         <optgroup label="国有大型银行">
@@ -649,44 +643,23 @@
           <option>三菱日联银行（中国）有限公司</option><option>瑞穗银行（中国）有限公司</option>
         </optgroup>
       </select></div>
-      <div class="form-row"><label>开户银行省份</label><select class="ivu-input ivu-select" id="enf-khyhsfmz">
+      <div class="form-row"><label>开户行省份</label><select class="ivu-input ivu-select" id="enf-khyhsfmz">
         <option value="">请选择</option>
-        <option>北京市</option>
-          <option>天津市</option>
-          <option>重庆市</option>
-          <option>上海市</option>
-          <option>河北省</option>
-          <option>山西省</option>
-          <option>内蒙古自治区</option>
-          <option>辽宁省</option>
-          <option>吉林省</option>
-          <option>黑龙江省</option>
-          <option>江苏省</option>
-          <option>浙江省</option>
-          <option>安徽省</option>
-          <option>福建省</option>
-          <option>江西省</option>
-          <option>山东省</option>
-          <option>河南省</option>
-          <option>湖北省</option>
-          <option>湖南省</option>
-          <option>广东省</option>
-          <option>广西壮族自治区</option>
-          <option>海南省</option>
-          <option>四川省</option>
-          <option>贵州省</option>
-          <option>云南省</option>
-          <option>西藏自治区</option>
-          <option>陕西省</option>
-          <option>甘肃省</option>
-          <option>青海省</option>
-          <option>宁夏回族自治区</option>
-          <option>新疆维吾尔自治区</option>
-          <option>台湾省</option>
-          <option>香港特别行政区</option>
-          <option>澳门特别行政区</option>
+        <option>北京市</option><option>天津市</option><option>重庆市</option><option>上海市</option>
+        <option>河北省</option><option>山西省</option><option>内蒙古自治区</option><option>辽宁省</option>
+        <option>吉林省</option><option>黑龙江省</option><option>江苏省</option><option>浙江省</option>
+        <option>安徽省</option><option>福建省</option><option>江西省</option><option>山东省</option>
+        <option>河南省</option><option>湖北省</option><option>湖南省</option><option>广东省</option>
+        <option>广西壮族自治区</option><option>海南省</option><option>四川省</option><option>贵州省</option>
+        <option>云南省</option><option>西藏自治区</option><option>陕西省</option><option>甘肃省</option>
+        <option>青海省</option><option>宁夏回族自治区</option><option>新疆维吾尔自治区</option>
+        <option>台湾省</option><option>香港特别行政区</option><option>澳门特别行政区</option>
       </select></div>
       <div class="form-row"><label>银行账号</label><input class="ivu-input" id="enf-yhzh" type="text" placeholder="请输入银行账号" /></div>
+    </div>
+
+    <div style="font-weight:600;margin:14px 0 6px;">地址信息</div>
+    <div class="form-stack">
       <div class="form-row"><label>居住省份</label><input class="ivu-input" id="enf-lxdz_sheng" type="text" placeholder="例如浙江省" /></div>
       <div class="form-row"><label>居住城市</label><input class="ivu-input" id="enf-lxdz_shi" type="text" placeholder="例如杭州市" /></div>
       <div class="form-row"><label>居住区县</label><input class="ivu-input" id="enf-lxdz_qx" type="text" placeholder="例如滨江区" /></div>
@@ -987,7 +960,8 @@
       { qymc:'川油能源有限公司', nsrsbh:'91510100MA6EXAMPLE', xm:'王磊', zzlx:'身份证', zzhm:'510102199203031234', sfgy:'雇员', lxdh:'13800001111', rzsgrq:'2024-03-01', xb:'男', csny:'1992-03-03', gj:'中国', qtzzlx:'', qtzzhm:'', bmbh:'', rybscl:'是', gh:'G1001', skssq:'202608', djxhid:'DJ2026030001', deptCode:'', deptName:'', qtqksm:'', rzndjyqk:'', lzrq:'', sflzhbfgz:'否', bfskssq:'', grgbze:'', grgbbl:'', sfcj:'否', sfls:'否', sfgl:'否', sfgjzj:'否', sfzdw:'是', cjzjlx:'', cjzh:'', lszh:'', dzyx:'wanglei@example.com', xl:'大学本科', zw:'3', khyh:'', khyhsfmz:'', yhzh:'', lxdz_sheng:'四川', lxdz_shi:'成都', lxdz_qx:'高新区', lxdz_jd:'桂溪街道', lxdz:'天府大道100号', hjszd_sheng:'四川', hjszd_shi:'成都', hjszd_qx:'武侯区', hjszd_jd:'', hjszd_xxdz:'', bz:'', csd:'', sssx:'', scrjsj:'', yjljsj:'', wjrlxdz_sheng:'', wjrlxdz_shi:'', wjrlxdz_qx:'', wjrlxdz_jd:'', wjrlxdz_xxdz:'', xmzw:'Wang Lei', aggOrgId:'', rydq:'境内', bbzt:'4', yzzt:'1', yhzhzt:'正常', nsrzdahm:'DA202403001', nsrzrsbh:'510102199203031234' },
       { qymc:'川油能源有限公司', nsrsbh:'91510100MA6EXAMPLE', xm:'李芳', zzlx:'身份证', zzhm:'510104199508082246', sfgy:'实习学生（全日制学历教育）', lxdh:'13800002222', rzsgrq:'2026-07-10', xb:'女', csny:'1995-08-08', gj:'中国', qtzzlx:'', qtzzhm:'', bmbh:'', rybscl:'是', gh:'', skssq:'202608', qtqksm:'', rzndjyqk:'当年首次入职学生', lzrq:'', sflzhbfgz:'否', bfskssq:'', grgbze:'', grgbbl:'', sfcj:'否', sfls:'否', sfgl:'否', sfgjzj:'否', sfzdw:'是', cjzjlx:'', cjzh:'', lszh:'', dzyx:'', xl:'大学本科', zw:'3', khyh:'', khyhsfmz:'', yhzh:'', lxdz_sheng:'四川', lxdz_shi:'成都', lxdz_qx:'青羊区', lxdz_jd:'', lxdz:'', hjszd_sheng:'', hjszd_shi:'', hjszd_qx:'', hjszd_jd:'', hjszd_xxdz:'', bz:'', csd:'', sssx:'', scrjsj:'', yjljsj:'', wjrlxdz_sheng:'', wjrlxdz_shi:'', wjrlxdz_qx:'', wjrlxdz_jd:'', wjrlxdz_xxdz:'', xmzw:'', aggOrgId:'', rydq:'境内', bbzt:'4', yzzt:'1', yhzhzt:'正常', nsrzdahm:'DA202407002', nsrzrsbh:'510104199508082246' },
       { qymc:'杭州创新科技有限公司', nsrsbh:'91330100MA2GRXKX0X', xm:'John Smith', zzlx:'护照', zzhm:'E12345678', sfgy:'雇员', lxdh:'13800003333', rzsgrq:'2025-11-01', xb:'男', csny:'1988-01-01', gj:'美国', qtzzlx:'', qtzzhm:'', bmbh:'', rybscl:'是', gh:'', skssq:'202608', qtqksm:'', rzndjyqk:'', lzrq:'', sflzhbfgz:'否', bfskssq:'', grgbze:'', grgbbl:'', sfcj:'否', sfls:'否', sfgl:'否', sfgjzj:'否', sfzdw:'是', cjzjlx:'', cjzh:'', lszh:'', dzyx:'', xl:'', zw:'3', khyh:'', khyhsfmz:'', yhzh:'', lxdz_sheng:'', lxdz_shi:'', lxdz_qx:'', lxdz_jd:'', lxdz:'', hjszd_sheng:'', hjszd_shi:'', hjszd_qx:'', hjszd_jd:'', hjszd_xxdz:'', bz:'外籍员工', csd:'美国', sssx:'任职受雇', scrjsj:'2025-10-20', yjljsj:'2027-12-31', wjrlxdz_sheng:'上海', wjrlxdz_shi:'上海', wjrlxdz_qx:'浦东新区', wjrlxdz_jd:'', wjrlxdz_xxdz:'某国际社区', xmzw:'', aggOrgId:'', rydq:'境外', bbzt:'3', yzzt:'0', yhzhzt:'未验证', nsrzdahm:'DA202511003', nsrzrsbh:'91330100TAX0001' },
-      { qymc:'深圳前海创新有限公司', nsrsbh:'91440300MA6NEW003', xm:'刘芳', zzlx:'身份证', zzhm:'440301199205051234', sfgy:'雇员', lxdh:'13800006666', rzsgrq:'2025-03-01', xb:'女', csny:'1992-05-05', gj:'中国', qtzzlx:'', qtzzhm:'', bmbh:'', rybscl:'', gh:'S001', skssq:'202608', djxhid:'DJ2026080002', deptCode:'CW', deptName:'财务部', qtqksm:'', rzndjyqk:'', lzrq:'', sflzhbfgz:'', bfskssq:'', grgbze:'', grgbbl:'', sfcj:'', sfls:'', sfgl:'', sfgjzj:'', sfzdw:'', cjzjlx:'', cjzh:'', lszh:'', dzyx:'liufang@example.com', xl:'大学本科', zw:'', khyh:'', khyhsfmz:'', yhzh:'', lxdz_sheng:'广东', lxdz_shi:'深圳', lxdz_qx:'南山区', lxdz_jd:'', lxdz:'科技园路10号', hjszd_sheng:'', hjszd_shi:'', hjszd_qx:'', hjszd_jd:'', hjszd_xxdz:'', bz:'', csd:'', sssx:'', scrjsj:'', yjljsj:'', wjrlxdz_sheng:'', wjrlxdz_shi:'', wjrlxdz_qx:'', wjrlxdz_jd:'', wjrlxdz_xxdz:'', xmzw:'', aggOrgId:'', rydq:'境内', bbzt:'1', yzzt:'0', yhzhzt:'', nsrzdahm:'', nsrzrsbh:'' }
+      { qymc:'深圳前海创新有限公司', nsrsbh:'91440300MA6NEW003', xm:'刘芳', zzlx:'身份证', zzhm:'440301199205051234', sfgy:'雇员', lxdh:'13800006666', rzsgrq:'2025-03-01', xb:'女', csny:'1992-05-05', gj:'中国', qtzzlx:'', qtzzhm:'', bmbh:'', rybscl:'', gh:'S001', skssq:'202608', djxhid:'DJ2026080002', deptCode:'CW', deptName:'财务部', qtqksm:'', rzndjyqk:'', lzrq:'', sflzhbfgz:'', bfskssq:'', grgbze:'', grgbbl:'', sfcj:'', sfls:'', sfgl:'', sfgjzj:'', sfzdw:'', cjzjlx:'', cjzh:'', lszh:'', dzyx:'liufang@example.com', xl:'大学本科', zw:'', khyh:'', khyhsfmz:'', yhzh:'', lxdz_sheng:'广东', lxdz_shi:'深圳', lxdz_qx:'南山区', lxdz_jd:'', lxdz:'科技园路10号', hjszd_sheng:'', hjszd_shi:'', hjszd_qx:'', hjszd_jd:'', hjszd_xxdz:'', bz:'', csd:'', sssx:'', scrjsj:'', yjljsj:'', wjrlxdz_sheng:'', wjrlxdz_shi:'', wjrlxdz_qx:'', wjrlxdz_jd:'', wjrlxdz_xxdz:'', xmzw:'', aggOrgId:'', rydq:'境内', bbzt:'1', yzzt:'0', yhzhzt:'', nsrzdahm:'', nsrzrsbh:'' },
+      { qymc:'川油能源有限公司', nsrsbh:'91510100MA6EXAMPLE', xm:'陈静', zzlx:'身份证', zzhm:'510105199306061234', sfgy:'雇员', lxdh:'13800007777', rzsgrq:'2025-06-01', xb:'女', csny:'1993-06-06', gj:'中国', qtzzlx:'', qtzzhm:'', bmbh:'', rybscl:'', gh:'G1003', skssq:'202608', djxhid:'DJ2026030001', deptCode:'', deptName:'', qtqksm:'', rzndjyqk:'', lzrq:'', sflzhbfgz:'', bfskssq:'', grgbze:'', grgbbl:'', sfcj:'', sfls:'', sfgl:'', sfgjzj:'', sfzdw:'', cjzjlx:'', cjzh:'', lszh:'', dzyx:'', xl:'大学本科', zw:'3', khyh:'', khyhsfmz:'', yhzh:'', lxdz_sheng:'四川', lxdz_shi:'成都', lxdz_qx:'锦江区', lxdz_jd:'', lxdz:'', hjszd_sheng:'', hjszd_shi:'', hjszd_qx:'', hjszd_jd:'', hjszd_xxdz:'', bz:'', csd:'', sssx:'', scrjsj:'', yjljsj:'', wjrlxdz_sheng:'', wjrlxdz_shi:'', wjrlxdz_qx:'', wjrlxdz_jd:'', wjrlxdz_xxdz:'', xmzw:'', aggOrgId:'', rydq:'境内', bbzt:'5', yzzt:'0', yhzhzt:'', nsrzdahm:'', nsrzrsbh:'' }
     ];
 
     const specialMock = [
@@ -1112,7 +1086,7 @@
       const item = normalMock[idx];
       if (!item) return;
       openSubmitModal(item.nsrsbh, item.qymc, function(account) {
-        item.bbzt = '2'; // 代报中
+        item.bbzt = '2'; // 报送中
         renderNormal();
         alert('报送提交成功！\n登记序号: ' + account.djxhid + (account.deptName ? '\n部门: ' + account.deptCode + ' - ' + account.deptName : ''));
         setTimeout(()=>{ item.bbzt = '4'; renderNormal(); }, 2000);
@@ -1191,21 +1165,25 @@
 
     function renderNormal() { nPage = renderPager(document.getElementById('en-pager'), document.getElementById('en-page-info'), nFiltered, nPage, (pageData, start) => {
       document.getElementById('en-body').innerHTML = pageData.map((item, idx) => {
-          const bbztText = {'1':'待报送','2':'代报中','3':'代报失败','4':'代报成功','5':'校验未通过未报送'}[item.bbzt]||'-';
+          const bbztText = {'1':'待报送','2':'报送中','3':'报送失败','4':'报送成功','5':'校验未通过未报送'}[item.bbzt]||'-';
           const bbztClass = item.bbzt==='4'?'success':item.bbzt==='3'||item.bbzt==='5'?'fail':item.bbzt==='2'?'processing':'pending';
           const yzztText = {'0':'验证中','1':'验证通过','2':'验证不通过','4':'待验证','5':'校验未通过未验证','9':'验证中'}[item.yzzt]||'-';
           const yzztClass = item.yzzt==='1'?'success':item.yzzt==='2'||item.yzzt==='5'?'fail':'processing';
-          return '<tr><td><input class="checkbox" type="checkbox" /></td><td>'+(item.qymc||'-')+'</td><td>'+(item.nsrsbh||'-')+'</td><td>'+(item.djxhid||'-')+'</td><td>'+(item.deptCode||'-')+'</td><td>'+(item.deptName||'-')+'</td><td><span class="link" data-role="view-normal" data-index="'+(start+idx)+'">'+item.xm+'</span></td><td>'+item.zzlx+'</td><td>'+item.zzhm+'</td><td>'+item.sfgy+'</td><td>'+item.lxdh+'</td><td>'+item.rzsgrq+'</td><td>'+item.xb+'</td><td>'+item.csny+'</td><td>'+item.gj+'</td><td><span class="status-tag '+bbztClass+'">'+bbztText+'</span></td><td><span class="status-tag '+yzztClass+'">'+yzztText+'</span></td><td>'+(item.yhzhzt||'-')+'</td><td>'+(item.nsrzdahm||'-')+'</td><td>'+(item.nsrzrsbh||'-')+'</td><td class="actions"><button class="btn" data-role="edit-normal" data-index="'+(start+idx)+'">编辑</button></td></tr>';
+          let actions = '';
+          if(item.bbzt !== '2') { actions = '<button class="btn" data-role="edit-normal" data-index="'+(start+idx)+'">编辑</button><button class="btn" data-role="delete-normal" data-index="'+(start+idx)+'">删除</button>'; }
+          return '<tr><td><input class="checkbox" type="checkbox" /></td><td>'+(item.qymc||'-')+'</td><td>'+(item.nsrsbh||'-')+'</td><td>'+(item.djxhid||'-')+'</td><td>'+(item.deptCode||'-')+'</td><td>'+(item.deptName||'-')+'</td><td><span class="link" data-role="view-normal" data-index="'+(start+idx)+'">'+item.xm+'</span></td><td>'+item.zzlx+'</td><td>'+item.zzhm+'</td><td>'+item.sfgy+'</td><td>'+item.lxdh+'</td><td>'+item.rzsgrq+'</td><td>'+item.xb+'</td><td>'+item.csny+'</td><td>'+item.gj+'</td><td><span class="status-tag '+bbztClass+'">'+bbztText+'</span></td><td><span class="status-tag '+yzztClass+'">'+yzztText+'</span></td><td>'+(item.yhzhzt||'-')+'</td><td>'+(item.nsrzdahm||'-')+'</td><td>'+(item.nsrzrsbh||'-')+'</td><td class="actions">'+actions+'</td></tr>';
         }).join('');
     }); }
 
     function renderSpecial() { sPage = renderPager(document.getElementById('es-pager'), document.getElementById('es-page-info'), sFiltered, sPage, (pageData, start) => {
       document.getElementById('es-body').innerHTML = pageData.map((item, idx) => {
-          const bbztText = {'1':'待报送','2':'代报中','3':'代报失败','4':'代报成功','5':'校验未通过未报送'}[item.bbzt]||'-';
+          const bbztText = {'1':'待报送','2':'报送中','3':'报送失败','4':'报送成功','5':'校验未通过未报送'}[item.bbzt]||'-';
           const bbztClass = item.bbzt==='4'?'success':item.bbzt==='3'||item.bbzt==='5'?'fail':item.bbzt==='2'?'processing':'pending';
           const yzztText = {'0':'验证中','1':'验证通过','2':'验证不通过','4':'待验证','5':'校验未通过未验证','9':'验证中'}[item.yzzt]||'-';
           const yzztClass = item.yzzt==='1'?'success':item.yzzt==='2'||item.yzzt==='5'?'fail':'processing';
-          return '<tr><td><input class="checkbox" type="checkbox" /></td><td>'+(item.qymc||'-')+'</td><td>'+(item.nsrsbh||'-')+'</td><td>'+(item.djxhid||'-')+'</td><td>'+(item.deptCode||'-')+'</td><td>'+(item.deptName||'-')+'</td><td>'+(item.tsqx==='0'?'居民身份证号码不符合一般赋码规则':'除居民身份证以外已从税务机关取得纳税人识别号的人员')+'</td><td><span class="link" data-role="view-special" data-index="'+(start+idx)+'">'+item.xm+'</span></td><td>'+item.sfgy+'</td><td>'+item.rzsgrq+'</td><td>'+item.gj+'</td><td><span class="status-tag '+bbztClass+'">'+bbztText+'</span></td><td><span class="status-tag '+yzztClass+'">'+yzztText+'</span></td><td class="actions"><button class="btn" data-role="edit-special" data-index="'+(start+idx)+'">编辑</button></td></tr>';
+          let actions = '';
+          if(item.bbzt !== '2') { actions = '<button class="btn" data-role="edit-special" data-index="'+(start+idx)+'">编辑</button><button class="btn" data-role="delete-special" data-index="'+(start+idx)+'">删除</button>'; }
+          return '<tr><td><input class="checkbox" type="checkbox" /></td><td>'+(item.qymc||'-')+'</td><td>'+(item.nsrsbh||'-')+'</td><td>'+(item.djxhid||'-')+'</td><td>'+(item.deptCode||'-')+'</td><td>'+(item.deptName||'-')+'</td><td>'+(item.tsqx==='0'?'居民身份证号码不符合一般赋码规则':'除居民身份证以外已从税务机关取得纳税人识别号的人员')+'</td><td><span class="link" data-role="view-special" data-index="'+(start+idx)+'">'+item.xm+'</span></td><td>'+item.sfgy+'</td><td>'+item.rzsgrq+'</td><td>'+item.gj+'</td><td><span class="status-tag '+bbztClass+'">'+bbztText+'</span></td><td><span class="status-tag '+yzztClass+'">'+yzztText+'</span></td><td class="actions">'+actions+'</td></tr>';
         }).join('');
     }); }
 
@@ -1915,6 +1893,9 @@
       const t=e.target;
       if(t.dataset.role==='edit-normal' && t.dataset.index!==undefined) {
         openNormalEditModal(normalMock[Number(t.dataset.index)]);
+      } else if(t.dataset.role==='delete-normal' && t.dataset.index!==undefined) {
+        const idx = Number(t.dataset.index);
+        if(confirm('确认删除员工「'+normalMock[idx].xm+'」？')) { normalMock.splice(idx,1); nFiltered=[...normalMock]; nPage=1; renderNormal(); }
       } else if((t.dataset.role==='normal' || t.dataset.role==='view-normal') && t.dataset.index!==undefined) {
         openNormalDrawer(normalMock[Number(t.dataset.index)]);
       } else if(t.dataset.role==='submit-normal' && t.dataset.index!==undefined) {
@@ -1925,6 +1906,9 @@
       const t=e.target;
       if(t.dataset.role==='edit-special' && t.dataset.index!==undefined) {
         openSpecialEditModal(specialMock[Number(t.dataset.index)]);
+      } else if(t.dataset.role==='delete-special' && t.dataset.index!==undefined) {
+        const idx = Number(t.dataset.index);
+        if(confirm('确认删除员工「'+specialMock[idx].xm+'」？')) { specialMock.splice(idx,1); sFiltered=[...specialMock]; sPage=1; renderSpecial(); }
       } else if((t.dataset.role==='special' || t.dataset.role==='view-special') && t.dataset.index!==undefined) {
         openSpecialDrawer(specialMock[Number(t.dataset.index)]);
       } else if(t.dataset.role==='submit-special' && t.dataset.index!==undefined) {
@@ -3397,7 +3381,7 @@
     function renderEnr() {
       enrPage = renderPager(document.getElementById('enr-pager'), document.getElementById('enr-page-info'), enrFiltered, enrPage, (pageData, start) => {
         document.getElementById('enr-body').innerHTML = pageData.map((item, idx) => {
-          const bbztText = {'1':'待报送','2':'代报中','3':'代报失败','4':'代报成功','5':'校验未通过未报送'}[item.bbzt]||'-';
+          const bbztText = {'1':'待报送','2':'报送中','3':'报送失败','4':'报送成功','5':'校验未通过未报送'}[item.bbzt]||'-';
           const bbztClass = item.bbzt==='4'?'success':item.bbzt==='3'||item.bbzt==='5'?'fail':item.bbzt==='2'?'processing':'pending';
           const yzztText = {'0':'验证中','1':'验证通过','2':'验证不通过','4':'待验证','5':'校验未通过未验证','9':'验证中'}[item.yzzt]||'-';
           const yzztClass = item.yzzt==='1'?'success':item.yzzt==='2'||item.yzzt==='5'?'fail':'processing';
@@ -3413,6 +3397,13 @@
       if(sel) sel.innerHTML = '<option value="">全部</option>' + unique.map(n=>'<option value="'+n+'">'+n+'</option>').join('');
     }
     initEnrCompanyOptions();
+    document.getElementById('enr-update-verify').addEventListener('click', ()=>{
+      const bbzt5 = normalMock.filter(i=>i.bbzt==='5');
+      if(!bbzt5.length){alert('当前没有校验未通过未报送的数据');return;}
+      bbzt5.forEach(i=>{ i.bbzt='1'; });
+      enrFiltered=[...normalMock]; enrPage=1; renderEnr();
+      alert('已更新 '+bbzt5.length+' 条校验状态为「待报送」');
+    });
     document.getElementById('enr-search').addEventListener('click', ()=>{
       const company=document.getElementById('enr-company').value;
       const djxhid=document.getElementById('enr-djxhid').value.trim();
@@ -3441,7 +3432,7 @@
     function renderEsr() {
       esrPage = renderPager(document.getElementById('esr-pager'), document.getElementById('esr-page-info'), esrFiltered, esrPage, (pageData, start) => {
         document.getElementById('esr-body').innerHTML = pageData.map((item, idx) => {
-          const bbztText = {'1':'待报送','2':'代报中','3':'代报失败','4':'代报成功','5':'校验未通过未报送'}[item.bbzt]||'-';
+          const bbztText = {'1':'待报送','2':'报送中','3':'报送失败','4':'报送成功','5':'校验未通过未报送'}[item.bbzt]||'-';
           const bbztClass = item.bbzt==='4'?'success':item.bbzt==='3'||item.bbzt==='5'?'fail':item.bbzt==='2'?'processing':'pending';
           const yzztText = {'0':'验证中','1':'验证通过','2':'验证不通过','4':'待验证','5':'校验未通过未验证','9':'验证中'}[item.yzzt]||'-';
           const yzztClass = item.yzzt==='1'?'success':item.yzzt==='2'||item.yzzt==='5'?'fail':'processing';
@@ -3487,7 +3478,7 @@
       document.getElementById('enr-drawer-title').textContent = item.qymc + ' - 报送详情';
       let html = '<table><thead><tr><th>姓名</th><th>证件类型</th><th>证件号码</th><th>任职受雇类型</th><th>电话号码</th><th>受雇日期</th><th>性别</th><th>出生日期</th><th>国籍</th><th>报送状态</th><th>验证状态</th><th>银行卡账号状态</th><th>自然人档案号</th><th>纳税人识别号</th></tr></thead><tbody>';
       items.forEach(p => {
-        const bbztText = {'1':'待报送','2':'代报中','3':'代报失败','4':'代报成功','5':'校验未通过未报送'}[p.bbzt]||'-';
+        const bbztText = {'1':'待报送','2':'报送中','3':'报送失败','4':'报送成功','5':'校验未通过未报送'}[p.bbzt]||'-';
         const bbztClass = p.bbzt==='4'?'success':p.bbzt==='3'||p.bbzt==='5'?'fail':p.bbzt==='2'?'processing':'pending';
         const yzztText = {'0':'验证中','1':'验证通过','2':'验证不通过','4':'待验证','5':'校验未通过未验证','9':'验证中'}[p.yzzt]||'-';
         const yzztClass = p.yzzt==='1'?'success':p.yzzt==='2'||p.yzzt==='5'?'fail':'processing';
@@ -3511,7 +3502,7 @@
       document.getElementById('esr-drawer-title').textContent = item.qymc + ' - 报送详情';
       let html = '<table><thead><tr><th>特殊情形</th><th>姓名</th><th>任职受雇类型</th><th>受雇日期</th><th>国籍</th><th>报送状态</th><th>验证状态</th></tr></thead><tbody>';
       items.forEach(p => {
-        const bbztText = {'1':'待报送','2':'代报中','3':'代报失败','4':'代报成功','5':'校验未通过未报送'}[p.bbzt]||'-';
+        const bbztText = {'1':'待报送','2':'报送中','3':'报送失败','4':'报送成功','5':'校验未通过未报送'}[p.bbzt]||'-';
         const bbztClass = p.bbzt==='4'?'success':p.bbzt==='3'||p.bbzt==='5'?'fail':p.bbzt==='2'?'processing':'pending';
         const yzztText = {'0':'验证中','1':'验证通过','2':'验证不通过','4':'待验证','5':'校验未通过未验证','9':'验证中'}[p.yzzt]||'-';
         const yzztClass = p.yzzt==='1'?'success':p.yzzt==='2'||p.yzzt==='5'?'fail':'processing';

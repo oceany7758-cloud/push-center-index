@@ -756,16 +756,25 @@
   </div><div class="modal-footer"><button class="btn" id="es-import-cancel">取消</button><button class="btn primary" id="es-import-submit">确认导入</button></div></div></div>
 
 
-  <div class="modal-mask" id="eli-add-modal-mask"><div class="modal"><div class="modal-header"><div class="modal-title">新增采集年收入扣除名单</div><div class="modal-close" id="eli-add-modal-close">✕</div></div><div class="modal-body">
-    <div class="form-stack">
-      <div class="form-row required"><label>企业</label><select class="ivu-input ivu-select" id="elif-company"><option value="">请选择企业</option></select></div>
-      <div class="form-row required"><label>税款所属期年度</label><select class="ivu-input ivu-select" id="elif-year"><option value="">请选择年度</option><option value="2026">2026</option><option value="2025">2025</option><option value="2024">2024</option></select></div>
+  <div class="modal-mask" id="eli-add-modal-mask"><div class="modal modal-wide"><div class="modal-header"><div class="modal-title">新增六万扣除名单</div><div class="modal-close" id="eli-add-modal-close">✕</div></div><div class="modal-body">
+    <div class="form-row required" style="margin-bottom:12px;"><label>税款所属期</label><input class="ivu-input" id="elif-year" type="month" /></div>
+    <div class="form-row"><label style="margin-bottom:6px;">选择企业（可多选）</label>
+      <div class="transfer-box">
+        <div class="transfer-panel">
+          <div class="transfer-panel-header"><span>待选企业</span><span class="count" id="elif-col-left-count">0</span></div>
+          <div class="transfer-panel-body" id="elif-col-left"></div>
+        </div>
+        <div class="transfer-middle">
+          <button class="btn primary" id="elif-col-to-right" title="添加选中">→</button>
+          <button class="btn" id="elif-col-to-left" title="移除选中">←</button>
+        </div>
+        <div class="transfer-panel">
+          <div class="transfer-panel-header"><span>已选企业</span><span class="count" id="elif-col-right-count">0</span></div>
+          <div class="transfer-panel-body" id="elif-col-right"></div>
+        </div>
+      </div>
     </div>
-    <div id="elif-account-area" style="display:none;margin-top:12px;padding-top:12px;border-top:1px solid var(--color-border);">
-      <div style="font-size:12px;color:var(--color-muted);margin-bottom:8px;">该企业存在多个登记序号，请选择：</div>
-      <div id="elif-account-list" style="border:1px solid var(--color-border);border-radius:8px;overflow:hidden;"></div>
-    </div>
-  </div><div class="modal-footer"><button class="btn" id="elif-cancel">取消</button><button class="btn primary" id="elif-submit">采集</button></div></div></div>
+  </div><div class="modal-footer"><button class="btn" id="elif-cancel">取消</button><button class="btn" id="elif-addonly">仅新增</button><button class="btn primary" id="elif-submit">新增并采集</button></div></div></div>
 
   <div class="drawer-mask" id="eli-drawer-mask"></div>
   <div class="drawer" id="eli-drawer">
@@ -1947,46 +1956,10 @@
 
     function initEliCompanyOptions() {
       const sel = document.getElementById('eli-company');
-      const sel2 = document.getElementById('elif-company');
       const unique = eliMock.map(i=>i.qymc);
       sel.innerHTML = '<option value="">全部</option>' + unique.map(n=>'<option value="'+n+'">'+n+'</option>').join('');
-      sel2.innerHTML = '<option value="">请选择企业</option>' + companyMock.map(n=>'<option value="'+n.shxydm+'" data-name="'+n.qymc+'">'+n.qymc+'</option>').join('');
     }
-    // elif-company change handler: inline account area display
-    document.getElementById('elif-company').addEventListener('change', function(){
-      const nsrsbh = this.value;
-      const area = document.getElementById('elif-account-area');
-      const list = document.getElementById('elif-account-list');
-      if(!nsrsbh){ area.style.display='none'; list.innerHTML=''; return; }
-      const djxhList = companyDjxhMock[nsrsbh];
-      if(!djxhList || !djxhList.length){ area.style.display='none'; list.innerHTML=''; return; }
-      const registered = djxhList.filter(d => d.zczt === '已注册');
-      if(registered.length <= 1 && registered[0] && registered[0].fbmba === '0'){
-        area.style.display='none'; list.innerHTML='';
-        return;
-      }
-      // Show inline account area
-      area.style.display='block';
-      let html = '';
-      registered.forEach((d, i) => {
-        const depts = deptAccountMock[d.djxhid];
-        if(depts && depts.length > 0 && d.fbmba === '1'){
-          html += '<div style="border:1px solid var(--color-border);border-radius:8px;padding:10px 12px;margin-bottom:8px;">';
-          html += '<div style="font-weight:600;margin-bottom:6px;font-size:13px;">' + d.djxhid + '（已分部门备案）</div>';
-          depts.forEach((dept, j) => {
-            html += '<label style="display:flex;align-items:center;gap:8px;padding:4px 0;cursor:pointer;font-size:13px;">';
-            html += '<input type="radio" name="elif-account-radio" value="' + d.djxhid + '" data-dept-code="' + dept.deptCode + '" data-dept-name="' + dept.deptName + '" />';
-            html += '<span>' + dept.deptCode + ' - ' + dept.deptName + '</span></label>';
-          });
-          html += '</div>';
-        } else {
-          html += '<label style="display:flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid var(--color-border);border-radius:8px;cursor:pointer;font-size:13px;margin-bottom:8px;">';
-          html += '<input type="radio" name="elif-account-radio" value="' + d.djxhid + '" data-dept-code="" data-dept-name="" />';
-          html += '<span>' + d.djxhid + '（未分部门备案）</span></label>';
-        }
-      });
-      list.innerHTML = html;
-    });
+
 
     function renderEli() {
       eliPage = renderPager(document.getElementById('eli-pager'), document.getElementById('eli-page-info'), eliFiltered, eliPage, (pageData, start) => {
@@ -2093,44 +2066,77 @@
       document.getElementById('eli-deptName').value='';
       eliFiltered=[...eliMock]; eliPage=1; renderEli();
     });
-    document.getElementById('eli-add-open').addEventListener('click', ()=>{ openModal('eli-add-modal-mask'); });
+    // ====== 六万扣除名单 穿梭框逻辑 ======
+    const eliColLeft = [];
+    const eliColRight = [];
+    function renderEliColTransfer() {
+      const leftEl = document.getElementById('elif-col-left');
+      const rightEl = document.getElementById('elif-col-right');
+      leftEl.innerHTML = eliColLeft.length ? eliColLeft.map((c, i) =>
+        '<label class="transfer-item"><input type="checkbox" data-idx="'+i+'" /><span>'+c.qymc+'</span><span class="item-sub">'+c.shxydm+'</span></label>'
+      ).join('') : '<div class="empty-hint">暂无可选企业</div>';
+      rightEl.innerHTML = eliColRight.length ? eliColRight.map((c, i) =>
+        '<label class="transfer-item"><input type="checkbox" data-idx="'+i+'" /><span>'+c.qymc+'</span><span class="item-sub">'+c.shxydm+'</span></label>'
+      ).join('') : '<div class="empty-hint">请从左侧选择企业</div>';
+      document.getElementById('elif-col-left-count').textContent = eliColLeft.length + '项';
+      document.getElementById('elif-col-right-count').textContent = eliColRight.length + '项';
+    }
+    document.getElementById('eli-add-open').addEventListener('click', ()=>{
+      eliColLeft.length = 0; eliColRight.length = 0;
+      companyMock.forEach(c => eliColLeft.push(c));
+      document.getElementById('elif-year').value = '';
+      renderEliColTransfer();
+      openModal('eli-add-modal-mask');
+    });
     document.getElementById('eli-add-modal-close').addEventListener('click', ()=>closeModal('eli-add-modal-mask'));
     document.getElementById('elif-cancel').addEventListener('click', ()=>closeModal('eli-add-modal-mask'));
-    document.getElementById('elif-submit').addEventListener('click', ()=>{
-      const compSel = document.getElementById('elif-company');
-      const nsrsbh = compSel.value;
-      const qymc = compSel.options[compSel.selectedIndex]?.dataset.name || '';
+    document.getElementById('elif-col-to-right').addEventListener('click', ()=>{
+      const checks = document.querySelectorAll('#elif-col-left input:checked');
+      const indices = Array.from(checks).map(c => Number(c.dataset.idx)).sort((a,b)=>b-a);
+      indices.forEach(i => { eliColRight.push(eliColLeft[i]); eliColLeft.splice(i, 1); });
+      renderEliColTransfer();
+    });
+    document.getElementById('elif-col-to-left').addEventListener('click', ()=>{
+      const checks = document.querySelectorAll('#elif-col-right input:checked');
+      const indices = Array.from(checks).map(c => Number(c.dataset.idx)).sort((a,b)=>b-a);
+      indices.forEach(i => { eliColLeft.push(eliColRight[i]); eliColRight.splice(i, 1); });
+      renderEliColTransfer();
+    });
+    document.getElementById('elif-addonly').addEventListener('click', ()=>{
       const year = document.getElementById('elif-year').value;
-      if(!nsrsbh || !year){ alert('请选择企业和年度'); return; }
-      // Check if account selection needed
-      const accountArea = document.getElementById('elif-account-area');
-      let djxhid = '', deptCode = '', deptName = '';
-      if(accountArea.style.display !== 'none'){
-        const checkedRadio = document.querySelector('input[name="elif-account-radio"]:checked');
-        if(!checkedRadio){ alert('请选择登记序号'); return; }
-        djxhid = checkedRadio.value;
-        deptCode = checkedRadio.dataset.deptCode || '';
-        deptName = checkedRadio.dataset.deptName || '';
-      } else {
-        const djxhList = companyDjxhMock[nsrsbh];
-        if(djxhList && djxhList.length){
-          const registered = djxhList.filter(d=>d.zczt==='已注册');
-          if(registered.length === 1){ djxhid = registered[0].djxhid; }
+      if(!year){ alert('请选择税款所属期'); return; }
+      if(!eliColRight.length){ alert('请至少选择一个企业'); return; }
+      let added = 0;
+      eliColRight.forEach(c => {
+        const exists = eliMock.find(i=>i.nsrsbh===c.shxydm && i.skssnd===year);
+        if(!exists){
+          eliMock.unshift({ nsrsbh:c.shxydm, qymc:c.qymc, skssnd:year, cjzt:'未采集', djxhid:'-', fbmba:'否', deptCode:'', deptName:'', kczglb:[] });
+          added++;
         }
-      }
-      // Check if already exists
-      const exists = eliMock.find(i=>i.nsrsbh===nsrsbh && i.skssnd===year);
-      if(exists){ alert('该企业该年度已获取过扣除名单'); closeModal('eli-add-modal-mask'); return; }
-      // Simulate fetching
-      const fbmba = deptCode ? '是' : '否';
-      const newItem = { nsrsbh, qymc, skssnd:year, djxhid:djxhid, fbmba:fbmba, deptCode:deptCode, deptName:deptName, kczglb:[
-        { xm:'模拟员工A', zzlx:'身份证', zzhm:'110101200001011234', gj:'中国', kcbs:'是', sfqrkc:'N', qrkcbh:'', qrkcbg:'', qrkcbgyy:'' },
-        { xm:'模拟员工B', zzlx:'身份证', zzhm:'110102200002022345', gj:'中国', kcbs:'是', sfqrkc:'N', qrkcbh:'', qrkcbg:'', qrkcbgyy:'' }
-      ]};
-      eliMock.push(newItem);
-      eliFiltered = [...eliMock]; eliPage=1; renderEli();
+      });
+      eliFiltered=[...eliMock]; eliPage=1; renderEli();
+      alert('已新增 '+added+' 条记录（未采集）');
+      eliColRight.length=0; eliColLeft.length=0; renderEliColTransfer();
       closeModal('eli-add-modal-mask');
-      alert('采集成功，共'+newItem.kczglb.length+'人');
+    });
+    document.getElementById('elif-submit').addEventListener('click', ()=>{
+      const year = document.getElementById('elif-year').value;
+      if(!year){ alert('请选择税款所属期'); return; }
+      if(!eliColRight.length){ alert('请至少选择一个企业'); return; }
+      let added = 0;
+      eliColRight.forEach(c => {
+        const exists = eliMock.find(i=>i.nsrsbh===c.shxydm && i.skssnd===year);
+        if(!exists){
+          eliMock.unshift({ nsrsbh:c.shxydm, qymc:c.qymc, skssnd:year, cjzt:'采集中', djxhid:'-', fbmba:'否', deptCode:'', deptName:'', kczglb:[
+            { xm:'模拟员工A', zzlx:'身份证', zzhm:'110101200001011234', gj:'中国', kcbs:'是', sfqrkc:'N', qrkcbh:'', qrkcbg:'', qrkcbgyy:'' }
+          ]});
+          added++;
+        }
+      });
+      eliFiltered=[...eliMock]; eliPage=1; renderEli();
+      alert('已提交采集任务：'+eliColRight.map(c=>c.qymc).join('、')+' '+year);
+      eliColRight.length=0; eliColLeft.length=0; renderEliColTransfer();
+      closeModal('eli-add-modal-mask');
     });
 
     document.getElementById('eli-body').addEventListener('click', e=>{
@@ -3480,9 +3486,39 @@
 
     // ====== ENR detail drawer ======
     function openEnrDrawer(idx) {
-      const items = enrFiltered.filter(i => i.qymc === enrFiltered[idx].qymc);
+      const allItems = enrFiltered.filter(i => i.qymc === enrFiltered[idx].qymc);
+      window._enrDrawerItems = allItems;
+      window._enrDrawerIdx = idx;
       const item = enrFiltered[idx];
       document.getElementById('enr-drawer-title').textContent = item.qymc + ' - 报送详情';
+      let html = '<div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;align-items:flex-end;">';
+      html += '<div><label style="font-size:12px;color:#666;">姓名</label><input class="ivu-input" id="enr-ds-xm" type="text" placeholder="模糊搜索" style="width:120px;" /></div>';
+      html += '<div><label style="font-size:12px;color:#666;">证件号码</label><input class="ivu-input" id="enr-ds-zzhm" type="text" placeholder="模糊搜索" style="width:140px;" /></div>';
+      html += '<div><label style="font-size:12px;color:#666;">任职受雇类型</label><select class="ivu-input ivu-select" id="enr-ds-sfgy" style="width:160px;"><option value="">全部</option><option>雇员</option><option>保险营销员</option><option>证券经纪人</option><option>其他</option><option>实习学生（全日制学历教育）</option><option>平台内从业人员</option></select></div>';
+      html += '<div><label style="font-size:12px;color:#666;">报送状态</label><select class="ivu-input ivu-select" id="enr-ds-bbzt" style="width:130px;"><option value="">全部</option><option value="1">待报送</option><option value="2">报送中</option><option value="3">报送失败</option><option value="4">报送成功</option><option value="5">校验未通过未报送</option></select></div>';
+      html += '<div><label style="font-size:12px;color:#666;">验证状态</label><select class="ivu-input ivu-select" id="enr-ds-yzzt" style="width:140px;"><option value="">全部</option><option value="0">待验证</option><option value="9">验证中</option><option value="1">验证通过</option><option value="2">验证不通过</option><option value="4">暂不验证</option><option value="5">校验未通过未验证</option></select></div>';
+      html += '<button class="btn primary" id="enr-ds-search" style="height:32px;">查询</button>';
+      html += '</div>';
+      html += '<div id="enr-ds-table-wrap">' + _renderEnrDetailTable(allItems) + '</div>';
+      document.getElementById('enr-drawer-body').innerHTML = html;
+      document.getElementById('enr-drawer-mask').classList.add('open');
+      document.getElementById('enr-drawer').classList.add('open');
+      document.getElementById('enr-ds-search').addEventListener('click', function(){
+        const xm = (document.getElementById('enr-ds-xm').value||'').trim();
+        const zzhm = (document.getElementById('enr-ds-zzhm').value||'').trim();
+        const sfgy = document.getElementById('enr-ds-sfgy').value;
+        const bbzt = document.getElementById('enr-ds-bbzt').value;
+        const yzzt = document.getElementById('enr-ds-yzzt').value;
+        let filtered = window._enrDrawerItems;
+        if(xm) filtered = filtered.filter(p=>p.xm.includes(xm));
+        if(zzhm) filtered = filtered.filter(p=>(p.zzhm||'').includes(zzhm));
+        if(sfgy) filtered = filtered.filter(p=>p.sfgy===sfgy);
+        if(bbzt) filtered = filtered.filter(p=>p.bbzt===bbzt);
+        if(yzzt) filtered = filtered.filter(p=>p.yzzt===yzzt);
+        document.getElementById('enr-ds-table-wrap').innerHTML = _renderEnrDetailTable(filtered);
+      });
+    }
+    function _renderEnrDetailTable(items) {
       let html = '<table><thead><tr><th>姓名</th><th>证件类型</th><th>证件号码</th><th>任职受雇类型</th><th>电话号码</th><th>受雇日期</th><th>性别</th><th>出生日期</th><th>国籍</th><th>报送状态</th><th>验证状态</th><th>银行卡账号状态</th><th>自然人档案号</th><th>纳税人识别号</th></tr></thead><tbody>';
       items.forEach(p => {
         const bbztText = {'1':'待报送','2':'报送中','3':'报送失败','4':'报送成功','5':'校验未通过未报送'}[p.bbzt]||'-';
@@ -3492,9 +3528,7 @@
         html += '<tr><td>'+p.xm+'</td><td>'+p.zzlx+'</td><td>'+p.zzhm+'</td><td>'+p.sfgy+'</td><td>'+p.lxdh+'</td><td>'+p.rzsgrq+'</td><td>'+p.xb+'</td><td>'+p.csny+'</td><td>'+p.gj+'</td><td><span class="status-tag '+bbztClass+'">'+bbztText+'</span></td><td><span class="status-tag '+yzztClass+'">'+yzztText+'</span></td><td>'+(p.yhzhzt||'-')+'</td><td>'+(p.nsrzdahm||'-')+'</td><td>'+(p.nsrzrsbh||'-')+'</td></tr>';
       });
       html += '</tbody></table>';
-      document.getElementById('enr-drawer-body').innerHTML = html;
-      document.getElementById('enr-drawer-mask').classList.add('open');
-      document.getElementById('enr-drawer').classList.add('open');
+      return html;
     }
     document.getElementById('enr-body').addEventListener('click', e=>{
       const t=e.target.closest('[data-role]') || e.target;
@@ -3504,21 +3538,49 @@
 
     // ====== ESR detail drawer ======
     function openEsrDrawer(idx) {
-      const items = esrFiltered.filter(i => i.qymc === esrFiltered[idx].qymc);
+      const allItems = esrFiltered.filter(i => i.qymc === esrFiltered[idx].qymc);
+      window._esrDrawerItems = allItems;
+      window._esrDrawerIdx = idx;
       const item = esrFiltered[idx];
       document.getElementById('esr-drawer-title').textContent = item.qymc + ' - 报送详情';
-      let html = '<table><thead><tr><th>特殊情形</th><th>姓名</th><th>任职受雇类型</th><th>受雇日期</th><th>国籍</th><th>报送状态</th><th>验证状态</th></tr></thead><tbody>';
+      let html = '<div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;align-items:flex-end;">';
+      html += '<div><label style="font-size:12px;color:#666;">姓名</label><input class="ivu-input" id="esr-ds-xm" type="text" placeholder="模糊搜索" style="width:120px;" /></div>';
+      html += '<div><label style="font-size:12px;color:#666;">特殊情形</label><select class="ivu-input ivu-select" id="esr-ds-tsqx" style="width:200px;"><option value="">全部</option><option value="0">居民身份证号码不符合一般赋码规则</option><option value="1">除居民身份证以外已从税务机关取得纳税人识别号的人员</option></select></div>';
+      html += '<div><label style="font-size:12px;color:#666;">任职受雇类型</label><select class="ivu-input ivu-select" id="esr-ds-sfgy" style="width:160px;"><option value="">全部</option><option>雇员</option><option>保险营销员</option><option>证券经纪人</option><option>其他</option><option>实习学生（全日制学历教育）</option><option>平台内从业人员</option></select></div>';
+      html += '<div><label style="font-size:12px;color:#666;">报送状态</label><select class="ivu-input ivu-select" id="esr-ds-bbzt" style="width:130px;"><option value="">全部</option><option value="1">待报送</option><option value="2">报送中</option><option value="3">报送失败</option><option value="4">报送成功</option></select></div>';
+      html += '<div><label style="font-size:12px;color:#666;">验证状态</label><select class="ivu-input ivu-select" id="esr-ds-yzzt" style="width:140px;"><option value="">全部</option><option value="0">待验证</option><option value="9">验证中</option><option value="1">验证通过</option><option value="2">验证不通过</option><option value="4">暂不验证</option><option value="5">校验未通过未验证</option></select></div>';
+      html += '<button class="btn primary" id="esr-ds-search" style="height:32px;">查询</button>';
+      html += '</div>';
+      html += '<div id="esr-ds-table-wrap">' + _renderEsrDetailTable(allItems) + '</div>';
+      document.getElementById('esr-drawer-body').innerHTML = html;
+      document.getElementById('esr-drawer-mask').classList.add('open');
+      document.getElementById('esr-drawer').classList.add('open');
+      document.getElementById('esr-ds-search').addEventListener('click', function(){
+        const xm = (document.getElementById('esr-ds-xm').value||'').trim();
+        const tsqx = document.getElementById('esr-ds-tsqx').value;
+        const sfgy = document.getElementById('esr-ds-sfgy').value;
+        const bbzt = document.getElementById('esr-ds-bbzt').value;
+        const yzzt = document.getElementById('esr-ds-yzzt').value;
+        let filtered = window._esrDrawerItems;
+        if(xm) filtered = filtered.filter(p=>p.xm.includes(xm));
+        if(tsqx) filtered = filtered.filter(p=>p.tsqx===tsqx);
+        if(sfgy) filtered = filtered.filter(p=>p.sfgy===sfgy);
+        if(bbzt) filtered = filtered.filter(p=>p.bbzt===bbzt);
+        if(yzzt) filtered = filtered.filter(p=>p.yzzt===yzzt);
+        document.getElementById('esr-ds-table-wrap').innerHTML = _renderEsrDetailTable(filtered);
+      });
+    }
+    function _renderEsrDetailTable(items) {
+      let html = '<table><thead><tr><th>特殊情形</th><th>姓名</th><th>任职受雇类型</th><th>电话号码</th><th>受雇日期</th><th>性别</th><th>出生日期</th><th>国籍</th><th>报送状态</th><th>验证状态</th></tr></thead><tbody>';
       items.forEach(p => {
         const bbztText = {'1':'待报送','2':'报送中','3':'报送失败','4':'报送成功','5':'校验未通过未报送'}[p.bbzt]||'-';
         const bbztClass = p.bbzt==='4'?'success':p.bbzt==='3'||p.bbzt==='5'?'fail':p.bbzt==='2'?'processing':'pending';
         const yzztText = {'0':'验证中','1':'验证通过','2':'验证不通过','4':'待验证','5':'校验未通过未验证','9':'验证中'}[p.yzzt]||'-';
         const yzztClass = p.yzzt==='1'?'success':p.yzzt==='2'||p.yzzt==='5'?'fail':'processing';
-        html += '<tr><td>'+(p.tsqx==='0'?'居民身份证号码不符合一般赋码规则':'除居民身份证以外已从税务机关取得纳税人识别号的人员')+'</td><td>'+p.xm+'</td><td>'+p.sfgy+'</td><td>'+p.rzsgrq+'</td><td>'+p.gj+'</td><td><span class="status-tag '+bbztClass+'">'+bbztText+'</span></td><td><span class="status-tag '+yzztClass+'">'+yzztText+'</span></td></tr>';
+        html += '<tr><td>'+(p.tsqx==='0'?'居民身份证号码不符合一般赋码规则':'除居民身份证以外已从税务机关取得纳税人识别号的人员')+'</td><td>'+p.xm+'</td><td>'+p.sfgy+'</td><td>'+(p.lxdh||'-')+'</td><td>'+p.rzsgrq+'</td><td>'+(p.xb||'-')+'</td><td>'+(p.csny||'-')+'</td><td>'+p.gj+'</td><td><span class="status-tag '+bbztClass+'">'+bbztText+'</span></td><td><span class="status-tag '+yzztClass+'">'+yzztText+'</span></td></tr>';
       });
       html += '</tbody></table>';
-      document.getElementById('esr-drawer-body').innerHTML = html;
-      document.getElementById('esr-drawer-mask').classList.add('open');
-      document.getElementById('esr-drawer').classList.add('open');
+      return html;
     }
     document.getElementById('esr-body').addEventListener('click', e=>{
       const t=e.target.closest('[data-role]') || e.target;

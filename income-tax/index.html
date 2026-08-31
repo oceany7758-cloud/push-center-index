@@ -159,7 +159,7 @@
 
     <main class="main">
       <section id="company" class="page active">
-        <div class="page-header"><div class="page-title">公司信息</div><div class="page-subtitle">同步企业、完成注册、同步注册结果，并支持维护/修改申报密码</div></div>
+        <div class="page-header"><div class="page-title">公司信息</div><div class="page-subtitle">同步企业、获取税务信息、同步税务信息结果，并支持维护/修改申报密码</div></div>
         <div class="filter-card"><div class="filter-grid">
           <div class="filter-field" style="grid-column: span 4;"><label for="filter-company">企业名称</label><select class="ivu-input ivu-select" id="filter-company"><option value="">全部</option></select></div>
           <div class="filter-field" style="grid-column: span 2;"><label for="filter-clzt">注册状态</label><select class="ivu-input ivu-select" id="filter-clzt"><option value="">全部</option><option value="未注册">未注册</option><option value="注册中">注册中</option><option value="注册成功">注册成功</option><option value="注册失败">注册失败</option></select></div>
@@ -167,7 +167,7 @@
           <div class="filter-actions"><button class="btn primary" id="filter-search">查询</button><button class="btn" id="filter-reset">重置</button></div>
         </div></div>
 
-        <div class="table-card"><div class="table-top"><div class="table-top-left"></div><div class="table-top-right"><button class="btn primary" id="sync-open">同步企业信息</button><button class="btn">企业注册</button><button class="btn">同步注册结果</button></div></div>
+        <div class="table-card"><div class="table-top"><div class="table-top-left"></div><div class="table-top-right"><button class="btn primary" id="sync-open">同步企业信息</button><button class="btn">获取税务信息</button><button class="btn">同步税务信息结果</button></div></div>
           <table style="min-width:1200px;"><thead><tr><th><input class="checkbox" type="checkbox" id="company-check-all" /></th><th>序号</th><th>企业编码</th><th>企业名称</th><th>企业税号</th><th>报税地区</th><th>注册状态</th><th>更新时间</th><th>操作</th></tr></thead><tbody id="company-table-body"></tbody></table>
           <div class="pagination"><div id="company-page-info">共 0 条，第 1/1 页</div><div class="pager" id="company-pager"></div></div>
         </div>
@@ -1168,8 +1168,8 @@
       document.getElementById('company-table-body').innerHTML = pageData.map((item, idx) => {
         const statusHtml = item.zczt === '注册失败' ? '<span class="status-tag fail" title="' + (item.zccwyy || '未知错误') + '">' + item.zczt + ' ⓘ</span>' : '<span class="status-tag ' + statusClass(item.zczt) + '">' + item.zczt + '</span>';
         let actions = '';
-        if(item.zczt === '注册成功') actions = '<button class="btn" data-role="company" data-index="'+(start+idx)+'">个税信息维护</button><button class="btn" data-role="reregister" data-index="'+(start+idx)+'">重新注册</button>';
-        else if(item.zczt === '注册失败') actions = '<button class="btn primary" data-role="reregister" data-index="'+(start+idx)+'">重新注册</button>';
+        if(item.zczt === '注册成功') actions = '<button class="btn" data-role="company" data-index="'+(start+idx)+'">个税信息维护</button><button class="btn" data-role="reregister" data-index="'+(start+idx)+'">重新获取税务信息</button>';
+        else if(item.zczt === '注册失败') actions = '<button class="btn primary" data-role="reregister" data-index="'+(start+idx)+'">重新获取税务信息</button>';
         const gxrqDisplay = (item.zczt === '未注册' || item.zczt === '注册失败') ? '-' : (item.gxrq || '-');
         return '<tr><td><input class="checkbox company-row-check" type="checkbox" data-index="'+(start+idx)+'" /></td><td>'+(start+idx+1)+'</td><td>'+(item.qybm||'-')+'</td><td>'+item.qymc+'</td><td>'+(item.nsrsbm||item.shxydm||'-')+'</td><td>'+(item.bsqy||'-')+'</td><td>'+statusHtml+'</td><td>'+gxrqDisplay+'</td><td class="actions">'+actions+'</td></tr>';
       }).join('');

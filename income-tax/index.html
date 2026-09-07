@@ -230,7 +230,7 @@
 
         <div class="filter-card"><div class="filter-grid">
           <div class="filter-field" style="grid-column: span 3;"><label for="es-name">姓名</label><input class="ivu-input" id="es-name" type="text" placeholder="请输入姓名" /></div>
-          <div class="filter-field" style="grid-column: span 3;"><label for="es-ts">特殊情形</label><select class="ivu-input ivu-select" id="es-ts"><option value="">全部</option><option value="0">0 - 居民身份证号码不符合一般赋码规则</option><option value="1">1 - 已从税务机关取得纳税人识别号的人员</option></select></div>
+          <div class="filter-field" style="grid-column: span 3;"><label for="es-ts">特殊情形</label><select class="ivu-input ivu-select" id="es-ts"><option value="">全部</option><option value="0">居民身份证号码不符合一般赋码规则</option><option value="1">已从税务机关取得纳税人识别号的人员</option></select></div>
           <div class="filter-field" style="grid-column: span 3;"><label for="es-id">证件号码/纳税人识别号</label><input class="ivu-input" id="es-id" type="text" placeholder="请输入号码" /></div>
           <div class="filter-field" style="grid-column: span 2;"><label for="es-type">任职受雇类型</label><select class="ivu-input ivu-select" id="es-type"><option value="">全部</option><option>雇员</option><option>保险营销员</option><option>证券经纪人</option><option>其他</option><option>实习学生（全日制学历教育）</option><option>平台内从业人员</option></select></div>
           <div class="filter-field" style="grid-column: span 2;"><label for="es-bbzt">报送状态</label><select class="ivu-input ivu-select" id="es-bbzt"><option value="">全部</option><option value="1">待报送</option><option value="2">报送中</option><option value="3">报送失败</option><option value="4">报送成功</option><option value="5">校验未通过未报送</option></select></div><div class="filter-field" style="grid-column: span 2;"><label for="es-yzzt">验证状态</label><select class="ivu-input ivu-select" id="es-yzzt"><option value="">全部</option><option value="0">验证中/暂不验证</option><option value="1">验证通过</option><option value="2">验证不通过</option><option value="4">待验证</option><option value="5">校验未通过未验证</option></select></div><div class="filter-actions"><button class="btn primary" id="es-search">查询</button><button class="btn" id="es-reset">重置</button></div>
@@ -686,7 +686,7 @@
       <div class="form-row required"><label>企业税号</label><input class="ivu-input" id="esf-nsrsbh-display" type="text" placeholder="选择企业后自动带出" readonly /></div>
       <div class="form-row required"><label>登记序号*</label><select class="ivu-input ivu-select" id="esf-djxhid"><option value="">请选择登记序号</option></select></div>
       <div class="form-row" id="esf-dept-box" style="display:none;"><label>部门名称</label><select class="ivu-input ivu-select" id="esf-deptName"><option value="">请选择部门</option></select></div>
-      <div class="form-row required"><label>特殊情形</label><select class="ivu-input ivu-select" id="esf-tsqx"><option value="">请选择</option><option value="0">0 - 居民身份证号码不符合一般赋码规则</option><option value="1">1 - 已从税务机关取得纳税人识别号的人员</option></select></div>
+      <div class="form-row required"><label>特殊情形</label><select class="ivu-input ivu-select" id="esf-tsqx"><option value="">请选择</option><option value="0">居民身份证号码不符合一般赋码规则</option><option value="1">已从税务机关取得纳税人识别号的人员</option></select></div>
       <div class="form-row required"><label>姓名</label><input class="ivu-input" id="esf-xm" type="text" placeholder="请输入姓名" /></div>
       <div class="form-row" id="esf-zz-box"><label>证件类型（tsqx=0 必填）</label><select class="ivu-input ivu-select" id="esf-zzlx">
         <option value="">请选择</option>
@@ -757,7 +757,7 @@
 
 
   <div class="modal-mask" id="eli-add-modal-mask"><div class="modal modal-wide"><div class="modal-header"><div class="modal-title">新增六万扣除名单</div><div class="modal-close" id="eli-add-modal-close">✕</div></div><div class="modal-body">
-    <div class="form-row required" style="margin-bottom:12px;"><label>税款所属期</label><input class="ivu-input" id="elif-year" type="month" /></div>
+    <div class="form-row required" style="margin-bottom:12px;"><label>税款所属期（年份）</label><input class="ivu-input" id="elif-year" type="number" min="2020" max="2099" placeholder="请输入年份" /></div>
     <div class="form-row"><label style="margin-bottom:6px;">选择企业（可多选）</label>
       <div class="transfer-box">
         <div class="transfer-panel">
@@ -968,9 +968,9 @@
     const normalMock = [
       { qymc:'川油能源有限公司', nsrsbh:'91510100MA6EXAMPLE', xm:'王磊', zzlx:'身份证', zzhm:'510102199203031234', sfgy:'雇员', lxdh:'13800001111', rzsgrq:'2024-03-01', xb:'男', csny:'1992-03-03', gj:'中国', qtzzlx:'', qtzzhm:'', bmbh:'', rybscl:'是', gh:'G1001', skssq:'202608', djxhid:'DJ2026030001', deptCode:'', deptName:'', qtqksm:'', rzndjyqk:'', lzrq:'', sflzhbfgz:'否', bfskssq:'', grgbze:'', grgbbl:'', sfcj:'否', sfls:'否', sfgl:'否', sfgjzj:'否', sfzdw:'是', cjzjlx:'', cjzh:'', lszh:'', dzyx:'wanglei@example.com', xl:'大学本科', zw:'3', khyh:'', khyhsfmz:'', yhzh:'', lxdz_sheng:'四川', lxdz_shi:'成都', lxdz_qx:'高新区', lxdz_jd:'桂溪街道', lxdz:'天府大道100号', hjszd_sheng:'四川', hjszd_shi:'成都', hjszd_qx:'武侯区', hjszd_jd:'', hjszd_xxdz:'', bz:'', csd:'', sssx:'', scrjsj:'', yjljsj:'', wjrlxdz_sheng:'', wjrlxdz_shi:'', wjrlxdz_qx:'', wjrlxdz_jd:'', wjrlxdz_xxdz:'', xmzw:'Wang Lei', aggOrgId:'', rydq:'境内', bbzt:'4', yzzt:'1', yhzhzt:'正常', nsrzdahm:'DA202403001', nsrzrsbh:'510102199203031234' },
       { qymc:'川油能源有限公司', nsrsbh:'91510100MA6EXAMPLE', xm:'李芳', zzlx:'身份证', zzhm:'510104199508082246', sfgy:'实习学生（全日制学历教育）', lxdh:'13800002222', rzsgrq:'2026-07-10', xb:'女', csny:'1995-08-08', gj:'中国', qtzzlx:'', qtzzhm:'', bmbh:'', rybscl:'是', gh:'', skssq:'202608', qtqksm:'', rzndjyqk:'当年首次入职学生', lzrq:'', sflzhbfgz:'否', bfskssq:'', grgbze:'', grgbbl:'', sfcj:'否', sfls:'否', sfgl:'否', sfgjzj:'否', sfzdw:'是', cjzjlx:'', cjzh:'', lszh:'', dzyx:'', xl:'大学本科', zw:'3', khyh:'', khyhsfmz:'', yhzh:'', lxdz_sheng:'四川', lxdz_shi:'成都', lxdz_qx:'青羊区', lxdz_jd:'', lxdz:'', hjszd_sheng:'', hjszd_shi:'', hjszd_qx:'', hjszd_jd:'', hjszd_xxdz:'', bz:'', csd:'', sssx:'', scrjsj:'', yjljsj:'', wjrlxdz_sheng:'', wjrlxdz_shi:'', wjrlxdz_qx:'', wjrlxdz_jd:'', wjrlxdz_xxdz:'', xmzw:'', aggOrgId:'', rydq:'境内', bbzt:'4', yzzt:'1', yhzhzt:'正常', nsrzdahm:'DA202407002', nsrzrsbh:'510104199508082246' },
-      { qymc:'杭州创新科技有限公司', nsrsbh:'91330100MA2GRXKX0X', xm:'John Smith', zzlx:'护照', zzhm:'E12345678', sfgy:'雇员', lxdh:'13800003333', rzsgrq:'2025-11-01', xb:'男', csny:'1988-01-01', gj:'美国', qtzzlx:'', qtzzhm:'', bmbh:'', rybscl:'是', gh:'', skssq:'202608', qtqksm:'', rzndjyqk:'', lzrq:'', sflzhbfgz:'否', bfskssq:'', grgbze:'', grgbbl:'', sfcj:'否', sfls:'否', sfgl:'否', sfgjzj:'否', sfzdw:'是', cjzjlx:'', cjzh:'', lszh:'', dzyx:'', xl:'', zw:'3', khyh:'', khyhsfmz:'', yhzh:'', lxdz_sheng:'', lxdz_shi:'', lxdz_qx:'', lxdz_jd:'', lxdz:'', hjszd_sheng:'', hjszd_shi:'', hjszd_qx:'', hjszd_jd:'', hjszd_xxdz:'', bz:'外籍员工', csd:'美国', sssx:'任职受雇', scrjsj:'2025-10-20', yjljsj:'2027-12-31', wjrlxdz_sheng:'上海', wjrlxdz_shi:'上海', wjrlxdz_qx:'浦东新区', wjrlxdz_jd:'', wjrlxdz_xxdz:'某国际社区', xmzw:'', aggOrgId:'', rydq:'境外', bbzt:'3', yzzt:'0', yhzhzt:'未验证', nsrzdahm:'DA202511003', nsrzrsbh:'91330100TAX0001' },
+      { qymc:'杭州创新科技有限公司', nsrsbh:'91330100MA2GRXKX0X', xm:'John Smith', zzlx:'护照', zzhm:'E12345678', sfgy:'雇员', lxdh:'13800003333', rzsgrq:'2025-11-01', xb:'男', csny:'1988-01-01', gj:'美国', qtzzlx:'', qtzzhm:'', bmbh:'', rybscl:'是', gh:'', skssq:'202608', qtqksm:'', rzndjyqk:'', lzrq:'', sflzhbfgz:'否', bfskssq:'', grgbze:'', grgbbl:'', sfcj:'否', sfls:'否', sfgl:'否', sfgjzj:'否', sfzdw:'是', cjzjlx:'', cjzh:'', lszh:'', dzyx:'', xl:'', zw:'3', khyh:'', khyhsfmz:'', yhzh:'', lxdz_sheng:'', lxdz_shi:'', lxdz_qx:'', lxdz_jd:'', lxdz:'', hjszd_sheng:'', hjszd_shi:'', hjszd_qx:'', hjszd_jd:'', hjszd_xxdz:'', bz:'外籍员工', csd:'美国', sssx:'任职受雇', scrjsj:'2025-10-20', yjljsj:'2027-12-31', wjrlxdz_sheng:'上海', wjrlxdz_shi:'上海', wjrlxdz_qx:'浦东新区', wjrlxdz_jd:'', wjrlxdz_xxdz:'某国际社区', xmzw:'', aggOrgId:'', rydq:'境外', bbzt:'3', bbcwyy:'报送失败：证件号码与税局记录不一致', yzzt:'0', yhzhzt:'未验证', nsrzdahm:'DA202511003', nsrzrsbh:'91330100TAX0001' },
       { qymc:'深圳前海创新有限公司', nsrsbh:'91440300MA6NEW003', xm:'刘芳', zzlx:'身份证', zzhm:'440301199205051234', sfgy:'雇员', lxdh:'13800006666', rzsgrq:'2025-03-01', xb:'女', csny:'1992-05-05', gj:'中国', qtzzlx:'', qtzzhm:'', bmbh:'', rybscl:'', gh:'S001', skssq:'202608', djxhid:'DJ2026080002', deptCode:'CW', deptName:'财务部', qtqksm:'', rzndjyqk:'', lzrq:'', sflzhbfgz:'', bfskssq:'', grgbze:'', grgbbl:'', sfcj:'', sfls:'', sfgl:'', sfgjzj:'', sfzdw:'', cjzjlx:'', cjzh:'', lszh:'', dzyx:'liufang@example.com', xl:'大学本科', zw:'', khyh:'', khyhsfmz:'', yhzh:'', lxdz_sheng:'广东', lxdz_shi:'深圳', lxdz_qx:'南山区', lxdz_jd:'', lxdz:'科技园路10号', hjszd_sheng:'', hjszd_shi:'', hjszd_qx:'', hjszd_jd:'', hjszd_xxdz:'', bz:'', csd:'', sssx:'', scrjsj:'', yjljsj:'', wjrlxdz_sheng:'', wjrlxdz_shi:'', wjrlxdz_qx:'', wjrlxdz_jd:'', wjrlxdz_xxdz:'', xmzw:'', aggOrgId:'', rydq:'境内', bbzt:'1', yzzt:'0', yhzhzt:'', nsrzdahm:'', nsrzrsbh:'' },
-      { qymc:'川油能源有限公司', nsrsbh:'91510100MA6EXAMPLE', xm:'陈静', zzlx:'身份证', zzhm:'510105199306061234', sfgy:'雇员', lxdh:'13800007777', rzsgrq:'2025-06-01', xb:'女', csny:'1993-06-06', gj:'中国', qtzzlx:'', qtzzhm:'', bmbh:'', rybscl:'', gh:'G1003', skssq:'202608', djxhid:'DJ2026030001', deptCode:'', deptName:'', qtqksm:'', rzndjyqk:'', lzrq:'', sflzhbfgz:'', bfskssq:'', grgbze:'', grgbbl:'', sfcj:'', sfls:'', sfgl:'', sfgjzj:'', sfzdw:'', cjzjlx:'', cjzh:'', lszh:'', dzyx:'', xl:'大学本科', zw:'3', khyh:'', khyhsfmz:'', yhzh:'', lxdz_sheng:'四川', lxdz_shi:'成都', lxdz_qx:'锦江区', lxdz_jd:'', lxdz:'', hjszd_sheng:'', hjszd_shi:'', hjszd_qx:'', hjszd_jd:'', hjszd_xxdz:'', bz:'', csd:'', sssx:'', scrjsj:'', yjljsj:'', wjrlxdz_sheng:'', wjrlxdz_shi:'', wjrlxdz_qx:'', wjrlxdz_jd:'', wjrlxdz_xxdz:'', xmzw:'', aggOrgId:'', rydq:'境内', bbzt:'5', yzzt:'0', yhzhzt:'', nsrzdahm:'', nsrzrsbh:'' },
+      { qymc:'川油能源有限公司', nsrsbh:'91510100MA6EXAMPLE', xm:'陈静', zzlx:'身份证', zzhm:'510105199306061234', sfgy:'雇员', lxdh:'13800007777', rzsgrq:'2025-06-01', xb:'女', csny:'1993-06-06', gj:'中国', qtzzlx:'', qtzzhm:'', bmbh:'', rybscl:'', gh:'G1003', skssq:'202608', djxhid:'DJ2026030001', deptCode:'', deptName:'', qtqksm:'', rzndjyqk:'', lzrq:'', sflzhbfgz:'', bfskssq:'', grgbze:'', grgbbl:'', sfcj:'', sfls:'', sfgl:'', sfgjzj:'', sfzdw:'', cjzjlx:'', cjzh:'', lszh:'', dzyx:'', xl:'大学本科', zw:'3', khyh:'', khyhsfmz:'', yhzh:'', lxdz_sheng:'四川', lxdz_shi:'成都', lxdz_qx:'锦江区', lxdz_jd:'', lxdz:'', hjszd_sheng:'', hjszd_shi:'', hjszd_qx:'', hjszd_jd:'', hjszd_xxdz:'', bz:'', csd:'', sssx:'', scrjsj:'', yjljsj:'', wjrlxdz_sheng:'', wjrlxdz_shi:'', wjrlxdz_qx:'', wjrlxdz_jd:'', wjrlxdz_xxdz:'', xmzw:'', aggOrgId:'', rydq:'境内', bbzt:'5', bbcwyy:'校验未通过：专项附加扣除信息不完整', yzzt:'0', yhzhzt:'', nsrzdahm:'', nsrzrsbh:'' },
       { qymc:'深圳前海创新有限公司', nsrsbh:'91440300MA6NEW003', xm:'周涛', zzlx:'身份证', zzhm:'440301199108081234', sfgy:'雇员', lxdh:'13800008888', rzsgrq:'2025-09-01', xb:'男', csny:'1991-08-08', gj:'中国', qtzzlx:'', qtzzhm:'', bmbh:'', rybscl:'', gh:'S002', skssq:'202608', djxhid:'DJ2026080002', deptCode:'CW', deptName:'财务部', qtqksm:'', rzndjyqk:'', lzrq:'', sflzhbfgz:'', bfskssq:'', grgbze:'', grgbbl:'', sfcj:'', sfls:'', sfgl:'', sfgjzj:'', sfzdw:'', cjzjlx:'', cjzh:'', lszh:'', dzyx:'', xl:'大学本科', zw:'3', khyh:'', khyhsfmz:'', yhzh:'', lxdz_sheng:'广东', lxdz_shi:'深圳', lxdz_qx:'南山区', lxdz_jd:'', lxdz:'', hjszd_sheng:'', hjszd_shi:'', hjszd_qx:'', hjszd_jd:'', hjszd_xxdz:'', bz:'', csd:'', sssx:'', scrjsj:'', yjljsj:'', wjrlxdz_sheng:'', wjrlxdz_shi:'', wjrlxdz_qx:'', wjrlxdz_jd:'', wjrlxdz_xxdz:'', xmzw:'', aggOrgId:'', rydq:'境内', bbzt:'2', yzzt:'0', yhzhzt:'', nsrzdahm:'', nsrzrsbh:'' }
     ];
 
@@ -978,7 +978,7 @@
       { qymc:'蓉城智能制造有限公司', nsrsbh:'91510100MA6TESTCODE', tsqx:'0', xm:'赵军', zzlx:'身份证', zzhm:'110101199001011234', nsrsbh:'', sfgy:'雇员', lxdh:'13800005555', djxhid:'DJ2026020001', deptCode:'', deptName:'', rzsgrq:'2024-01-01', xb:'男', csny:'1990-01-01', gj:'中国', sssy:'', bbzt:'4', yzzt:'1' },
       { qymc:'上海星辰数字科技有限公司', nsrsbh:'91310115MA1K4LXR9T', tsqx:'1', xm:'王珏', zzlx:'', zzhm:'', nsrsbh:'91110000MA00123456', sfgy:'其他', lxdh:'', rzsgrq:'2025-09-01', djxhid:'DJ2026040001', deptCode:'HR', deptName:'人事部', xb:'', csny:'', gj:'中国', sssy:'任职受雇', bbzt:'2', yzzt:'4' },
       { qymc:'蓉城智能制造有限公司', nsrsbh:'91510100MA6TESTCODE', tsqx:'0', xm:'孙丽', zzlx:'身份证', zzhm:'110101199407071234', nsrsbh:'', sfgy:'保险营销员', lxdh:'13800009999', djxhid:'DJ2026020001', deptCode:'', deptName:'', rzsgrq:'2025-04-01', xb:'女', csny:'1994-07-07', gj:'中国', sssy:'', bbzt:'2', yzzt:'0' },
-      { qymc:'杭州创新科技有限公司', nsrsbh:'91330100MA2GRXKX0X', tsqx:'0', xm:'田雨', zzlx:'护照', zzhm:'E87654321', nsrsbh:'', sfgy:'雇员', lxdh:'13800004444', djxhid:'DJ2026010001', deptCode:'', deptName:'', rzsgrq:'2025-12-01', xb:'女', csny:'1996-03-15', gj:'日本', sssy:'', bbzt:'3', yzzt:'0' }
+      { qymc:'杭州创新科技有限公司', nsrsbh:'91330100MA2GRXKX0X', tsqx:'0', xm:'田雨', zzlx:'护照', zzhm:'E87654321', nsrsbh:'', sfgy:'雇员', lxdh:'13800004444', djxhid:'DJ2026010001', deptCode:'', deptName:'', rzsgrq:'2025-12-01', xb:'女', csny:'1996-03-15', gj:'日本', sssy:'', bbzt:'3', bbcwyy:'报送失败：人员信息与税局不匹配', yzzt:'0' }
     ];
 
 
@@ -1168,8 +1168,10 @@
       document.getElementById('company-table-body').innerHTML = pageData.map((item, idx) => {
         const statusHtml = item.zczt === '注册失败' ? '<span class="status-tag fail" title="' + (item.zccwyy || '未知错误') + '">' + item.zczt + ' ⓘ</span>' : '<span class="status-tag ' + statusClass(item.zczt) + '">' + item.zczt + '</span>';
         let actions = '';
-        if(item.zczt === '注册成功') actions = '<button class="btn" data-role="company" data-index="'+(start+idx)+'">个税信息维护</button><button class="btn" data-role="reregister" data-index="'+(start+idx)+'">重新获取税务信息</button>';
-        else if(item.zczt === '注册失败') actions = '<button class="btn primary" data-role="reregister" data-index="'+(start+idx)+'">重新获取税务信息</button>';
+        if(item.zczt === '未注册') { actions = '<button class="btn" data-role="reregister" data-index="'+(start+idx)+'">获取税务信息</button>'; }
+        else if(item.zczt === '注册中') { actions = ''; }
+        else if(item.zczt === '注册成功') { actions = '<button class="btn" data-role="reregister" data-index="'+(start+idx)+'">获取税务信息</button><button class="btn" data-role="tax-detail" data-index="'+(start+idx)+'">详情</button>'; }
+        else if(item.zczt === '注册失败') { actions = '<button class="btn primary" data-role="reregister" data-index="'+(start+idx)+'">重新获取税务信息</button>'; }
         const gxrqDisplay = (item.zczt === '未注册' || item.zczt === '注册失败') ? '-' : (item.gxrq || '-');
         return '<tr><td><input class="checkbox company-row-check" type="checkbox" data-index="'+(start+idx)+'" /></td><td>'+(start+idx+1)+'</td><td>'+(item.qybm||'-')+'</td><td>'+item.qymc+'</td><td>'+(item.nsrsbm||item.shxydm||'-')+'</td><td>'+(item.bsqy||'-')+'</td><td>'+statusHtml+'</td><td>'+gxrqDisplay+'</td><td class="actions">'+actions+'</td></tr>';
       }).join('');
@@ -1183,7 +1185,9 @@
           const yzztClass = item.yzzt==='1'?'success':item.yzzt==='2'||item.yzzt==='5'?'fail':'processing';
           let actions = '';
           if(item.bbzt !== '2') { actions = '<button class="btn" data-role="edit-normal" data-index="'+(start+idx)+'">编辑</button><button class="btn" data-role="delete-normal" data-index="'+(start+idx)+'">删除</button>'; }
-          return '<tr><td><input class="checkbox" type="checkbox" /></td><td>'+(item.qymc||'-')+'</td><td>'+(item.nsrsbh||'-')+'</td><td>'+(item.djxhid||'-')+'</td><td>'+(item.deptCode||'-')+'</td><td>'+(item.deptName||'-')+'</td><td><span class="link" data-role="view-normal" data-index="'+(start+idx)+'">'+item.xm+'</span></td><td>'+item.zzlx+'</td><td>'+item.zzhm+'</td><td>'+item.sfgy+'</td><td>'+item.lxdh+'</td><td>'+item.rzsgrq+'</td><td>'+item.xb+'</td><td>'+item.csny+'</td><td>'+item.gj+'</td><td><span class="status-tag '+bbztClass+'">'+bbztText+'</span></td><td><span class="status-tag '+yzztClass+'">'+yzztText+'</span></td><td>'+(item.yhzhzt||'-')+'</td><td>'+(item.nsrzdahm||'-')+'</td><td>'+(item.nsrzrsbh||'-')+'</td><td class="actions">'+actions+'</td></tr>';
+          const bbztTip = (item.bbzt==='3'||item.bbzt==='5') ? ' title="'+(item.bbcwyy||'未知错误')+'"' : '';
+          const bbztIcon = (item.bbzt==='3'||item.bbzt==='5') ? ' ⓘ' : '';
+          return '<tr><td><input class="checkbox" type="checkbox" /></td><td>'+(item.qymc||'-')+'</td><td>'+(item.nsrsbh||'-')+'</td><td>'+(item.djxhid||'-')+'</td><td>'+(item.deptCode||'-')+'</td><td>'+(item.deptName||'-')+'</td><td><span class="link" data-role="view-normal" data-index="'+(start+idx)+'">'+item.xm+'</span></td><td>'+item.zzlx+'</td><td>'+item.zzhm+'</td><td>'+item.sfgy+'</td><td>'+item.lxdh+'</td><td>'+item.rzsgrq+'</td><td>'+item.xb+'</td><td>'+item.csny+'</td><td>'+item.gj+'</td><td><span class="status-tag '+bbztClass+'"'+bbztTip+'>'+bbztText+bbztIcon+'</span></td><td><span class="status-tag '+yzztClass+'">'+yzztText+'</span></td><td>'+(item.yhzhzt||'-')+'</td><td>'+(item.nsrzdahm||'-')+'</td><td>'+(item.nsrzrsbh||'-')+'</td><td class="actions">'+actions+'</td></tr>';
         }).join('');
     }); }
 
@@ -1195,7 +1199,9 @@
           const yzztClass = item.yzzt==='1'?'success':item.yzzt==='2'||item.yzzt==='5'?'fail':'processing';
           let actions = '';
           if(item.bbzt !== '2') { actions = '<button class="btn" data-role="edit-special" data-index="'+(start+idx)+'">编辑</button><button class="btn" data-role="delete-special" data-index="'+(start+idx)+'">删除</button>'; }
-          return '<tr><td><input class="checkbox" type="checkbox" /></td><td>'+(item.qymc||'-')+'</td><td>'+(item.nsrsbh||'-')+'</td><td>'+(item.djxhid||'-')+'</td><td>'+(item.deptCode||'-')+'</td><td>'+(item.deptName||'-')+'</td><td>'+(item.tsqx==='0'?'居民身份证号码不符合一般赋码规则':'除居民身份证以外已从税务机关取得纳税人识别号的人员')+'</td><td><span class="link" data-role="view-special" data-index="'+(start+idx)+'">'+item.xm+'</span></td><td>'+item.sfgy+'</td><td>'+item.rzsgrq+'</td><td>'+item.gj+'</td><td><span class="status-tag '+bbztClass+'">'+bbztText+'</span></td><td><span class="status-tag '+yzztClass+'">'+yzztText+'</span></td><td class="actions">'+actions+'</td></tr>';
+          const bbztTip = (item.bbzt==='3'||item.bbzt==='5') ? ' title="'+(item.bbcwyy||'未知错误')+'"' : '';
+          const bbztIcon = (item.bbzt==='3'||item.bbzt==='5') ? ' ⓘ' : '';
+          return '<tr><td><input class="checkbox" type="checkbox" /></td><td>'+(item.qymc||'-')+'</td><td>'+(item.nsrsbh||'-')+'</td><td>'+(item.djxhid||'-')+'</td><td>'+(item.deptCode||'-')+'</td><td>'+(item.deptName||'-')+'</td><td>'+(item.tsqx==='0'?'居民身份证号码不符合一般赋码规则':'除居民身份证以外已从税务机关取得纳税人识别号的人员')+'</td><td><span class="link" data-role="view-special" data-index="'+(start+idx)+'">'+item.xm+'</span></td><td>'+item.sfgy+'</td><td>'+item.rzsgrq+'</td><td>'+item.gj+'</td><td><span class="status-tag '+bbztClass+'"'+bbztTip+'>'+bbztText+bbztIcon+'</span></td><td><span class="status-tag '+yzztClass+'">'+yzztText+'</span></td><td class="actions">'+actions+'</td></tr>';
         }).join('');
     }); }
 
@@ -1413,7 +1419,7 @@
 
     function openSpecialDrawer(item) {
       document.getElementById('es-drawer-title').textContent = `${item.xm}（详情）`;
-      document.getElementById('es-tab-base').innerHTML = renderFieldGrid([['特殊情形', item.tsqx==='0'?'0 - 身份证号不符合一般赋码规则':'1 - 已取得纳税人识别号'], ['姓名', item.xm], ['任职受雇类型', item.sfgy], ['受雇日期', item.rzsgrq], ['国籍', item.gj], ['电话号码', item.lxdh], ['性别', item.xb], ['出生日期', item.csny]]);
+      document.getElementById('es-tab-base').innerHTML = renderFieldGrid([['特殊情形', item.tsqx==='0'?'居民身份证号码不符合一般赋码规则':'除居民身份证以外已从税务机关取得纳税人识别号的人员'], ['姓名', item.xm], ['任职受雇类型', item.sfgy], ['受雇日期', item.rzsgrq], ['国籍', item.gj], ['电话号码', item.lxdh], ['性别', item.xb], ['出生日期', item.csny]]);
       document.getElementById('es-tab-status').innerHTML = renderFieldGrid([['证件类型', item.zzlx], ['证件号码', item.zzhm], ['纳税人识别号', item.nsrsbh], ['涉税事由', item.sssy]]);
       document.getElementById('es-drawer-mask').classList.add('open');
       document.getElementById('es-drawer').classList.add('open');
@@ -1875,7 +1881,7 @@
     document.getElementById('company-pager').addEventListener('click', e=>{ const btn=e.target.closest('button[data-page]'); if(!btn||btn.disabled) return; const totalPages=Math.max(1, Math.ceil(cFiltered.length/pageSize)); const v=btn.dataset.page; if(v==='prev') cPage=Math.max(1,cPage-1); else if(v==='next') cPage=Math.min(totalPages,cPage+1); else cPage=Number(v); renderCompany(); });
     document.getElementById('en-pager').addEventListener('click', e=>{ const btn=e.target.closest('button[data-page]'); if(!btn||btn.disabled) return; const totalPages=Math.max(1, Math.ceil(nFiltered.length/pageSize)); const v=btn.dataset.page; if(v==='prev') nPage=Math.max(1,nPage-1); else if(v==='next') nPage=Math.min(totalPages,nPage+1); else nPage=Number(v); renderNormal(); });
     document.getElementById('es-pager').addEventListener('click', e=>{ const btn=e.target.closest('button[data-page]'); if(!btn||btn.disabled) return; const totalPages=Math.max(1, Math.ceil(sFiltered.length/pageSize)); const v=btn.dataset.page; if(v==='prev') sPage=Math.max(1,sPage-1); else if(v==='next') sPage=Math.min(totalPages,sPage+1); else sPage=Number(v); renderSpecial(); });
-    document.getElementById('company-table-body').addEventListener('click', e=>{ const t=e.target; const idx = t.dataset.index!==undefined ? Number(t.dataset.index) : -1; if(t.dataset.role==='company' && idx>=0) openCompanyDrawer(companyMock[idx]); if(t.dataset.role==='maintain' && idx>=0) openMaintain(companyMock[idx]); if(t.dataset.role==='reset' && idx>=0) openReset(companyMock[idx]); if((t.dataset.role==='register'||t.dataset.role==='reregister') && idx>=0){ companyMock[idx].zczt='注册中'; cFiltered=[...companyMock]; renderCompany(); setTimeout(()=>{companyMock[idx].zczt='注册成功';cFiltered=[...companyMock];renderCompany();},2000); } });
+    document.getElementById('company-table-body').addEventListener('click', e=>{ const t=e.target; const idx = t.dataset.index!==undefined ? Number(t.dataset.index) : -1; if(t.dataset.role==='company' && idx>=0) openCompanyDrawer(companyMock[idx]); if(t.dataset.role==='tax-detail' && idx>=0) openTaxDetailDrawer(companyMock[idx]); if(t.dataset.role==='maintain' && idx>=0) openMaintain(companyMock[idx]); if(t.dataset.role==='reset' && idx>=0) openReset(companyMock[idx]); if((t.dataset.role==='register'||t.dataset.role==='reregister') && idx>=0){ companyMock[idx].zczt='注册中'; cFiltered=[...companyMock]; renderCompany(); setTimeout(()=>{companyMock[idx].zczt='注册成功';cFiltered=[...companyMock];renderCompany();},2000); } });
     
     // Download import templates
     document.getElementById('en-download-tpl').addEventListener('click', function() {
@@ -1948,7 +1954,8 @@
         { xm:'周敏', zzlx:'身份证', zzhm:'330106199508082246', gj:'中国', kcbs:'是', sfqrkc:'N', qrkcbh:'', qrkcbg:'', qrkcbgyy:'' },
         { xm:'吴昊', zzlx:'护照', zzhm:'E98765432', gj:'美国', kcbs:'是', sfqrkc:'N', qrkcbh:'', qrkcbg:'', qrkcbgyy:'' }
       ]},
-      { nsrsbh:'91440300MA6NEW003', qymc:'深圳前海创新有限公司', skssnd:'2026', cjzt:'未采集', djxhid:'DJ2026080002', fbmba:'是', deptCode:'CW', deptName:'财务部', kczglb:[] }
+      { nsrsbh:'91440300MA6NEW003', qymc:'深圳前海创新有限公司', skssnd:'2026', cjzt:'未采集', djxhid:'DJ2026080002', fbmba:'是', deptCode:'CW', deptName:'财务部', kczglb:[] },
+      { nsrsbh:'91510100MA6TRIPTST', qymc:'蜀锦文化旅游有限公司', skssnd:'2026', cjzt:'采集失败', cjcwyy:'接口超时，请稍后重试', djxhid:'DJ2026030003', fbmba:'否', deptCode:'', deptName:'', kczglb:[] }
     ];
     let eliFiltered = [...eliMock];
     let eliPage = 1;
@@ -1969,7 +1976,9 @@
           if(item.cjzt==='未采集') actions = '<button class="btn" data-role="eli-recollect" data-index="'+(start+idx)+'">采集</button>';
           else if(item.cjzt==='采集成功') actions = '<button class="btn" data-role="eli-recollect" data-index="'+(start+idx)+'">重新采集</button><button class="btn" data-role="eli-view" data-index="'+(start+idx)+'">详情</button>';
           else if(item.cjzt==='采集失败') actions = '<button class="btn" data-role="eli-recollect" data-index="'+(start+idx)+'">重新采集</button>';
-          return '<tr><td>'+(start+idx+1)+'</td><td>'+item.qymc+'</td><td>'+item.nsrsbh+'</td><td>'+item.skssnd+'</td><td><span class="status-tag '+cjztClass+'">'+item.cjzt+'</span></td><td>'+(item.djxhid||'-')+'</td><td>'+(item.fbmba||'-')+'</td><td>'+(item.deptCode||'-')+'</td><td>'+(item.deptName||'-')+'</td><td>'+item.kczglb.length+'</td><td class="actions">'+actions+'</td></tr>';
+          const cjztTip = item.cjzt==='采集失败' ? ' title="'+(item.cjcwyy||'未知错误')+'"' : '';
+          const cjztIcon = item.cjzt==='采集失败' ? ' ⓘ' : '';
+          return '<tr><td>'+(start+idx+1)+'</td><td>'+item.qymc+'</td><td>'+item.nsrsbh+'</td><td>'+item.skssnd+'</td><td><span class="status-tag '+cjztClass+'"'+cjztTip+'>'+item.cjzt+cjztIcon+'</span></td><td>'+(item.djxhid||'-')+'</td><td>'+(item.fbmba||'-')+'</td><td>'+(item.deptCode||'-')+'</td><td>'+(item.deptName||'-')+'</td><td>'+item.kczglb.length+'</td><td class="actions">'+actions+'</td></tr>';
         }).join('');
       });
     }
@@ -3165,7 +3174,7 @@
     const ctMock = [
       // 一个公司多登记序号（不分部门）
       { qymc:'川油能源有限公司', shxydm:'91510100MA6EXAMPLE', djxhid:'DJ2026030001', frxm:'张伟', bsqy:'成都市', zgswjgmc:'国家税务总局成都市税务局', zgswjgskmc:'成都市税务局第一税务分局', fbmba:'0', nsrzt:'正常', djrq:'2022-03-15', sfxxyStatus:'获取成功', pwdStatus:'已维护', pwdCount:1 },
-      { qymc:'川油能源有限公司', shxydm:'91510100MA6EXAMPLE', djxhid:'DJ2026030002', frxm:'张伟', bsqy:'成都市', zgswjgmc:'国家税务总局成都市税务局', zgswjgskmc:'成都市税务局第二税务分局', fbmba:'0', nsrzt:'正常', djrq:'2023-06-20', sfxxyStatus:'获取失败', pwdStatus:'未维护', pwdCount:0 },
+      { qymc:'川油能源有限公司', shxydm:'91510100MA6EXAMPLE', djxhid:'DJ2026030002', frxm:'张伟', bsqy:'成都市', zgswjgmc:'国家税务总局成都市税务局', zgswjgskmc:'成都市税务局第二税务分局', fbmba:'0', nsrzt:'正常', djrq:'2023-06-20', sfxxyStatus:'获取失败', sfxxyReason:'三方协议信息获取超时，请重试', pwdStatus:'未维护', pwdCount:0 },
       // 一个公司登记序号+分部门备案
       { qymc:'深圳前海创新有限公司', shxydm:'91440300MA6NEW003', djxhid:'DJ2026080002', frxm:'陈磊', bsqy:'深圳市', zgswjgmc:'深圳市前海税务局', zgswjgskmc:'前海税务局第一税务所', fbmba:'1', nsrzt:'正常', djrq:'2024-01-15', sfxxyStatus:'获取中', pwdStatus:'已维护', pwdCount:3 },
       // 一个公司登记序号不分部门备案
@@ -3189,9 +3198,12 @@
       ctPage = renderPager(document.getElementById('ct-pager'), document.getElementById('ct-page-info'), ctFiltered, ctPage, (pageData, start) => {
         document.getElementById('ct-body').innerHTML = pageData.map((item, idx) => {
           let actions = '<button class="btn" data-role="ct-maintain" data-index="'+(start+idx)+'">维护密码</button><button class="btn" data-role="ct-reset" data-index="'+(start+idx)+'">修改密码</button>';
-          if(item.sfxxyStatus==='获取成功') actions += '<button class="btn" data-role="ct-get-agreement" data-index="'+(start+idx)+'">获取三方协议</button><button class="btn" data-role="ct-set-agreement" data-index="'+(start+idx)+'">设置三方协议</button>';
+          if(item.sfxxyStatus==='未获取' || item.sfxxyStatus==='获取失败') actions += '<button class="btn" data-role="ct-get-agreement" data-index="'+(start+idx)+'">获取三方协议</button>';
+          else if(item.sfxxyStatus==='获取成功') actions += '<button class="btn" data-role="ct-get-agreement" data-index="'+(start+idx)+'">获取三方协议</button><button class="btn" data-role="ct-set-agreement" data-index="'+(start+idx)+'">设置三方协议</button>';
           const sfxxyCls = item.sfxxyStatus==='获取成功'?'success':item.sfxxyStatus==='获取失败'?'fail':item.sfxxyStatus==='获取中'?'processing':'pending';
-          return '<tr><td>'+(start+idx+1)+'</td><td>'+item.qymc+'</td><td>'+(item.shxydm||'-')+'</td><td>'+item.djxhid+'</td><td>'+item.frxm+'</td><td>'+(item.bsqy||'-')+'</td><td>'+item.zgswjgmc+'</td><td>'+(item.zgswjgskmc||'-')+'</td><td>'+(item.fbmba==='1'?'是':'否')+'</td><td><span class="status-tag '+(item.pwdStatus==="已维护"?"success":"pending")+'">'+(item.pwdStatus||'未维护')+'</span></td><td>'+(item.pwdCount||0)+'</td><td><span class="status-tag '+sfxxyCls+'">'+(item.sfxxyStatus||'未获取')+'</span></td><td>'+item.nsrzt+'</td><td>'+(item.djrq||'-')+'</td><td class="actions">'+actions+'</td></tr>';
+          const sfxxyTip = item.sfxxyStatus==='获取失败' ? ' title="'+(item.sfxxyReason||'未知错误')+'"' : '';
+          const sfxxyIcon = item.sfxxyStatus==='获取失败' ? ' ⓘ' : '';
+          return '<tr><td>'+(start+idx+1)+'</td><td>'+item.qymc+'</td><td>'+(item.shxydm||'-')+'</td><td>'+item.djxhid+'</td><td>'+item.frxm+'</td><td>'+(item.bsqy||'-')+'</td><td>'+item.zgswjgmc+'</td><td>'+(item.zgswjgskmc||'-')+'</td><td>'+(item.fbmba==='1'?'是':'否')+'</td><td><span class="status-tag '+(item.pwdStatus==="已维护"?"success":"pending")+'">'+(item.pwdStatus||'未维护')+'</span></td><td>'+(item.pwdCount||0)+'</td><td><span class="status-tag '+sfxxyCls+'"'+sfxxyTip+'>'+(item.sfxxyStatus||'未获取')+sfxxyIcon+'</span></td><td>'+item.nsrzt+'</td><td>'+(item.djrq||'-')+'</td><td class="actions">'+actions+'</td></tr>';
         }).join('');
       });
     }
@@ -3398,7 +3410,9 @@
           if(item.bbzt === '2') { actions = '<button class="btn" data-role="enr-detail" data-index="'+(start+idx)+'">详情</button>'; }
           else { actions = '<button class="btn" data-role="enr-submit" data-index="'+(start+idx)+'">报送</button><button class="btn" data-role="enr-detail" data-index="'+(start+idx)+'">详情</button>'; }
           const enrCompanyCount = enrFiltered.filter(i => i.qymc === item.qymc && i.djxhid === item.djxhid).length;
-          return '<tr><td><input class="checkbox" type="checkbox" /></td><td>'+(item.qymc||'-')+'</td><td>'+(item.nsrsbh||'-')+'</td><td>'+(item.djxhid||'-')+'</td><td>'+(item.deptCode||'-')+'</td><td>'+(item.deptName||'-')+'</td><td>'+enrCompanyCount+'</td><td><span class="status-tag '+bbztClass+'">'+bbztText+'</span></td><td class="actions">'+actions+'</td></tr>';
+          const bbztTip = (item.bbzt==='3'||item.bbzt==='5') ? ' title="'+(item.bbcwyy||'未知错误')+'"' : '';
+          const bbztIcon = (item.bbzt==='3'||item.bbzt==='5') ? ' ⓘ' : '';
+          return '<tr><td><input class="checkbox" type="checkbox" /></td><td>'+(item.qymc||'-')+'</td><td>'+(item.nsrsbh||'-')+'</td><td>'+(item.djxhid||'-')+'</td><td>'+(item.deptCode||'-')+'</td><td>'+(item.deptName||'-')+'</td><td>'+enrCompanyCount+'</td><td><span class="status-tag '+bbztClass+'"'+bbztTip+'>'+bbztText+bbztIcon+'</span></td><td class="actions">'+actions+'</td></tr>';
         }).join('');
       });
     }
@@ -3451,7 +3465,9 @@
           if(item.bbzt === '2') { actions = '<button class="btn" data-role="esr-detail" data-index="'+(start+idx)+'">详情</button>'; }
           else { actions = '<button class="btn" data-role="esr-submit" data-index="'+(start+idx)+'">报送</button><button class="btn" data-role="esr-detail" data-index="'+(start+idx)+'">详情</button>'; }
           const esrCompanyCount = esrFiltered.filter(i => i.qymc === item.qymc && i.djxhid === item.djxhid).length;
-          return '<tr><td><input class="checkbox" type="checkbox" /></td><td>'+(item.qymc||'-')+'</td><td>'+(item.nsrsbh||'-')+'</td><td>'+(item.djxhid||'-')+'</td><td>'+(item.deptCode||'-')+'</td><td>'+(item.deptName||'-')+'</td><td>'+esrCompanyCount+'</td><td><span class="status-tag '+bbztClass+'">'+bbztText+'</span></td><td class="actions">'+actions+'</td></tr>';
+          const bbztTip = (item.bbzt==='3'||item.bbzt==='5') ? ' title="'+(item.bbcwyy||'未知错误')+'"' : '';
+          const bbztIcon = (item.bbzt==='3'||item.bbzt==='5') ? ' ⓘ' : '';
+          return '<tr><td><input class="checkbox" type="checkbox" /></td><td>'+(item.qymc||'-')+'</td><td>'+(item.nsrsbh||'-')+'</td><td>'+(item.djxhid||'-')+'</td><td>'+(item.deptCode||'-')+'</td><td>'+(item.deptName||'-')+'</td><td>'+esrCompanyCount+'</td><td><span class="status-tag '+bbztClass+'"'+bbztTip+'>'+bbztText+bbztIcon+'</span></td><td class="actions">'+actions+'</td></tr>';
         }).join('');
       });
     }
@@ -3525,7 +3541,9 @@
         const bbztClass = p.bbzt==='4'?'success':p.bbzt==='3'||p.bbzt==='5'?'fail':p.bbzt==='2'?'processing':'pending';
         const yzztText = {'0':'验证中','1':'验证通过','2':'验证不通过','4':'待验证','5':'校验未通过未验证','9':'验证中'}[p.yzzt]||'-';
         const yzztClass = p.yzzt==='1'?'success':p.yzzt==='2'||p.yzzt==='5'?'fail':'processing';
-        html += '<tr><td>'+p.xm+'</td><td>'+p.zzlx+'</td><td>'+p.zzhm+'</td><td>'+p.sfgy+'</td><td>'+p.lxdh+'</td><td>'+p.rzsgrq+'</td><td>'+p.xb+'</td><td>'+p.csny+'</td><td>'+p.gj+'</td><td><span class="status-tag '+bbztClass+'">'+bbztText+'</span></td><td><span class="status-tag '+yzztClass+'">'+yzztText+'</span></td><td>'+(p.yhzhzt||'-')+'</td><td>'+(p.nsrzdahm||'-')+'</td><td>'+(p.nsrzrsbh||'-')+'</td></tr>';
+        const bbztTip = (p.bbzt==='3'||p.bbzt==='5') ? ' title="'+(p.bbcwyy||'未知错误')+'"' : '';
+        const bbztIcon = (p.bbzt==='3'||p.bbzt==='5') ? ' ⓘ' : '';
+        html += '<tr><td>'+p.xm+'</td><td>'+p.zzlx+'</td><td>'+p.zzhm+'</td><td>'+p.sfgy+'</td><td>'+p.lxdh+'</td><td>'+p.rzsgrq+'</td><td>'+p.xb+'</td><td>'+p.csny+'</td><td>'+p.gj+'</td><td><span class="status-tag '+bbztClass+'"'+bbztTip+'>'+bbztText+bbztIcon+'</span></td><td><span class="status-tag '+yzztClass+'">'+yzztText+'</span></td><td>'+(p.yhzhzt||'-')+'</td><td>'+(p.nsrzdahm||'-')+'</td><td>'+(p.nsrzrsbh||'-')+'</td></tr>';
       });
       html += '</tbody></table>';
       return html;
@@ -3577,7 +3595,9 @@
         const bbztClass = p.bbzt==='4'?'success':p.bbzt==='3'||p.bbzt==='5'?'fail':p.bbzt==='2'?'processing':'pending';
         const yzztText = {'0':'验证中','1':'验证通过','2':'验证不通过','4':'待验证','5':'校验未通过未验证','9':'验证中'}[p.yzzt]||'-';
         const yzztClass = p.yzzt==='1'?'success':p.yzzt==='2'||p.yzzt==='5'?'fail':'processing';
-        html += '<tr><td>'+(p.tsqx==='0'?'居民身份证号码不符合一般赋码规则':'除居民身份证以外已从税务机关取得纳税人识别号的人员')+'</td><td>'+p.xm+'</td><td>'+p.sfgy+'</td><td>'+(p.lxdh||'-')+'</td><td>'+p.rzsgrq+'</td><td>'+(p.xb||'-')+'</td><td>'+(p.csny||'-')+'</td><td>'+p.gj+'</td><td><span class="status-tag '+bbztClass+'">'+bbztText+'</span></td><td><span class="status-tag '+yzztClass+'">'+yzztText+'</span></td></tr>';
+        const bbztTip = (p.bbzt==='3'||p.bbzt==='5') ? ' title="'+(p.bbcwyy||'未知错误')+'"' : '';
+        const bbztIcon = (p.bbzt==='3'||p.bbzt==='5') ? ' ⓘ' : '';
+        html += '<tr><td>'+(p.tsqx==='0'?'居民身份证号码不符合一般赋码规则':'除居民身份证以外已从税务机关取得纳税人识别号的人员')+'</td><td>'+p.xm+'</td><td>'+p.sfgy+'</td><td>'+(p.lxdh||'-')+'</td><td>'+p.rzsgrq+'</td><td>'+(p.xb||'-')+'</td><td>'+(p.csny||'-')+'</td><td>'+p.gj+'</td><td><span class="status-tag '+bbztClass+'"'+bbztTip+'>'+bbztText+bbztIcon+'</span></td><td><span class="status-tag '+yzztClass+'">'+yzztText+'</span></td></tr>';
       });
       html += '</tbody></table>';
       return html;

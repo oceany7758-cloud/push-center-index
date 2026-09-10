@@ -1170,7 +1170,7 @@
         let actions = '';
         if(item.zczt === '未注册') { actions = '<button class="btn" data-role="reregister" data-index="'+(start+idx)+'">获取税务信息</button>'; }
         else if(item.zczt === '注册中') { actions = ''; }
-        else if(item.zczt === '注册成功') { actions = '<button class="btn" data-role="reregister" data-index="'+(start+idx)+'">获取税务信息</button><button class="btn" data-role="tax-detail" data-index="'+(start+idx)+'">详情</button>'; }
+        else if(item.zczt === '注册成功') { actions = '<button class="btn" data-role="reregister" data-index="'+(start+idx)+'">获取税务信息</button><button class="btn" data-role="company-detail" data-index="'+(start+idx)+'">详情</button>'; }
         else if(item.zczt === '注册失败') { actions = '<button class="btn primary" data-role="reregister" data-index="'+(start+idx)+'">重新获取税务信息</button>'; }
         const gxrqDisplay = (item.zczt === '未注册' || item.zczt === '注册失败') ? '-' : (item.gxrq || '-');
         return '<tr><td><input class="checkbox company-row-check" type="checkbox" data-index="'+(start+idx)+'" /></td><td>'+(start+idx+1)+'</td><td>'+(item.qybm||'-')+'</td><td>'+item.qymc+'</td><td>'+(item.nsrsbm||item.shxydm||'-')+'</td><td>'+(item.bsqy||'-')+'</td><td>'+statusHtml+'</td><td>'+gxrqDisplay+'</td><td class="actions">'+actions+'</td></tr>';
@@ -1349,7 +1349,8 @@
 
     function closeReset() { document.getElementById('reset-modal-mask').classList.remove('open'); }
     function openCompanyDrawer(company) {
-      detailData = [company];
+      // Show all registered companies in the list
+      detailData = companyMock.filter(i => i.zczt === '注册成功');
       detailFiltered = [...detailData];
       document.getElementById('company-drawer-title').textContent = '个税信息登记';
       document.getElementById('c-detail-djxhid').value = '';
@@ -1881,7 +1882,7 @@
     document.getElementById('company-pager').addEventListener('click', e=>{ const btn=e.target.closest('button[data-page]'); if(!btn||btn.disabled) return; const totalPages=Math.max(1, Math.ceil(cFiltered.length/pageSize)); const v=btn.dataset.page; if(v==='prev') cPage=Math.max(1,cPage-1); else if(v==='next') cPage=Math.min(totalPages,cPage+1); else cPage=Number(v); renderCompany(); });
     document.getElementById('en-pager').addEventListener('click', e=>{ const btn=e.target.closest('button[data-page]'); if(!btn||btn.disabled) return; const totalPages=Math.max(1, Math.ceil(nFiltered.length/pageSize)); const v=btn.dataset.page; if(v==='prev') nPage=Math.max(1,nPage-1); else if(v==='next') nPage=Math.min(totalPages,nPage+1); else nPage=Number(v); renderNormal(); });
     document.getElementById('es-pager').addEventListener('click', e=>{ const btn=e.target.closest('button[data-page]'); if(!btn||btn.disabled) return; const totalPages=Math.max(1, Math.ceil(sFiltered.length/pageSize)); const v=btn.dataset.page; if(v==='prev') sPage=Math.max(1,sPage-1); else if(v==='next') sPage=Math.min(totalPages,sPage+1); else sPage=Number(v); renderSpecial(); });
-    document.getElementById('company-table-body').addEventListener('click', e=>{ const t=e.target; const idx = t.dataset.index!==undefined ? Number(t.dataset.index) : -1; if(t.dataset.role==='company' && idx>=0) openCompanyDrawer(companyMock[idx]); if(t.dataset.role==='tax-detail' && idx>=0) openTaxDetailDrawer(companyMock[idx]); if(t.dataset.role==='maintain' && idx>=0) openMaintain(companyMock[idx]); if(t.dataset.role==='reset' && idx>=0) openReset(companyMock[idx]); if((t.dataset.role==='register'||t.dataset.role==='reregister') && idx>=0){ companyMock[idx].zczt='注册中'; cFiltered=[...companyMock]; renderCompany(); setTimeout(()=>{companyMock[idx].zczt='注册成功';cFiltered=[...companyMock];renderCompany();},2000); } });
+    document.getElementById('company-table-body').addEventListener('click', e=>{ const t=e.target; const idx = t.dataset.index!==undefined ? Number(t.dataset.index) : -1; if(t.dataset.role==='company' && idx>=0) openCompanyDrawer(companyMock[idx]); if(t.dataset.role==='company-detail' && idx>=0) openCompanyDrawer(companyMock[idx]); if(t.dataset.role==='tax-detail' && idx>=0) openTaxDetailDrawer(companyMock[idx]); if(t.dataset.role==='maintain' && idx>=0) openMaintain(companyMock[idx]); if(t.dataset.role==='reset' && idx>=0) openReset(companyMock[idx]); if((t.dataset.role==='register'||t.dataset.role==='reregister') && idx>=0){ companyMock[idx].zczt='注册中'; cFiltered=[...companyMock]; renderCompany(); setTimeout(()=>{companyMock[idx].zczt='注册成功';cFiltered=[...companyMock];renderCompany();},2000); } });
     
     // Download import templates
     document.getElementById('en-download-tpl').addEventListener('click', function() {

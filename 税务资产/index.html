@@ -859,6 +859,7 @@
           <div class="submenu-group-label" onclick="this.parentNode.classList.toggle('open')">企业资产管理 <span class="group-arrow">▶</span></div>
           <div class="submenu-group-children">
             <div class="submenu-item active" onclick="event.stopPropagation();switchPage('page-ent-taizhang', this)">企业资产台账</div>
+            <div class="submenu-item" onclick="event.stopPropagation();switchPage('page-ent-detail', this)">资产明细记录</div>
             <div class="submenu-item" onclick="event.stopPropagation();switchPage('page-ent-invoice', this)">发票关联管理</div>
             <div class="submenu-item" onclick="event.stopPropagation();switchPage('page-ent-dispose', this)">处置管理</div>
           </div>
@@ -2559,15 +2560,15 @@
               </tr>
               <tr>
                 <td>2</td><td>蓉信科技有限公司</td><td>FA-2026-002</td><td>生产线B</td><td>产线B</td><td>设备</td><td>8,000,000.00</td><td>用于混合用途</td><td>在用</td><td>2025-12-20</td><td>2026-01-01</td><td>2026-09</td><td>120</td><td>9</td><td>111</td><td>直线法</td><td>5.00%</td><td>400,000.00</td><td>63,333.00</td><td>126,667.00</td><td>7,873,333.00</td><td></td><td></td><td></td><td></td><td>是</td><td>CQ20260002</td><td>C 其他长期资产</td><td>在用</td><td>2026-01</td><td>2035-12</td><td>60</td><td>8</td><td>用于混合用途</td><td>529,203.54</td><td>529,203.54</td><td>是</td><td></td><td>6,800,000.00</td><td>98.42%</td><td>85.00%</td><td></td>
-                <td><span class="row-act" onclick="openViewAsset('FA-2026-002')">查看</span> <span class="row-act" onclick="openEditAsset('FA-2026-002')">编辑</span> <span class="row-act" onclick="gotoInvoiceForAsset(this)">关联发票</span> <span class="row-act" onclick="gotoDisposeForAsset(this)">新增处置</span> <span class="row-act" onclick="openVersionHistory('FA-2026-002','生产线B',9)">版本记录</span> <span class="row-act" style="color:#F56C6C;" onclick="deleteAsset('FA-2026-002')">删除</span></td>
+                <td><span class="row-act" onclick="openViewAsset('FA-2026-002')">查看</span> <span class="row-act" onclick="openEditAsset('FA-2026-002')">编辑</span> <span class="row-act" onclick="gotoInvoiceForAsset(this)">关联发票</span> <span class="row-act" onclick="gotoDisposeForAsset(this)">新增处置</span> <span class="row-act" onclick="openVersionHistory('FA-2026-002','生产线B',3)">版本记录</span> <span class="row-act" style="color:#F56C6C;" onclick="deleteAsset('FA-2026-002')">删除</span></td>
               </tr>
               <tr>
                 <td>3</td><td>东莞智造有限公司</td><td>FA-2026-003</td><td>商务楼C</td><td>商务楼</td><td>房屋</td><td>20,000,000.00</td><td>用于混合用途</td><td>在用</td><td>2025-11-10</td><td>2026-01-01</td><td>2026-09</td><td>360</td><td>9</td><td>351</td><td>直线法</td><td>5.00%</td><td>1,000,000.00</td><td>52,778.00</td><td>105,556.00</td><td>19,894,444.00</td><td></td><td>FC-2026-002</td><td>5,600</td><td>3,200,000.00</td><td>是</td><td>CQ20260003</td><td>A 不动产、土地使用权</td><td>在用</td><td>2026-01</td><td>2055-12</td><td>240</td><td>8</td><td>用于混合用途</td><td>368,141.59</td><td>180,000.00</td><td>是</td><td></td><td>19,250,000.00</td><td>99.47%</td><td>96.25%</td><td></td>
-                <td><span class="row-act" onclick="openViewAsset('FA-2026-003')">查看</span> <span class="row-act" onclick="openEditAsset('FA-2026-003')">编辑</span> <span class="row-act" onclick="gotoInvoiceForAsset(this)">关联发票</span> <span class="row-act" onclick="gotoDisposeForAsset(this)">新增处置</span> <span class="row-act" onclick="openVersionHistory('FA-2026-003','商务楼C',9)">版本记录</span> <span class="row-act" style="color:#F56C6C;" onclick="deleteAsset('FA-2026-003')">删除</span></td>
+                <td><span class="row-act" onclick="openViewAsset('FA-2026-003')">查看</span> <span class="row-act" onclick="openEditAsset('FA-2026-003')">编辑</span> <span class="row-act" onclick="gotoInvoiceForAsset(this)">关联发票</span> <span class="row-act" onclick="gotoDisposeForAsset(this)">新增处置</span> <span class="row-act" onclick="openVersionHistory('FA-2026-003','商务楼C',3)">版本记录</span> <span class="row-act" style="color:#F56C6C;" onclick="deleteAsset('FA-2026-003')">删除</span></td>
               </tr>
               <tr>
                 <td>4</td><td>深投置业有限公司</td><td>FA-2026-004</td><td>厂房用地D</td><td>东莞工厂用地</td><td>土地</td><td>4,500,000.00</td><td>用于混合用途</td><td>在用</td><td>2025-10-15</td><td>2025-11-01</td><td>2026-09</td><td>480</td><td>10</td><td>470</td><td>直线法</td><td>0.00%</td><td>0.00</td><td>9,375.00</td><td>93,750.00</td><td>4,406,250.00</td><td></td><td>TD-2026-002</td><td>20,000(土地面积)</td><td></td><td>是</td><td>CQ20260004</td><td>不动产、土地使用权</td><td>在用</td><td>2025-11</td><td>2055-10</td><td>240</td><td>10</td><td>用于混合用途</td><td>234,000.00</td><td>234,000.00</td><td>否</td><td></td><td>4,437,500.00</td><td>97.92%</td><td>98.61%</td><td></td>
-                <td><span class="row-act" onclick="openViewAsset('FA-2026-004')">查看</span> <span class="row-act" onclick="openEditAsset('FA-2026-004')">编辑</span> <span class="row-act" onclick="gotoInvoiceForAsset(this)">关联发票</span> <span class="row-act" onclick="gotoDisposeForAsset(this)">新增处置</span> <span class="row-act" onclick="openVersionHistory('FA-2026-004','厂房用地D',9)">版本记录</span> <span class="row-act" style="color:#F56C6C;" onclick="deleteAsset('FA-2026-004')">删除</span></td>
+                <td><span class="row-act" onclick="openViewAsset('FA-2026-004')">查看</span> <span class="row-act" onclick="openEditAsset('FA-2026-004')">编辑</span> <span class="row-act" onclick="gotoInvoiceForAsset(this)">关联发票</span> <span class="row-act" onclick="gotoDisposeForAsset(this)">新增处置</span> <span class="row-act" onclick="openVersionHistory('FA-2026-004','厂房用地D',3)">版本记录</span> <span class="row-act" style="color:#F56C6C;" onclick="deleteAsset('FA-2026-004')">删除</span></td>
               </tr>
             </tbody>
           </table>
@@ -2596,6 +2597,15 @@
           <div class="qf-item"><label>开票日期</label>
             <div class="month-range"><input class="filter-input" type="date"><span class="sep">–</span><input class="filter-input" type="date"></div>
           </div>
+          <div class="qf-item"><label>凭证状态</label>
+            <select class="filter-select"><option>请选择</option><option>正常</option><option>作废</option><option>部分红冲</option><option>全额红冲</option></select>
+          </div>
+          <div class="qf-item"><label>抵扣状态</label>
+            <select class="filter-select"><option>请选择</option><option>未抵扣</option><option>已抵扣</option><option>已勾选不抵扣</option><option>已申请不抵扣</option></select>
+          </div>
+          <div class="qf-item"><label>关联状态</label>
+            <select class="filter-select"><option>请选择</option><option>正常管理</option><option>自动解除关联</option></select>
+          </div>
         </div>
         <div class="query-toolbar">
           <button class="btn btn-primary" onclick="filterInvoiceTable(getInvoiceFilterCardId())">🔍 查询</button>
@@ -2608,13 +2618,13 @@
           <table style="min-width:1300px;">
             <thead>
               <tr>
-                <th style="width:44px;">序号</th><th>公司名称</th><th>资产卡片编号</th><th>资产名称</th><th>凭证类型</th><th>发票/凭证号码</th><th>开票日期</th><th>销方名称</th><th>销方纳税人识别号</th><th>凭证金额</th><th>凭证税额</th><th>勾选抵扣日期</th><th>勾选抵扣税款所属期</th><th>抵扣状态</th><th>可抵扣金额</th><th>已抵扣金额</th><th>凭证中用于此项资产的金额</th><th>凭证中用于此项资产的增值税税额</th><th>凭证中用于此项资产的已抵扣增值税税额</th><th>关联日期</th><th>关联状态</th><th style="width:150px;">操作</th>
+                <th style="width:44px;">序号</th><th>公司名称</th><th>资产卡片编号</th><th>资产名称</th><th>凭证类型</th><th>发票/凭证号码</th><th>开票日期</th><th>销方名称</th><th>销方纳税人识别号</th><th>凭证金额</th><th>凭证税额</th><th>勾选抵扣日期</th><th>勾选抵扣税款所属期</th><th>凭证状态</th><th>抵扣状态</th><th>可抵扣金额</th><th>已抵扣金额</th><th>凭证中用于此项资产的金额</th><th>凭证中用于此项资产的增值税税额</th><th>凭证中用于此项资产的已抵扣增值税税额</th><th>关联日期</th><th>关联状态</th><th style="width:150px;">操作</th>
               </tr>
             </thead>
             <tbody>
-              <tr><td>1</td><td>川油能源有限公司</td><td>FA-2026-001</td><td>检测设备A</td><td>增值税专用发票</td><td>044001900211-11234567</td><td>2026-02-25</td><td>成都精密机械有限公司</td><td>91510100MA12345678</td><td>1,132,743.36</td><td>147,256.64</td><td>2026-03-15</td><td>2026-03</td><td>已抵扣</td><td>147,256.64</td><td>147,256.64</td><td>1,132,743.36</td><td>147,256.64</td><td>147,256.64</td><td>2026-03-01</td><td>已关联</td><td><span class="row-act" onclick="openGlEdit('FA-2026-001','检测设备A')">编辑</span> <span class="row-act">解除关联</span></td></tr>
-              <tr><td>2</td><td>蓉信科技有限公司</td><td>FA-2026-002</td><td>生产线B</td><td>增值税专用发票</td><td>044001900211-21009876</td><td>2026-03-28</td><td>深圳云计算科技有限公司</td><td>91440300MA98765432</td><td>3,604,240.60</td><td>468,551.28</td><td>2026-04-10</td><td>2026-04</td><td>已抵扣</td><td>468,551.28</td><td>468,551.28</td><td>3,604,240.60</td><td>468,551.28</td><td>468,551.28</td><td>2026-01-01</td><td>已关联</td><td><span class="row-act" onclick="openGlEdit('FA-2026-002','生产线B')">编辑</span> <span class="row-act">解除关联</span></td></tr>
-              <tr><td>3</td><td>东莞智造有限公司</td><td>FA-2026-003</td><td>商务楼C</td><td>海关缴款书</td><td>HK202512300012</td><td>2025-12-30</td><td>东莞进出口贸易有限公司</td><td>91440000MA5678DEFG</td><td>2,505,714.60</td><td>325,742.90</td><td>2026-01-15</td><td>2026-01</td><td>部分抵扣</td><td>325,742.90</td><td>180,000.00</td><td>2,505,714.60</td><td>325,742.90</td><td>180,000.00</td><td>2026-01-01</td><td>已关联</td><td><span class="row-act" onclick="openGlEdit('FA-2026-003','商务楼C')">编辑</span> <span class="row-act">解除关联</span></td></tr>
+              <tr><td>1</td><td>川油能源有限公司</td><td>FA-2026-001</td><td>检测设备A</td><td>增值税专用发票</td><td>044001900211-11234567</td><td>2026-02-25</td><td>成都精密机械有限公司</td><td>91510100MA12345678</td><td>1,132,743.36</td><td>147,256.64</td><td>2026-03-15</td><td>2026-03</td><td>正常</td><td>已抵扣</td><td>147,256.64</td><td>147,256.64</td><td>1,132,743.36</td><td>147,256.64</td><td>147,256.64</td><td>2026-03-01</td><td>已关联</td><td><span class="row-act" onclick="openGlEdit('FA-2026-001','检测设备A')">编辑</span> <span class="row-act">解除关联</span></td></tr>
+              <tr><td>2</td><td>蓉信科技有限公司</td><td>FA-2026-002</td><td>生产线B</td><td>增值税专用发票</td><td>044001900211-21009876</td><td>2026-03-28</td><td>深圳云计算科技有限公司</td><td>91440300MA98765432</td><td>3,604,240.60</td><td>468,551.28</td><td>2026-04-10</td><td>2026-04</td><td>正常</td><td>已抵扣</td><td>468,551.28</td><td>468,551.28</td><td>3,604,240.60</td><td>468,551.28</td><td>468,551.28</td><td>2026-01-01</td><td>已关联</td><td><span class="row-act" onclick="openGlEdit('FA-2026-002','生产线B')">编辑</span> <span class="row-act">解除关联</span></td></tr>
+              <tr><td>3</td><td>东莞智造有限公司</td><td>FA-2026-003</td><td>商务楼C</td><td>海关缴款书</td><td>HK202512300012</td><td>2025-12-30</td><td>东莞进出口贸易有限公司</td><td>91440000MA5678DEFG</td><td>2,505,714.60</td><td>325,742.90</td><td>2026-01-15</td><td>2026-01</td><td>部分红冲</td><td>部分抵扣</td><td>325,742.90</td><td>180,000.00</td><td>2,505,714.60</td><td>325,742.90</td><td>180,000.00</td><td>2026-01-01</td><td>已关联</td><td><span class="row-act" onclick="openGlEdit('FA-2026-003','商务楼C')">编辑</span> <span class="row-act">解除关联</span></td></tr>
             </tbody>
           </table>
         </div>
@@ -2700,6 +2710,93 @@
   <div class="side-tool-btn">🅰</div>
 </div>
 <div class="quick-nav" style="position:fixed;right:0;top:60%;">快捷导航</div>
+
+
+    <!-- ============== 资产明细记录页面 =============== -->
+    <div class="page" id="page-ent-detail">
+      <div class="content-card">
+        <div class="tab-bar"><div class="tab-item active">资产明细记录</div></div>
+        <div class="info-box blue">ℹ️ 展示当前用户授权范围内公司关联的长期资产及所有已归档的版本，支持按版本编辑或恢复。</div>
+        <div class="query-form">
+          <div class="qf-item"><label>公司名称</label>
+            <select class="filter-select"><option>全部</option><option>川油能源有限公司</option><option>蓉信科技有限公司</option><option>东莞智造有限公司</option><option>深投置业有限公司</option></select>
+          </div>
+          <div class="qf-item"><label>资产名称</label><input class="filter-input" placeholder="支持模糊搜索"></div>
+          <div class="qf-item"><label>资产卡片编号</label><input class="filter-input" placeholder="支持模糊搜索"></div>
+          <div class="qf-item"><label>资产类别</label><input class="filter-input" placeholder="支持模糊搜索"></div>
+          <div class="qf-item"><label>资产用途（企业）</label><input class="filter-input" placeholder="支持模糊搜索"></div>
+          <div class="qf-item"><label>资产状态（企业）</label><input class="filter-input" placeholder="支持模糊搜索"></div>
+          <div class="qf-item"><label>资产编号（局端）</label><input class="filter-input" placeholder="支持模糊搜索"></div>
+          <div class="qf-item"><label>资产类型（局端）</label>
+            <select class="filter-select"><option>全部</option><option>不动产土地使用权</option><option>飞机/火车/轮船</option><option>其他长期资产</option></select>
+          </div>
+          <div class="qf-item"><label>入账日期</label>
+            <div class="month-range"><input class="filter-input" type="date"><span class="sep">–</span><input class="filter-input" type="date"></div>
+          </div>
+          <div class="qf-item"><label>会计期间</label>
+            <div class="month-range"><input class="filter-input" type="month"><span class="sep">–</span><input class="filter-input" type="month"></div>
+          </div>
+        </div>
+        <div class="query-toolbar">
+          <button class="btn btn-primary">🔍 查询</button>
+          <button class="btn btn-default">重置</button>
+        </div>
+        <div class="table-wrap" style="overflow-x:auto;">
+          <table style="min-width:5200px;">
+            <thead>
+              <tr>
+                <th style="width:52px;">序号</th>
+                <th>公司名称</th>
+                <th>资产卡片编号</th>
+                <th>资产名称</th>
+                <th>资产别称</th>
+                <th>版本号</th>
+                <th>资产类别</th>
+                <th>资产原值</th>
+                <th>资产用途（企业）</th>
+                <th>资产状态（企业）</th>
+                <th>取得日期</th>
+                <th>入账日期</th>
+                <th>会计期间</th>
+                <th>会计折旧年限(月)</th>
+                <th>已使用年限</th>
+                <th>剩余使用年限</th>
+                <th>会计折旧方法</th>
+                <th>会计残值率</th>
+                <th>会计残值</th>
+                <th>会计月折旧额</th>
+                <th>会计累计折旧</th>
+                <th>会计净值</th>
+                <th>状态变更日期</th>
+                <th>财行税税源编号</th>
+                <th>建筑面积/土地面积</th>
+                <th>房产税分摊土地原值</th>
+                <th>折旧摊销是否可税前扣除</th>
+                <th>资产编号（局端）</th>
+                <th>资产类型（局端）</th>
+                <th>资产状态（局端）</th>
+                <th>首次计提折旧/摊销月份</th>
+                <th>折旧/摊销完成月份</th>
+                <th>长期资产调整年限(月)</th>
+                <th>已取得月份数</th>
+                <th>资产用途（局端）</th>
+                <th>对应的进项税额</th>
+                <th>对应的进项税额（已抵扣）</th>
+                <th>是否第9条资产(>500万混合用途)</th>
+                <th>不得抵扣进项税额累计（参考）</th>
+                <th>税务净值</th>
+                <th>净值率(会计口径)</th>
+                <th>净值率(税务口径)</th>
+                <th>备注</th>
+                <th style="width:80px;">操作</th>
+              </tr>
+            </thead>
+            <tbody id="detail-table-body">
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
 
 <!-- ============ 弹窗1：新增长期资产台账 ============ -->
 <div class="modal-mask" id="modal-new-asset">
@@ -3569,7 +3666,8 @@
         'page-hunhe': '混合用途确认',
         'page-ent-taizhang': '企业资产台账',
         'page-ent-invoice': '发票关联管理',
-        'page-ent-dispose': '处置管理'
+        'page-ent-dispose': '处置管理',
+        'page-ent-detail': '资产明细记录'
       };
       const targetName = pageNameMap[pageId];
       if (targetName) {
@@ -3584,6 +3682,10 @@
       }
     }
     document.querySelector('.main').scrollTop = 0;
+    // Populate detail table when switching to it
+    if (pageId === 'page-ent-detail' && typeof populateDetailTable === 'function') {
+      populateDetailTable();
+    }
   }
   function openModal(id) {
     document.getElementById(id).classList.add('show');
@@ -5414,24 +5516,24 @@
       name: '生产线B',
       versions: [
         {ver:1,saveTime:'2026-01-31 23:59',company:'蓉信科技有限公司',name:'生产线B',alias:'产线B',cardId:'FA-2026-002',bizType:'其他长期资产',type:'设备',origVal:'8,000,000.00',origPurpose:'用于混合用途',acqDate:'2025-12-20',entryDate:'2026-01-01',period:'2026-01',depYears:120,usedYears:1,remainYears:119,depMethod:'直线法',residualRate:'5.00%',residual:'400,000.00',monthlyDep:'63,333.00',accumDep:'0.00',accNet:'8,000,000.00',statusDate:'',origStatus:'在用',taxSourceCode:'',buildingArea:'',landArea:'',landTaxOrig:'',canDeduct:'是',firstDepMonth:'2026-01',depCompleteMonth:'2035-12',adjustYears:60,obtainedMonths:0,isArticle9:'是',taxNet:'7,866,667.00',netRateAcc:'100.00%',netRateTax:'98.33%',remark:''},
-        {ver:5,saveTime:'2026-05-31 23:59',company:'蓉信科技有限公司',name:'生产线B',alias:'产线B',cardId:'FA-2026-002',bizType:'其他长期资产',type:'设备',origVal:'8,000,000.00',origPurpose:'用于混合用途',acqDate:'2025-12-20',entryDate:'2026-01-01',period:'2026-05',depYears:120,usedYears:5,remainYears:115,depMethod:'直线法',residualRate:'5.00%',residual:'400,000.00',monthlyDep:'63,333.00',accumDep:'56,444.00',accNet:'7,943,556.00',statusDate:'',origStatus:'在用',taxSourceCode:'',buildingArea:'',landArea:'',landTaxOrig:'',canDeduct:'是',firstDepMonth:'2026-01',depCompleteMonth:'2035-12',adjustYears:60,obtainedMonths:4,isArticle9:'是',taxNet:'7,333,333.00',netRateAcc:'99.29%',netRateTax:'91.67%',remark:''},
-        {ver:9,saveTime:'2026-09-15 10:30',company:'蓉信科技有限公司',name:'生产线B',alias:'产线B',cardId:'FA-2026-002',bizType:'其他长期资产',type:'设备',origVal:'8,000,000.00',origPurpose:'用于混合用途',acqDate:'2025-12-20',entryDate:'2026-01-01',period:'2026-09',depYears:120,usedYears:9,remainYears:111,depMethod:'直线法',residualRate:'5.00%',residual:'400,000.00',monthlyDep:'63,333.00',accumDep:'126,667.00',accNet:'7,873,333.00',statusDate:'',origStatus:'在用',taxSourceCode:'',buildingArea:'',landArea:'',landTaxOrig:'',canDeduct:'是',firstDepMonth:'2026-01',depCompleteMonth:'2035-12',adjustYears:60,obtainedMonths:8,isArticle9:'是',taxNet:'6,800,000.00',netRateAcc:'98.42%',netRateTax:'85.00%',remark:''}
+        {ver:2,saveTime:'2026-05-31 23:59',company:'蓉信科技有限公司',name:'生产线B',alias:'产线B',cardId:'FA-2026-002',bizType:'其他长期资产',type:'设备',origVal:'8,000,000.00',origPurpose:'用于混合用途',acqDate:'2025-12-20',entryDate:'2026-01-01',period:'2026-05',depYears:120,usedYears:5,remainYears:115,depMethod:'直线法',residualRate:'5.00%',residual:'400,000.00',monthlyDep:'63,333.00',accumDep:'56,444.00',accNet:'7,943,556.00',statusDate:'',origStatus:'在用',taxSourceCode:'',buildingArea:'',landArea:'',landTaxOrig:'',canDeduct:'是',firstDepMonth:'2026-01',depCompleteMonth:'2035-12',adjustYears:60,obtainedMonths:4,isArticle9:'是',taxNet:'7,333,333.00',netRateAcc:'99.29%',netRateTax:'91.67%',remark:''},
+        {ver:3,saveTime:'2026-09-15 10:30',company:'蓉信科技有限公司',name:'生产线B',alias:'产线B',cardId:'FA-2026-002',bizType:'其他长期资产',type:'设备',origVal:'8,000,000.00',origPurpose:'用于混合用途',acqDate:'2025-12-20',entryDate:'2026-01-01',period:'2026-09',depYears:120,usedYears:9,remainYears:111,depMethod:'直线法',residualRate:'5.00%',residual:'400,000.00',monthlyDep:'63,333.00',accumDep:'126,667.00',accNet:'7,873,333.00',statusDate:'',origStatus:'在用',taxSourceCode:'',buildingArea:'',landArea:'',landTaxOrig:'',canDeduct:'是',firstDepMonth:'2026-01',depCompleteMonth:'2035-12',adjustYears:60,obtainedMonths:8,isArticle9:'是',taxNet:'6,800,000.00',netRateAcc:'98.42%',netRateTax:'85.00%',remark:''}
       ]
     },
     'FA-2026-003': {
       name: '商务楼C',
       versions: [
         {ver:1,saveTime:'2026-01-31 23:59',company:'东莞智造有限公司',name:'商务楼C',alias:'商务楼',cardId:'FA-2026-003',type:'房屋',bizType:'不动产土地使用权',origVal:'20,000,000.00',origPurpose:'用于混合用途',acqDate:'2025-11-10',entryDate:'2026-01-01',period:'2026-01',depYears:360,usedYears:1,remainYears:359,depMethod:'直线法',residualRate:'5.00%',residual:'1,000,000.00',monthlyDep:'52,778.00',accumDep:'0.00',accNet:'20,000,000.00',statusDate:'',origStatus:'在用',taxSourceCode:'FC-2026-002',buildingArea:'5,600',landArea:'',landTaxOrig:'3,200,000.00',taxStandard:'',hasReduction:true,canDeduct:'是',firstDepMonth:'2026-01',depCompleteMonth:'2055-12',adjustYears:240,obtainedMonths:0,isArticle9:'是',taxNet:'19,916,667.00',netRateAcc:'100.00%',netRateTax:'99.58%',remark:''},
-        {ver:5,saveTime:'2026-05-31 23:59',company:'东莞智造有限公司',name:'商务楼C',alias:'商务楼',cardId:'FA-2026-003',type:'房屋',bizType:'不动产土地使用权',origVal:'20,000,000.00',origPurpose:'用于混合用途',acqDate:'2025-11-10',entryDate:'2026-01-01',period:'2026-05',depYears:360,usedYears:5,remainYears:355,depMethod:'直线法',residualRate:'5.00%',residual:'1,000,000.00',monthlyDep:'52,778.00',accumDep:'46,889.00',accNet:'19,953,111.00',statusDate:'',origStatus:'在用',taxSourceCode:'FC-2026-002',buildingArea:'5,600',landArea:'',landTaxOrig:'3,200,000.00',taxStandard:'',hasReduction:true,canDeduct:'是',firstDepMonth:'2026-01',depCompleteMonth:'2055-12',adjustYears:240,obtainedMonths:4,isArticle9:'是',taxNet:'19,583,333.00',netRateAcc:'99.77%',netRateTax:'97.92%',remark:''},
-        {ver:9,saveTime:'2026-09-15 10:30',company:'东莞智造有限公司',name:'商务楼C',alias:'商务楼',cardId:'FA-2026-003',type:'房屋',bizType:'不动产土地使用权',origVal:'20,000,000.00',origPurpose:'用于混合用途',acqDate:'2025-11-10',entryDate:'2026-01-01',period:'2026-09',depYears:360,usedYears:9,remainYears:351,depMethod:'直线法',residualRate:'5.00%',residual:'1,000,000.00',monthlyDep:'52,778.00',accumDep:'105,556.00',accNet:'19,894,444.00',statusDate:'',origStatus:'在用',taxSourceCode:'FC-2026-002',buildingArea:'5,600',landArea:'',landTaxOrig:'3,200,000.00',taxStandard:'',hasReduction:true,canDeduct:'是',firstDepMonth:'2026-01',depCompleteMonth:'2055-12',adjustYears:240,obtainedMonths:8,isArticle9:'是',taxNet:'19,250,000.00',netRateAcc:'99.47%',netRateTax:'96.25%',remark:''}
+        {ver:2,saveTime:'2026-05-31 23:59',company:'东莞智造有限公司',name:'商务楼C',alias:'商务楼',cardId:'FA-2026-003',type:'房屋',bizType:'不动产土地使用权',origVal:'20,000,000.00',origPurpose:'用于混合用途',acqDate:'2025-11-10',entryDate:'2026-01-01',period:'2026-05',depYears:360,usedYears:5,remainYears:355,depMethod:'直线法',residualRate:'5.00%',residual:'1,000,000.00',monthlyDep:'52,778.00',accumDep:'46,889.00',accNet:'19,953,111.00',statusDate:'',origStatus:'在用',taxSourceCode:'FC-2026-002',buildingArea:'5,600',landArea:'',landTaxOrig:'3,200,000.00',taxStandard:'',hasReduction:true,canDeduct:'是',firstDepMonth:'2026-01',depCompleteMonth:'2055-12',adjustYears:240,obtainedMonths:4,isArticle9:'是',taxNet:'19,583,333.00',netRateAcc:'99.77%',netRateTax:'97.92%',remark:''},
+        {ver:3,saveTime:'2026-09-15 10:30',company:'东莞智造有限公司',name:'商务楼C',alias:'商务楼',cardId:'FA-2026-003',type:'房屋',bizType:'不动产土地使用权',origVal:'20,000,000.00',origPurpose:'用于混合用途',acqDate:'2025-11-10',entryDate:'2026-01-01',period:'2026-09',depYears:360,usedYears:9,remainYears:351,depMethod:'直线法',residualRate:'5.00%',residual:'1,000,000.00',monthlyDep:'52,778.00',accumDep:'105,556.00',accNet:'19,894,444.00',statusDate:'',origStatus:'在用',taxSourceCode:'FC-2026-002',buildingArea:'5,600',landArea:'',landTaxOrig:'3,200,000.00',taxStandard:'',hasReduction:true,canDeduct:'是',firstDepMonth:'2026-01',depCompleteMonth:'2055-12',adjustYears:240,obtainedMonths:8,isArticle9:'是',taxNet:'19,250,000.00',netRateAcc:'99.47%',netRateTax:'96.25%',remark:''}
       ]
     },
     'FA-2026-004': {
       name: '厂房用地D',
       versions: [
         {ver:1,saveTime:'2025-11-30 23:59',company:'深投置业有限公司',name:'厂房用地D',alias:'东莞工厂用地',cardId:'FA-2026-004',type:'土地',bizType:'不动产土地使用权',origVal:'4,500,000.00',origPurpose:'用于混合用途',acqDate:'2025-10-15',entryDate:'2025-11-01',period:'2025-11',depYears:480,usedYears:1,remainYears:479,depMethod:'直线法',residualRate:'0.00%',residual:'0.00',monthlyDep:'9,375.00',accumDep:'0.00',accNet:'4,500,000.00',statusDate:'',origStatus:'在用',taxSourceCode:'TD-2026-002',buildingArea:'',landArea:'20,000',landTaxOrig:'',taxStandard:'3.00元/㎡',hasReduction:true,canDeduct:'是',firstDepMonth:'2025-11',depCompleteMonth:'2055-10',adjustYears:240,obtainedMonths:0,isArticle9:'否',taxNet:'4,500,000.00',netRateAcc:'100.00%',netRateTax:'100.00%',remark:''},
-        {ver:5,saveTime:'2026-03-31 23:59',company:'深投置业有限公司',name:'厂房用地D',alias:'东莞工厂用地',cardId:'FA-2026-004',type:'土地',bizType:'不动产土地使用权',origVal:'4,500,000.00',origPurpose:'用于混合用途',acqDate:'2025-10-15',entryDate:'2025-11-01',period:'2026-03',depYears:480,usedYears:5,remainYears:475,depMethod:'直线法',residualRate:'0.00%',residual:'0.00',monthlyDep:'9,375.00',accumDep:'46,875.00',accNet:'4,453,125.00',statusDate:'',origStatus:'在用',taxSourceCode:'TD-2026-002',buildingArea:'',landArea:'20,000',landTaxOrig:'',taxStandard:'3.00元/㎡',hasReduction:true,canDeduct:'是',firstDepMonth:'2025-11',depCompleteMonth:'2055-10',adjustYears:240,obtainedMonths:4,isArticle9:'否',taxNet:'4,462,500.00',netRateAcc:'98.96%',netRateTax:'99.17%',remark:''},
-        {ver:9,saveTime:'2026-09-15 10:30',company:'深投置业有限公司',name:'厂房用地D',alias:'东莞工厂用地',cardId:'FA-2026-004',type:'土地',bizType:'不动产土地使用权',origVal:'4,500,000.00',origPurpose:'用于混合用途',acqDate:'2025-10-15',entryDate:'2025-11-01',period:'2026-09',depYears:480,usedYears:10,remainYears:470,depMethod:'直线法',residualRate:'0.00%',residual:'0.00',monthlyDep:'9,375.00',accumDep:'93,750.00',accNet:'4,406,250.00',statusDate:'',origStatus:'在用',taxSourceCode:'TD-2026-002',buildingArea:'',landArea:'20,000',landTaxOrig:'',taxStandard:'3.00元/㎡',hasReduction:true,canDeduct:'是',firstDepMonth:'2025-11',depCompleteMonth:'2055-10',adjustYears:240,obtainedMonths:10,isArticle9:'否',taxNet:'4,437,500.00',netRateAcc:'97.92%',netRateTax:'98.61%',remark:''}
+        {ver:2,saveTime:'2026-03-31 23:59',company:'深投置业有限公司',name:'厂房用地D',alias:'东莞工厂用地',cardId:'FA-2026-004',type:'土地',bizType:'不动产土地使用权',origVal:'4,500,000.00',origPurpose:'用于混合用途',acqDate:'2025-10-15',entryDate:'2025-11-01',period:'2026-03',depYears:480,usedYears:5,remainYears:475,depMethod:'直线法',residualRate:'0.00%',residual:'0.00',monthlyDep:'9,375.00',accumDep:'46,875.00',accNet:'4,453,125.00',statusDate:'',origStatus:'在用',taxSourceCode:'TD-2026-002',buildingArea:'',landArea:'20,000',landTaxOrig:'',taxStandard:'3.00元/㎡',hasReduction:true,canDeduct:'是',firstDepMonth:'2025-11',depCompleteMonth:'2055-10',adjustYears:240,obtainedMonths:4,isArticle9:'否',taxNet:'4,462,500.00',netRateAcc:'98.96%',netRateTax:'99.17%',remark:''},
+        {ver:3,saveTime:'2026-09-15 10:30',company:'深投置业有限公司',name:'厂房用地D',alias:'东莞工厂用地',cardId:'FA-2026-004',type:'土地',bizType:'不动产土地使用权',origVal:'4,500,000.00',origPurpose:'用于混合用途',acqDate:'2025-10-15',entryDate:'2025-11-01',period:'2026-09',depYears:480,usedYears:10,remainYears:470,depMethod:'直线法',residualRate:'0.00%',residual:'0.00',monthlyDep:'9,375.00',accumDep:'93,750.00',accNet:'4,406,250.00',statusDate:'',origStatus:'在用',taxSourceCode:'TD-2026-002',buildingArea:'',landArea:'20,000',landTaxOrig:'',taxStandard:'3.00元/㎡',hasReduction:true,canDeduct:'是',firstDepMonth:'2025-11',depCompleteMonth:'2055-10',adjustYears:240,obtainedMonths:10,isArticle9:'否',taxNet:'4,437,500.00',netRateAcc:'97.92%',netRateTax:'98.61%',remark:''}
       ]
     }
   };
@@ -5627,6 +5729,121 @@
     _restoreTarget = null;
   }
 
+
+
+  // ==================== 资产明细记录 ====================
+  function populateDetailTable() {
+    var tbody = document.getElementById('detail-table-body');
+    if (!tbody) return;
+    tbody.innerHTML = '';
+    var allRows = [];
+    // Collect all versions from all assets
+    Object.keys(_versionData).forEach(function(cardId) {
+      var asset = _versionData[cardId];
+      if (!asset || !asset.versions) return;
+      var maxVer = Math.max.apply(null, asset.versions.map(function(v){return v.ver;}));
+      asset.versions.forEach(function(v) {
+        allRows.push({data: v, maxVer: maxVer, createTime: v.saveTime});
+      });
+    });
+    // Group by cardId, find creation time per asset (earliest version's saveTime)
+    var assetCreateTime = {};
+    allRows.forEach(function(item) {
+      var cid = item.data.cardId;
+      if (!assetCreateTime[cid] || item.createTime < assetCreateTime[cid]) {
+        assetCreateTime[cid] = item.createTime;
+      }
+    });
+    // Sort: first by asset creation time desc, then by ver desc within same asset
+    allRows.sort(function(a, b) {
+      var aTime = assetCreateTime[a.data.cardId];
+      var bTime = assetCreateTime[b.data.cardId];
+      if (aTime > bTime) return -1;
+      if (aTime < bTime) return 1;
+      return b.data.ver - a.data.ver;
+    });
+    allRows.forEach(function(item, idx) {
+      var v = item.data;
+      var isCurrent = (v.ver === item.maxVer);
+      var tr = document.createElement('tr');
+      var areaDisplay = '';
+      if (v.buildingArea) areaDisplay = v.buildingArea + '(建筑面积)';
+      else if (v.landArea) areaDisplay = v.landArea + '(土地面积)';
+      var cells = '';
+      cells += '<td>' + (idx+1) + '</td>';
+      cells += '<td>' + (v.company||'') + '</td>';
+      cells += '<td>' + (v.cardId||'') + '</td>';
+      cells += '<td>' + (v.name||'') + '</td>';
+      cells += '<td>' + (v.alias||'') + '</td>';
+      cells += '<td>' + v.ver + (isCurrent ? ' <span style="color:#409eff;font-size:10px;">[当前]</span>' : '') + '</td>';
+      cells += '<td>' + (v.type||'') + '</td>';
+      cells += '<td>' + (v.origVal||'') + '</td>';
+      cells += '<td>' + (v.origPurpose||'') + '</td>';
+      cells += '<td>' + (v.origStatus||'') + '</td>';
+      cells += '<td>' + (v.acqDate||'') + '</td>';
+      cells += '<td>' + (v.entryDate||'') + '</td>';
+      cells += '<td>' + (v.period||'') + '</td>';
+      cells += '<td>' + (v.depYears||'') + '</td>';
+      cells += '<td>' + (v.usedYears||'') + '</td>';
+      cells += '<td>' + (v.remainYears||'') + '</td>';
+      cells += '<td>' + (v.depMethod||'') + '</td>';
+      cells += '<td>' + (v.residualRate||'') + '</td>';
+      cells += '<td>' + (v.residual||'') + '</td>';
+      cells += '<td>' + (v.monthlyDep||'') + '</td>';
+      cells += '<td>' + (v.accumDep||'') + '</td>';
+      cells += '<td>' + (v.accNet||'') + '</td>';
+      cells += '<td>' + (v.statusDate||'') + '</td>';
+      cells += '<td>' + (v.taxSourceCode||'') + '</td>';
+      cells += '<td>' + areaDisplay + '</td>';
+      cells += '<td>' + (v.landTaxOrig||'') + '</td>';
+      cells += '<td>' + (v.canDeduct||'') + '</td>';
+      cells += '<td>' + (v.bizCode||'') + '</td>';
+      cells += '<td>' + (v.bizType||'') + '</td>';
+      cells += '<td>' + (v.bizStatus||'') + '</td>';
+      cells += '<td>' + (v.firstDepMonth||'') + '</td>';
+      cells += '<td>' + (v.depCompleteMonth||'') + '</td>';
+      cells += '<td>' + (v.adjustYears||'') + '</td>';
+      cells += '<td>' + (v.obtainedMonths||'') + '</td>';
+      cells += '<td>' + (v.bizPurpose||'') + '</td>';
+      cells += '<td>' + (v.inputTax||'') + '</td>';
+      cells += '<td>' + (v.inputTaxDeducted||'') + '</td>';
+      cells += '<td>' + (v.isArticle9||'') + '</td>';
+      cells += '<td>' + (v.nonDeductAccum||'') + '</td>';
+      cells += '<td>' + (v.taxNet||'') + '</td>';
+      cells += '<td>' + (v.netRateAcc||'') + '</td>';
+      cells += '<td>' + (v.netRateTax||'') + '</td>';
+      cells += '<td>' + (v.remark||'') + '</td>';
+      if (isCurrent) {
+        cells += '<td><span class="row-act" onclick="openEditAsset(\x27' + v.cardId + '\x27)">编辑</span></td>';
+      } else {
+        cells += '<td><span class="row-act" style="color:#E6A23C;" onclick="restoreDetailVersion(\x27' + v.cardId + '\x27,' + v.ver + ',\x27' + (v.period||'') + '\x27)">恢复</span></td>';
+      }
+      tr.innerHTML = cells;
+      tbody.appendChild(tr);
+    });
+  }
+
+  function restoreDetailVersion(cardId, ver, period) {
+    var data = _versionData[cardId];
+    if (!data || !data.versions) return;
+    var maxVer = Math.max.apply(null, data.versions.map(function(v){return v.ver;}));
+    if (ver !== maxVer - 1) {
+      alert('恢复时只能按序倒序恢复，即先恢复最高版本，再恢复次高版本，以此类推。');
+      return;
+    }
+    if (confirm('确认恢复到版本 V' + ver + '（会计期间：' + period + '）？\n恢复后当前版本将被删除，选择的版本将变为最新版本。')) {
+      // Remove current max version
+      data.versions = data.versions.filter(function(v){ return v.ver !== maxVer; });
+      // Mark restored version as current (keep its ver number)
+      alert('操作成功！已恢复到版本 V' + ver + '。');
+      populateDetailTable();
+    }
+  }
+
+  // Auto-populate detail table when page loads or switches
+  var _detailTablePopulated = false;
+  var origSwitchPage = typeof switchPage === 'function' ? switchPage : null;
+
   // ==================== 查看弹窗数据填充 ====================
   // 模拟资产主数据（用于查看弹窗）
   var _assetMasterData = {
@@ -5646,6 +5863,8 @@
     tabItems[0].classList.add('active');
     document.getElementById('view-tab-basic').style.display = '';
     document.getElementById('view-tab-invoice').style.display = 'none';
+    var unlinkTab = document.getElementById('view-tab-unlink');
+    if (unlinkTab) unlinkTab.style.display = 'none';
     // Populate basic info (use label-based matching for reliability)
     if (d) {
       var body = document.getElementById('view-tab-basic');
@@ -5719,6 +5938,8 @@
     el.classList.add('active');
     document.getElementById('view-tab-basic').style.display = tabId === 'view-tab-basic' ? '' : 'none';
     document.getElementById('view-tab-invoice').style.display = tabId === 'view-tab-invoice' ? '' : 'none';
+    var unlinkTab = document.getElementById('view-tab-unlink');
+    if (unlinkTab) unlinkTab.style.display = tabId === 'view-tab-unlink' ? '' : 'none';
   }
 
 
@@ -6781,11 +7002,11 @@
       </div>
       <div id="tab-house-tax">
         <table class="data-table" style="font-size:12px;">
-          <thead><tr><th>房产编号</th><th>房产名称</th><th>产权证书号</th><th>房屋坐落详细地址</th><th>操作</th></tr></thead>
+          <thead><tr><th>房产编号</th><th>房产名称</th><th>产权证书号</th><th>房屋坐落详细地址</th><th>建筑面积(m²)</th><th>操作</th></tr></thead>
           <tbody>
-            <tr><td>FC-2026-001</td><td>蓉信总部大楼</td><td>川A-2026-0001</td><td>成都市高新区天府大道100号</td><td><span class="row-act" onclick="selectTaxSource('house','FC-2026-001','3200','',true)">选择</span></td></tr>
-            <tr><td>FC-2026-002</td><td>东莞智造厂房</td><td>粤S-2026-0033</td><td>东莞市长安镇工业路88号</td><td><span class="row-act" onclick="selectTaxSource('house','FC-2026-002','5600','',false)">选择</span></td></tr>
-            <tr><td>FC-2026-003</td><td>深投物流仓</td><td>粤B-2026-0102</td><td>深圳市南山区科技园南路66号</td><td><span class="row-act" onclick="selectTaxSource('house','FC-2026-003','8500','',false)">选择</span></td></tr>
+            <tr><td>FC-2026-001</td><td>蓉信总部大楼</td><td>川A-2026-0001</td><td>成都市高新区天府大道100号</td><td>3,200</td><td><span class="row-act" onclick="selectTaxSource('house','FC-2026-001','3200','',true)">选择</span></td></tr>
+            <tr><td>FC-2026-002</td><td>东莞智造厂房</td><td>粤S-2026-0033</td><td>东莞市长安镇工业路88号</td><td>5,600</td><td><span class="row-act" onclick="selectTaxSource('house','FC-2026-002','5600','',false)">选择</span></td></tr>
+            <tr><td>FC-2026-003</td><td>深投物流仓</td><td>粤B-2026-0102</td><td>深圳市南山区科技园南路66号</td><td>8,500</td><td><span class="row-act" onclick="selectTaxSource('house','FC-2026-003','8500','',false)">选择</span></td></tr>
           </tbody>
         </table>
       </div>
@@ -6814,10 +7035,11 @@
     </div>
     <div class="modal-body" style="padding:0;">
       <div class="tab-bar" style="margin:0;padding:8px 16px 0;border-bottom:1px solid #e4e7ed;">
-        <div class="tab-item active" onclick="switchViewTab(this,'view-tab-basic')">基础信息</div>
-        <div class="tab-item" onclick="switchViewTab(this,'view-tab-invoice')">关联发票</div>
+        <div class="tab-item active" onclick="switchViewTab(this,'view-tab-basic')">资产信息</div>
+        <div class="tab-item" onclick="switchViewTab(this,'view-tab-invoice')">已关联发票</div>
+        <div class="tab-item" onclick="switchViewTab(this,'view-tab-unlink')">自动解除关联发票</div>
       </div>
-      <!-- Tab-基础信息 -->
+      <!-- Tab-资产信息 -->
       <div id="view-tab-basic" style="padding:16px;">
         <div class="section-title">基础信息</div>
         <div class="form-row"><label class="form-label">公司名称</label><div class="form-control-static">—</div></div>
@@ -6888,6 +7110,7 @@
                 <th>凭证税额</th>
                 <th>勾选抵扣日期</th>
                 <th>勾选抵扣税款所属期</th>
+                <th>凭证状态</th>
                 <th>抵扣状态</th>
                 <th>可抵扣税额</th>
                 <th>已抵扣税额</th>
@@ -6928,7 +7151,7 @@
         <table style="min-width:2800px; font-size:12px; border-collapse:collapse;" class="data-table" id="gl-new-table">
           <thead><tr>
             <th style="width:40px;">#</th>
-            <th style="width:130px;">凭证类型</th><th style="width:180px;">发票/凭证号码</th><th style="width:100px;">开票日期</th><th style="width:150px;">销方名称</th><th style="width:160px;">销方纳税人识别号</th><th style="width:120px;">凭证金额</th><th style="width:100px;">凭证税额</th><th style="width:120px;">勾选抵扣日期</th><th style="width:130px;">勾选抵扣税款所属期</th><th style="width:80px;">抵扣状态</th><th style="width:100px;">可抵扣税额</th><th style="width:100px;">已抵扣税额</th><th style="width:160px;">凭证中用于此项资产的金额</th><th style="width:180px;">凭证中用于此项资产的增值税税额</th><th style="width:180px;">凭证中用于此项资产的已抵扣增值税税额</th><th style="width:60px;">操作</th>
+            <th style="width:130px;">凭证类型</th><th style="width:180px;">发票/凭证号码</th><th style="width:100px;">开票日期</th><th style="width:150px;">销方名称</th><th style="width:160px;">销方纳税人识别号</th><th style="width:120px;">凭证金额</th><th style="width:100px;">凭证税额</th><th style="width:120px;">勾选抵扣日期</th><th style="width:130px;">勾选抵扣税款所属期</th><th style="width:80px;">凭证状态</th><th style="width:80px;">抵扣状态</th><th style="width:100px;">可抵扣税额</th><th style="width:100px;">已抵扣税额</th><th style="width:160px;">凭证中用于此项资产的金额</th><th style="width:180px;">凭证中用于此项资产的增值税税额</th><th style="width:180px;">凭证中用于此项资产的已抵扣增值税税额</th><th style="width:60px;">操作</th>
           </tr></thead>
           <tbody id="gl-new-rows">
           </tbody>
@@ -6959,7 +7182,7 @@
       <div style="overflow-x:auto; margin-bottom:12px;">
         <table style="min-width:2800px; font-size:12px; border-collapse:collapse;" class="data-table">
           <thead><tr>
-            <th style="width:130px;">凭证类型</th><th style="width:180px;">发票/凭证号码</th><th style="width:100px;">开票日期</th><th style="width:150px;">销方名称</th><th style="width:160px;">销方纳税人识别号</th><th style="width:120px;">凭证金额</th><th style="width:100px;">凭证税额</th><th style="width:120px;">勾选抵扣日期</th><th style="width:130px;">勾选抵扣税款所属期</th><th style="width:80px;">抵扣状态</th><th style="width:100px;">可抵扣税额</th><th style="width:100px;">已抵扣税额</th><th style="width:160px;">凭证中用于此项资产的金额</th><th style="width:180px;">凭证中用于此项资产的增值税税额</th><th style="width:180px;">凭证中用于此项资产的已抵扣增值税税额</th>
+            <th style="width:130px;">凭证类型</th><th style="width:180px;">发票/凭证号码</th><th style="width:100px;">开票日期</th><th style="width:150px;">销方名称</th><th style="width:160px;">销方纳税人识别号</th><th style="width:120px;">凭证金额</th><th style="width:100px;">凭证税额</th><th style="width:120px;">勾选抵扣日期</th><th style="width:130px;">勾选抵扣税款所属期</th><th style="width:80px;">凭证状态</th><th style="width:80px;">抵扣状态</th><th style="width:100px;">可抵扣税额</th><th style="width:100px;">已抵扣税额</th><th style="width:160px;">凭证中用于此项资产的金额</th><th style="width:180px;">凭证中用于此项资产的增值税税额</th><th style="width:180px;">凭证中用于此项资产的已抵扣增值税税额</th>
           </tr></thead>
           <tbody>
             <tr>
@@ -7181,6 +7404,37 @@
     <div class="modal-footer">
       <button class="btn btn-default" onclick="closeModal('modal-tax-comparison')">取消</button>
       <button class="btn btn-primary" onclick="applyTaxComparison()">采用推荐方案</button>
+    </div>
+  </div>
+</div>
+
+      <!-- Tab-自动解除关联发票 -->
+      <div id="view-tab-unlink" style="padding:16px; display:none;">
+        <div style="overflow-x:auto;">
+          <table class="data-table" style="min-width:1800px; font-size:12px;">
+            <thead>
+              <tr>
+                <th>序号</th>
+                <th>发票/凭证号码</th>
+                <th>凭证类型</th>
+                <th>开票日期</th>
+                <th>凭证金额</th>
+                <th>凭证税额</th>
+                <th>凭证状态</th>
+                <th>解除关联原因</th>
+                <th>解除关联日期</th>
+                <th>操作人</th>
+              </tr>
+            </thead>
+            <tbody id="view-unlink-body">
+              <tr><td colspan="9" style="text-align:center;color:#999;padding:30px;">暂无解除关联记录</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-default" onclick="closeModal('modal-ent-view-asset')">关闭</button>
     </div>
   </div>
 </div>

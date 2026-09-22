@@ -2521,7 +2521,7 @@
                 <th>已使用年限</th>
                 <th>剩余使用年限</th>
                 <th>会计折旧方法</th>
-                <th>会计残值率</th>
+                <th>会计残值率（%）</th>
                 <th>会计残值</th>
                 <th>会计月折旧额</th>
                 <th>会计累计折旧</th>
@@ -2761,7 +2761,7 @@
                 <th>已使用年限</th>
                 <th>剩余使用年限</th>
                 <th>会计折旧方法</th>
-                <th>会计残值率</th>
+                <th>会计残值率（%）</th>
                 <th>会计残值</th>
                 <th>会计月折旧额</th>
                 <th>会计累计折旧</th>
@@ -5568,7 +5568,7 @@
     company:'公司名称',name:'资产名称',alias:'资产别称',cardId:'资产卡片编号',type:'资产类别',
     origVal:'资产原值',origPurpose:'资产用途（企业）',acqDate:'取得日期',entryDate:'入账日期',
     period:'会计期间',depYears:'会计折旧年限(月)',usedYears:'已使用年限',remainYears:'剩余使用年限',
-    depMethod:'会计折旧方法',residualRate:'会计残值率',residual:'会计残值',
+    depMethod:'会计折旧方法',residualRate:'会计残值率（%）',residual:'会计残值',
     monthlyDep:'会计月折旧额',accumDep:'会计累计折旧',accNet:'会计净值',
     statusDate:'状态变更日期',origStatus:'资产状态（企业）',taxSourceCode:'财行税税源编号',
     buildingArea:'建筑面积(m²)/整备质量（吨）/净吨位',rentalOrig:'出租房产原值',landArea:'土地面积(m²)/艇身长度',taxStandard:'税额标准',landTaxOrig:'房产税分摊土地原值',reductionInfo:'减免信息',
@@ -5760,7 +5760,7 @@
     html += '<div class="form-row"><label class="form-label">已使用年限</label><div class="form-control-static">' + (v.usedYears||'\u2014') + '</div></div>';
     html += '<div class="form-row"><label class="form-label">剩余使用年限</label><div class="form-control-static">' + (v.remainYears||'\u2014') + '</div></div>';
     html += '<div class="form-row"><label class="form-label">会计折旧方法</label><div class="form-control-static">' + (v.depMethod||'\u2014') + '</div></div>';
-    html += '<div class="form-row"><label class="form-label">会计残值率</label><div class="form-control-static">' + (v.residualRate||'\u2014') + '</div></div>';
+    html += '<div class="form-row"><label class="form-label">会计残值率（%）</label><div class="form-control-static">' + (v.residualRate||'\u2014') + '</div></div>';
     html += '<div class="form-row"><label class="form-label">会计残值</label><div class="form-control-static">' + (v.residual||'\u2014') + '</div></div>';
     html += '<div class="form-row"><label class="form-label">会计月折旧额</label><div class="form-control-static">' + (v.monthlyDep||'\u2014') + '</div></div>';
     html += '<div class="form-row"><label class="form-label">会计累计折旧</label><div class="form-control-static">' + (v.accumDep||'\u2014') + '</div></div>';
@@ -5972,7 +5972,7 @@
         '资产用途（企业）':'origPurpose','资本化改造后资产原值':'capOrigVal','取得方式':'method',
         '取得日期':'acqDate','入账日期':'entryDate','会计期间':'period',
         '会计折旧年限(月)':'depYears','已使用年限':'usedYears','剩余使用年限':'remainYears',
-        '会计折旧方法':'depMethod','会计残值率':'residualRate','会计残值':'residual',
+        '会计折旧方法':'depMethod','会计残值率（%）':'residualRate','会计残值':'residual',
         '会计月折旧额':'monthlyDep','会计累计折旧':'accumDep','会计净值':'accNet',
         '状态变更日期':'statusDate','资产状态（企业）':'origStatus',
         '财行税税源编号':'taxSourceCode','建筑面积(m²)/整备质量（吨）/净吨位':'buildingArea','出租房产原值':'rentalOrig','土地面积(m²)/艇身长度':'landArea',
@@ -6932,7 +6932,7 @@
       <div class="form-row"><label class="form-label required">已使用年限</label><input class="form-control" type="number" placeholder="必填，正整数" min="1"></div>
       <div class="form-row"><label class="form-label">剩余使用年限</label><input class="form-control" type="number" placeholder="非必填，正整数" min="0"></div>
       <div class="form-row"><label class="form-label">会计折旧方法</label><select class="form-control"><option>请选择</option><option>直线法</option><option>工作量法</option><option>双倍余额递减法</option><option>年数总和法</option></select></div>
-      <div class="form-row"><label class="form-label">会计残值率</label><input class="form-control" type="number" placeholder="百分比，如5.00表示5%" step="0.01" max="100"></div>
+      <div class="form-row"><label class="form-label">会计残值率（%）</label><input class="form-control" type="number" placeholder="百分比，如5.00表示5%" step="0.01" max="100"></div>
       <div class="form-row"><label class="form-label">会计残值</label><input class="form-control" type="text" placeholder="金额，千分位" oninput="formatCurrencyInput(this)"></div>
       <div class="form-row"><label class="form-label required">会计月折旧额</label><input class="form-control" type="text" placeholder="金额，千分位" oninput="formatCurrencyInput(this)"></div>
       <div class="form-row"><label class="form-label required">会计累计折旧</label><input class="form-control" type="text" id="new-asset-accum-dep" placeholder="金额，千分位" oninput="formatCurrencyInput(this);calcAccountNet()"></div>
@@ -7006,7 +7006,7 @@
       <div class="form-row"><label class="form-label required">已使用年限</label><input class="form-control" type="number" placeholder="正整数" min="1"></div>
       <div class="form-row"><label class="form-label">剩余使用年限</label><input class="form-control" type="number" placeholder="可选，正整数" min="0"></div>
       <div class="form-row"><label class="form-label">会计折旧方法</label><select class="form-control"><option>请选择</option><option>直线法</option><option>工作量法</option><option>双倍余额递减法</option><option>年数总和法</option></select></div>
-      <div class="form-row"><label class="form-label">会计残值率</label><input class="form-control" type="number" placeholder="百分比，如5.00表示5%" step="0.01" max="100"></div>
+      <div class="form-row"><label class="form-label">会计残值率（%）</label><input class="form-control" type="number" placeholder="百分比，如5.00表示5%" step="0.01" max="100"></div>
       <div class="form-row"><label class="form-label">会计残值</label><input class="form-control" type="text" placeholder="金额，千分位" oninput="formatCurrencyInput(this)"></div>
       <div class="form-row"><label class="form-label required">会计月折旧额</label><input class="form-control" type="text" placeholder="金额，千分位" oninput="formatCurrencyInput(this)"></div>
       <div class="form-row"><label class="form-label required">会计累计折旧</label><input class="form-control" type="text" id="new-asset-accum-dep" placeholder="金额，千分位" oninput="formatCurrencyInput(this);calcAccountNet()"></div>
@@ -7088,7 +7088,7 @@
       <div class="form-row"><label class="form-label required">已使用年限</label><input id="e-used-years" class="form-control" type="number" placeholder="必填，正整数" min="1"></div>
       <div class="form-row"><label class="form-label">剩余使用年限</label><input id="e-remain-years" class="form-control" type="number" placeholder="非必填，正整数" min="0"></div>
       <div class="form-row"><label class="form-label">会计折旧方法</label><select id="e-dep-method" class="form-control"><option>请选择</option><option>直线法</option><option>工作量法</option><option>双倍余额递减法</option><option>年数总和法</option></select></div>
-      <div class="form-row"><label class="form-label">会计残值率</label><input id="e-residual-rate" class="form-control" type="number" placeholder="百分比" step="0.01" max="100"></div>
+      <div class="form-row"><label class="form-label">会计残值率（%）</label><input id="e-residual-rate" class="form-control" type="number" placeholder="百分比" step="0.01" max="100"></div>
       <div class="form-row"><label class="form-label">会计残值</label><input class="form-control" type="text" placeholder="金额，千分位" oninput="formatCurrencyInput(this)"></div>
       <div class="form-row"><label class="form-label required">会计月折旧额</label><input id="e-monthly-dep" class="form-control" type="text" placeholder="金额，千分位" oninput="formatCurrencyInput(this)"></div>
       <div class="form-row"><label class="form-label required">会计累计折旧</label><input id="e-accum-dep" class="form-control" type="text" placeholder="金额，千分位" oninput="formatCurrencyInput(this);calcAccountNet()"></div>
@@ -7229,7 +7229,7 @@
         <div class="form-row"><label class="form-label">已使用年限</label><div class="form-control-static">—</div></div>
         <div class="form-row"><label class="form-label">剩余使用年限</label><div class="form-control-static">—</div></div>
         <div class="form-row"><label class="form-label">会计折旧方法</label><div class="form-control-static">—</div></div>
-        <div class="form-row"><label class="form-label">会计残值率</label><div class="form-control-static">—</div></div>
+        <div class="form-row"><label class="form-label">会计残值率（%）</label><div class="form-control-static">—</div></div>
         <div class="form-row"><label class="form-label">会计残值</label><div class="form-control-static">—</div></div>
         <div class="form-row"><label class="form-label">会计月折旧额</label><div class="form-control-static">—</div></div>
         <div class="form-row"><label class="form-label">会计累计折旧</label><div class="form-control-static">—</div></div>
@@ -7643,7 +7643,7 @@
             <th>已使用年限</th>
             <th>剩余使用年限</th>
             <th>会计折旧方法</th>
-            <th>会计残值率</th>
+            <th>会计残值率（%）</th>
             <th>会计残值</th>
             <th>会计月折旧额</th>
             <th>会计累计折旧</th>
